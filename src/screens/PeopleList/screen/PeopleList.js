@@ -9,19 +9,12 @@ const PeopleList = () => {
   const styles = getStyles();
   const generalStyles = getGlobalStyles();
   return (
-    <View style={[generalStyles.flex, {backgroundColor: 'grey'}, styles.image]}>
-      <Image
-        source={require('~/assets/images/grumpyCat.png')}
-        size={300}
-        borderRadius={20}
-      />
-      <PeopleItem
-        title={'Titlu'}
-        subtitle={'Subtitlu'}
-        description={'Description'}
-        image={require('~/assets/images/grumpyCat.png')}
-      />
-    </View>
+    <PeopleItem
+      title={'Titlu'}
+      subtitle={'Subtitluasdadddasdaasdasdadaasdasddadad'}
+      description={'Description'}
+      image={require('~/assets/images/grumpyCat.png')}
+    />
   );
 };
 

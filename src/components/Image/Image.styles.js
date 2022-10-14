@@ -8,11 +8,6 @@ const getStyles = (size, width, height, borderRadius) => {
     usedHeight = size;
   }
   return StyleSheet.create({
-    imageContainer: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
     image: {
       width: usedWidth,
       height: usedHeight,

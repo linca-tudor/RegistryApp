@@ -1,10 +1,34 @@
 import {StyleSheet} from 'react-native';
+import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
   return StyleSheet.create({
     itemContainer: {
       flexDirection: 'row',
-      backgroundColor: 'black',
+      paddingHorizontal: 20,
+      height: 150,
+      alignItems: 'center',
+      backgroundColor: 'magenta',
+    },
+    textContainer: {
+      height: '100%',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      marginRight: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: Colors.warmGrey,
+      borderStyle: 'dashed',
+    },
+    primaryText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: Colors.black,
+      marginBottom: 7.5,
+    },
+    secondaryText: {
+      fontSize: 16,
+      color: Colors.warmGrey,
+      marginTop: 2.5,
     },
   });
 };

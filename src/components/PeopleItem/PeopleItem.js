@@ -12,13 +12,28 @@ const PeopleItem = ({title, subtitle, description, image}) => {
       onPress={() => {
         console.log('PeopleItem component pressed!');
       }}
-      style={[globalStyles.flex, styles.itemContainer]}>
-      <View style={globalStyles.flex}>
-        <Text>{title}</Text>
-        <Text>{subtitle}</Text>
-        <Text>{description}</Text>
+      style={[styles.itemContainer]}>
+      <View style={[globalStyles.flex, styles.textContainer]}>
+        <Text
+          numberOfLines={1}
+          ellipsizeMode={'tail'}
+          style={styles.primaryText}>
+          {title}
+        </Text>
+        <Text
+          numberOfLines={1}
+          ellipsizeMode={'tail'}
+          style={styles.secondaryText}>
+          {subtitle}
+        </Text>
+        <Text
+          numberOfLines={1}
+          ellipsizeMode={'tail'}
+          style={styles.secondaryText}>
+          {description}
+        </Text>
       </View>
-      <Image source={image} size={100} />
+      <Image source={image} size={125} borderRadius={30} />
     </TouchableOpacity>
   );
 };
