@@ -1,19 +1,38 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {FlashList} from '@shopify/flash-list';
 import getGlobalStyles from '~/helpers/GlobalStyles';
-import Image from '~/components/Image';
 import getStyles from './PeopleList.styles';
 import PeopleItem from '~/components/PeopleItem';
+
+const renderItem = ({item}) => {
+  let avatarSource;
+  const {avatar, first_name, last_name, quote, address, gender} = item;
+  if (avatar) {
+    avatarSource = {uri: avatar};
+  }
+  return (
+    <PeopleItem
+      avatar={avatarSource}
+      isIcon={avatar ? false : true}
+      firstName={first_name}
+      lastName={last_name}
+      quote={quote}
+      address={address}
+    />
+  );
+};
 
 const PeopleList = () => {
   const styles = getStyles();
   const generalStyles = getGlobalStyles();
+  const data = require('~/assets/data/MOCK_DATA.json');
+
   return (
-    <PeopleItem
-      title={'Titlu'}
-      subtitle={'Subtitluasdadddasdaasdasdadaasdasddadad'}
-      description={'Description'}
-      image={require('~/assets/images/grumpyCat.png')}
+    <FlashList
+      data={data}
+      keyExtractor={(item, index) => item.id}
+      renderItem={renderItem}
+      estimatedItemSize={150}
     />
   );
 };

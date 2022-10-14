@@ -8,7 +8,6 @@ const getStyles = () => {
       paddingHorizontal: 20,
       height: 150,
       alignItems: 'center',
-      backgroundColor: 'magenta',
     },
     textContainer: {
       height: '100%',
@@ -18,6 +17,12 @@ const getStyles = () => {
       borderBottomWidth: 1,
       borderBottomColor: Colors.warmGrey,
       borderStyle: 'dashed',
+    },
+    iconContainer: {
+      width: 125,
+      height: 125,
+      borderRadius: 30,
+      overflow: 'hidden',
     },
     primaryText: {
       fontSize: 18,
