@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Strings from '../../helpers/Strings';
-import PeopleListContainer from '../../screens/PeopleList';
+import Strings from '~/helpers/Strings';
+import PeopleListContainer from '~/screens/PeopleList';
 
 const Tab = createBottomTabNavigator();
 

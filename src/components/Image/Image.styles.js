@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const getStyles = (size, width, height) => {
+const getStyles = (size, width, height, borderRadius) => {
   let usedWidth = width;
   let usedHeight = height;
   if (size) {
@@ -8,9 +8,15 @@ const getStyles = (size, width, height) => {
     usedHeight = size;
   }
   return StyleSheet.create({
+    imageContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     image: {
       width: usedWidth,
       height: usedHeight,
+      borderRadius: borderRadius,
     },
   });
 };
