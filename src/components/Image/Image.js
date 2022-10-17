@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image as RNImage, StatusBar, View, VirtualizedList} from 'react-native';
+import {Image as RNImage} from 'react-native';
 import getStyles from './Image.styles';
 
 const Image = ({source, size, width, height, borderRadius, style}) => {

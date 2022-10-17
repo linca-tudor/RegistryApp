@@ -13,9 +13,9 @@ const renderItem = ({item}) => {
   return (
     <PeopleItem
       avatar={avatarSource}
-      isIcon={avatar ? false : true}
       firstName={first_name}
       lastName={last_name}
+      gender={gender}
       quote={quote}
       address={address}
     />

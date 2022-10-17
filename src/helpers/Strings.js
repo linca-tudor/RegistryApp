@@ -1,8 +1,3 @@
-const Strings = {
-  UI: {
-    firstPageTitle: 'List',
-    secondPageTitle: 'Search',
-  },
-};
+const Strings = {};
 
 export default Strings;

@@ -1,13 +1,29 @@
 import React from 'react';
 import {TouchableOpacity, Text, View} from 'react-native';
 import getGlobalStyles from '~/helpers/GlobalStyles';
+import Colors from '../../helpers/Colors';
+import {getInitials} from '../../helpers/Functions';
 import Image from '../Image';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Icon from 'react-native-vector-icons/Fontisto';
 import getStyles from './PeopleItem.styles';
 
-const PeopleItem = ({isIcon, avatar, firstName, lastName, quote, address}) => {
+const PeopleItem = ({avatar, firstName, lastName, gender, quote, address}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
+
+  const renderAvatar = () => {
+    if (avatar) {
+      return <Image source={avatar} size={125} borderRadius={30} />;
+    } else {
+      return (
+        <View style={styles.avatarInitialsContainer}>
+          <Text style={styles.avatarInitials}>
+            {getInitials(firstName + ' ' + lastName)}
+          </Text>
+        </View>
+      );
+    }
+  };
 
   return (
     <TouchableOpacity
@@ -35,12 +51,7 @@ const PeopleItem = ({isIcon, avatar, firstName, lastName, quote, address}) => {
           {address}
         </Text>
       </View>
-      {!isIcon && <Image source={avatar} size={125} borderRadius={30} />}
-      {isIcon && (
-        <View style={styles.iconContainer}>
-          <SimpleLineIcons name="user" size={125} color="black" />
-        </View>
-      )}
+      {renderAvatar()}
     </TouchableOpacity>
   );
 };
