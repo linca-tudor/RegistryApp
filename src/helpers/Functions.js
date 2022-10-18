@@ -1,17 +1,13 @@
 export const getName = (first, last) => {
-  let name = '';
-
-  if (first) {
-    name += first;
-  }
-  if (last) {
-    name += ' ' + last;
-  }
-
-  return name;
+  const name = [first, last].filter(value => !!value).join(' ');
+  return name ? name : undefined;
 };
 
 export const getInitials = string => {
+  if (!string) {
+    return null;
+  }
+
   let names = string.split(' '),
     initials = names[0].substring(0, 1).toUpperCase();
 

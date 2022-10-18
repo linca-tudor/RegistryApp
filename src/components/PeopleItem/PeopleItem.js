@@ -4,18 +4,13 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 import {getInitials} from '~/helpers/Functions';
 import getStyles from './PeopleItem.styles';
 import Avatar from '~/components/Avatar';
-import Strings from '~/helpers/Strings';
 
 const PeopleItem = ({avatar, name, description, address, onPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
   const renderAvatar = () => {
-    if (avatar) {
-      return <Avatar avatar={avatar} />;
-    } else {
-      return <Avatar initials={name && getInitials(name)} />;
-    }
+    return <Avatar avatar={avatar} initials={getInitials(name)} />;
   };
 
   return (
@@ -25,19 +20,19 @@ const PeopleItem = ({avatar, name, description, address, onPress}) => {
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.primaryText}>
-          {name ? name : Strings.itemTextDefaults.noName}
+          {name}
         </Text>
         <Text
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.secondaryText}>
-          {description ? description : Strings.itemTextDefaults.noDescription}
+          {description}
         </Text>
         <Text
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.secondaryText}>
-          {address ? address : Strings.itemTextDefaults.noAddress}
+          {address}
         </Text>
       </View>
       {renderAvatar()}
