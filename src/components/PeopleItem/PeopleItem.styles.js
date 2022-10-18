@@ -1,21 +1,6 @@
 import {StyleSheet} from 'react-native';
 import Colors from '~/helpers/Colors';
 
-const getRandomColor = alpha => {
-  console.log(toString(1));
-  return (
-    'rgba(' +
-    Math.floor(Math.random() * 256) +
-    ',' +
-    Math.floor(Math.random() * 256) +
-    ',' +
-    Math.floor(Math.random() * 256) +
-    ',' +
-    alpha.toString() +
-    ')'
-  );
-};
-
 const getStyles = () => {
   return StyleSheet.create({
     itemContainer: {
@@ -50,19 +35,6 @@ const getStyles = () => {
       fontSize: 16,
       color: Colors.warmGrey,
       marginTop: 2.5,
-    },
-    avatarInitialsContainer: {
-      width: 125,
-      height: 125,
-      borderRadius: 35,
-      backgroundColor: getRandomColor(0.2),
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    avatarInitials: {
-      fontSize: 40,
-      fontWeight: '1000',
-      color: getRandomColor(1),
     },
   });
 };

@@ -1,37 +1,31 @@
 import React from 'react';
 import {FlashList} from '@shopify/flash-list';
-import getGlobalStyles from '~/helpers/GlobalStyles';
-import getStyles from './PeopleList.styles';
 import PeopleItem from '~/components/PeopleItem';
+import {getName} from '~/helpers/Functions';
 
-const renderItem = ({item}) => {
+const renderItem = ({item}, onPress) => {
   let avatarSource;
-  const {avatar, first_name, last_name, quote, address, gender} = item;
+  const {avatar, first_name, last_name, quote, address} = item;
   if (avatar) {
     avatarSource = {uri: avatar};
   }
   return (
     <PeopleItem
       avatar={avatarSource}
-      firstName={first_name}
-      lastName={last_name}
-      gender={gender}
-      quote={quote}
+      name={getName(first_name, last_name)}
+      description={quote}
       address={address}
+      onPress={onPress}
     />
   );
 };
 
-const PeopleList = () => {
-  const styles = getStyles();
-  const generalStyles = getGlobalStyles();
-  const data = require('~/assets/data/MOCK_DATA.json');
-
+const PeopleList = ({data, onItemPress}) => {
   return (
     <FlashList
       data={data}
       keyExtractor={(item, index) => item.id}
-      renderItem={renderItem}
+      renderItem={item => renderItem(item, onItemPress)}
       estimatedItemSize={150}
     />
   );

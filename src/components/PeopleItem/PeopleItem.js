@@ -1,54 +1,43 @@
 import React from 'react';
 import {TouchableOpacity, Text, View} from 'react-native';
 import getGlobalStyles from '~/helpers/GlobalStyles';
-import Colors from '../../helpers/Colors';
-import {getInitials} from '../../helpers/Functions';
-import Image from '../Image';
-import Icon from 'react-native-vector-icons/Fontisto';
+import {getInitials} from '~/helpers/Functions';
 import getStyles from './PeopleItem.styles';
+import Avatar from '~/components/Avatar';
+import Strings from '~/helpers/Strings';
 
-const PeopleItem = ({avatar, firstName, lastName, gender, quote, address}) => {
+const PeopleItem = ({avatar, name, description, address, onPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
   const renderAvatar = () => {
     if (avatar) {
-      return <Image source={avatar} size={125} borderRadius={30} />;
+      return <Avatar avatar={avatar} />;
     } else {
-      return (
-        <View style={styles.avatarInitialsContainer}>
-          <Text style={styles.avatarInitials}>
-            {getInitials(firstName + ' ' + lastName)}
-          </Text>
-        </View>
-      );
+      return <Avatar initials={name && getInitials(name)} />;
     }
   };
 
   return (
-    <TouchableOpacity
-      onPress={() => {
-        console.log('PeopleItem component pressed!');
-      }}
-      style={[styles.itemContainer]}>
+    <TouchableOpacity onPress={onPress} style={[styles.itemContainer]}>
       <View style={[globalStyles.flex, styles.textContainer]}>
         <Text
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.primaryText}>
-          {firstName} {lastName}
+          {name ? name : Strings.itemTextDefaults.noName}
         </Text>
         <Text
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.secondaryText}>
-          {quote}
+          {description ? description : Strings.itemTextDefaults.noDescription}
         </Text>
         <Text
           numberOfLines={1}
           ellipsizeMode={'tail'}
           style={styles.secondaryText}>
-          {address}
+          {address ? address : Strings.itemTextDefaults.noAddress}
         </Text>
       </View>
       {renderAvatar()}

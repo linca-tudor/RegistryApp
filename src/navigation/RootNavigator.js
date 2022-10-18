@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Routes from '~/helpers/Routes';
 import PeopleListContainer from '~/screens/PeopleList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Colors from '../helpers/Colors';
+import Colors from '~/helpers/Colors';
 
 const Tab = createBottomTabNavigator();
 
