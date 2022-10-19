@@ -9,7 +9,10 @@ const getStyles = () => {
       height: 150,
       alignItems: 'center',
     },
-    textDividerContainer: {paddingRight: 15, justifyContent: 'center'},
+    textDividerContainer: {
+      paddingRight: 15,
+      justifyContent: 'center',
+    },
     textContainer: {
       height: 130,
       alignItems: 'flex-start',

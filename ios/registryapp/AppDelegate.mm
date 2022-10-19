@@ -63,7 +63,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   /* React-native-lottie-splashscreen */
   
   Dynamic *t = [Dynamic new];
-  UIView *animationUIView = (UIView *)[t createAnimationViewWithRootView:rootView lottieName:@"loading"]; // change lottieName to your lottie files name
+  UIView *animationUIView = (UIView *)[t createAnimationViewWithRootView:rootView lottieName:@"splashscreen"];
   animationUIView.backgroundColor = [UIColor whiteColor]; // change backgroundColor
 
   // register LottieSplashScreen to RNSplashScreen

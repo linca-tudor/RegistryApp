@@ -16,6 +16,7 @@ import Lottie
     animationView.frame = rootView.frame
     animationView.center = rootView.center
     animationView.backgroundColor = UIColor.white;
+    animationView.loopMode = .loop;
     return animationView;
   }
 

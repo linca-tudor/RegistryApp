@@ -7,6 +7,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide(); // here
+      console.log('Splashscreen ended!');
     }, 5_000);
   }, []);
   return (

@@ -15,7 +15,7 @@
 		7699B88040F8A987B510C191 /* libPods-registryapp-registryappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-registryapp-registryappTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F52E61D429000A86005F9A15 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E61D329000A86005F9A15 /* Dynamic.swift */; };
-		F5910C8029000EF900010B7D /* logo_splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = F5910C7E29000EF900010B7D /* logo_splashscreen.json */; };
+		F565DC26290090BC00997F51 /* splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = F565DC25290090BB00997F51 /* splashscreen.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		F52E61CB2900083D005F9A15 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-lottie-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		F52E61D229000A86005F9A15 /* registryapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "registryapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		F52E61D329000A86005F9A15 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
-		F5910C7E29000EF900010B7D /* logo_splashscreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = logo_splashscreen.json; path = ../src/assets/images/logo_splashscreen.json; sourceTree = "<group>"; };
+		F565DC25290090BB00997F51 /* splashscreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splashscreen.json; path = ../src/assets/images/splashscreen.json; sourceTree = "<group>"; };
 		F5E567C028F9C21D00584B6D /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		F5E567C128F9C21D00584B6D /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		F5E567C228F9C21D00584B6D /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		13B07FAE1A68108700A75B9A /* registryapp */ = {
 			isa = PBXGroup;
 			children = (
+				F565DC25290090BB00997F51 /* splashscreen.json */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				F5910C7E29000EF900010B7D /* logo_splashscreen.json */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -324,7 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5910C8029000EF900010B7D /* logo_splashscreen.json in Resources */,
+				F565DC26290090BC00997F51 /* splashscreen.json in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
