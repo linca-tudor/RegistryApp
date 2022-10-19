@@ -13,7 +13,7 @@ const getStyles = () => {
     },
     avatarInitials: {
       fontSize: 40,
-      fontWeight: '1000',
+      fontWeight: 'bold',
       color: getRandomColor(1),
     },
   });

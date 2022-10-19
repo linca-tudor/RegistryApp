@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
@@ -8,22 +8,26 @@ const getStyles = () => {
       paddingHorizontal: 20,
       height: 150,
       alignItems: 'center',
-      justifyContent: 'center',
     },
+    textDividerContainer: {paddingRight: 15, justifyContent: 'center'},
     textContainer: {
-      height: '100%',
+      height: 130,
       alignItems: 'flex-start',
       justifyContent: 'center',
-      marginRight: 15,
-      borderBottomWidth: 1,
-      borderBottomColor: Colors.warmGrey,
-      borderStyle: 'dashed',
     },
     iconContainer: {
       width: 125,
       height: 125,
       borderRadius: 30,
       overflow: 'hidden',
+    },
+    itemDivider: {
+      alignSelf: 'flex-end',
+      height: 0,
+      width: '100%',
+      borderBottomWidth: 1,
+      borderStyle: Platform.OS === 'android' ? 'dashed' : 'solid',
+      borderBottomColor: Colors.warmGrey,
     },
     primaryText: {
       fontSize: 18,
