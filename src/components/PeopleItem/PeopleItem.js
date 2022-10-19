@@ -4,7 +4,8 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 import {getInitials} from '~/helpers/Functions';
 import getStyles from './PeopleItem.styles';
 import Avatar from '~/components/Avatar';
-import {Dimensions} from 'react-native';
+import Colors from '~/helpers/Colors';
+import DashedLine from 'react-native-dashed-line';
 
 const PeopleItem = ({avatar, name, description, address, onPress}) => {
   const styles = getStyles();
@@ -38,7 +39,11 @@ const PeopleItem = ({avatar, name, description, address, onPress}) => {
               {address}
             </Text>
           </View>
-          <View style={styles.itemDivider} />
+          <DashedLine
+            axis="horizontal"
+            dashColor={Colors.warmGrey}
+            dashThickness={1}
+          />
         </View>
         {renderAvatar()}
       </TouchableOpacity>

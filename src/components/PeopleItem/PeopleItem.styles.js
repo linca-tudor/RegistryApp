@@ -24,14 +24,6 @@ const getStyles = () => {
       borderRadius: 30,
       overflow: 'hidden',
     },
-    itemDivider: {
-      alignSelf: 'flex-end',
-      height: 0,
-      width: '100%',
-      borderBottomWidth: 1,
-      borderStyle: Platform.OS === 'android' ? 'dashed' : 'solid',
-      borderBottomColor: Colors.warmGrey,
-    },
     primaryText: {
       fontSize: 18,
       fontWeight: 'bold',

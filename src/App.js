@@ -6,8 +6,7 @@ import SplashScreen from 'react-native-lottie-splash-screen';
 const App = () => {
   useEffect(() => {
     setTimeout(() => {
-      SplashScreen.hide(); // here
-      console.log('Splashscreen ended!');
+      SplashScreen.hide();
     }, 5_000);
   }, []);
   return (
