@@ -14,22 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-registryapp-registryappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-registryapp-registryappTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F5E567D028F9C21D00584B6D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C028F9C21D00584B6D /* Fontisto.ttf */; };
-		F5E567D128F9C21D00584B6D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C128F9C21D00584B6D /* Octicons.ttf */; };
-		F5E567D228F9C21D00584B6D /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C228F9C21D00584B6D /* Feather.ttf */; };
-		F5E567D328F9C21D00584B6D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C328F9C21D00584B6D /* Entypo.ttf */; };
-		F5E567D428F9C21D00584B6D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C428F9C21D00584B6D /* FontAwesome5_Brands.ttf */; };
-		F5E567D528F9C21D00584B6D /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C528F9C21D00584B6D /* MaterialCommunityIcons.ttf */; };
-		F5E567D628F9C21D00584B6D /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C628F9C21D00584B6D /* AntDesign.ttf */; };
-		F5E567D728F9C21D00584B6D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C728F9C21D00584B6D /* Foundation.ttf */; };
-		F5E567D828F9C21D00584B6D /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C828F9C21D00584B6D /* Ionicons.ttf */; };
-		F5E567D928F9C21D00584B6D /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567C928F9C21D00584B6D /* FontAwesome5_Solid.ttf */; };
-		F5E567DA28F9C21D00584B6D /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CA28F9C21D00584B6D /* FontAwesome5_Regular.ttf */; };
-		F5E567DB28F9C21D00584B6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CB28F9C21D00584B6D /* FontAwesome.ttf */; };
-		F5E567DC28F9C21D00584B6D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CC28F9C21D00584B6D /* Zocial.ttf */; };
-		F5E567DD28F9C21D00584B6D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CD28F9C21D00584B6D /* EvilIcons.ttf */; };
-		F5E567DE28F9C21D00584B6D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CE28F9C21D00584B6D /* SimpleLineIcons.ttf */; };
-		F5E567DF28F9C21D00584B6D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5E567CF28F9C21D00584B6D /* MaterialIcons.ttf */; };
+		F52E61D429000A86005F9A15 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E61D329000A86005F9A15 /* Dynamic.swift */; };
+		F565DC26290090BC00997F51 /* splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = F565DC25290090BB00997F51 /* splashscreen.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +25,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = registryapp;
+		};
+		F52E61CF2900083D005F9A15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F52E61CB2900083D005F9A15 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -60,6 +53,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = registryapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-registryapp-registryappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-registryapp-registryappTests.release.xcconfig"; path = "Target Support Files/Pods-registryapp-registryappTests/Pods-registryapp-registryappTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F52E61CB2900083D005F9A15 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-lottie-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		F52E61D229000A86005F9A15 /* registryapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "registryapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		F52E61D329000A86005F9A15 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		F565DC25290090BB00997F51 /* splashscreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splashscreen.json; path = ../src/assets/images/splashscreen.json; sourceTree = "<group>"; };
 		F5E567C028F9C21D00584B6D /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		F5E567C128F9C21D00584B6D /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		F5E567C228F9C21D00584B6D /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -118,12 +115,15 @@
 		13B07FAE1A68108700A75B9A /* registryapp */ = {
 			isa = PBXGroup;
 			children = (
+				F565DC25290090BB00997F51 /* splashscreen.json */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				F52E61D329000A86005F9A15 /* Dynamic.swift */,
+				F52E61D229000A86005F9A15 /* registryapp-Bridging-Header.h */,
 			);
 			name = registryapp;
 			sourceTree = "<group>";
@@ -141,6 +141,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F52E61CB2900083D005F9A15 /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -179,6 +180,14 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-registryapp-registryappTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F52E61CC2900083D005F9A15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F52E61D02900083D005F9A15 /* libSplashScreen.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F5E567BF28F9C21D00584B6D /* Fonts */ = {
@@ -264,7 +273,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -279,6 +288,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F52E61CC2900083D005F9A15 /* Products */;
+					ProjectRef = F52E61CB2900083D005F9A15 /* SplashScreen.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* registryapp */,
@@ -286,6 +301,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F52E61D02900083D005F9A15 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = F52E61CF2900083D005F9A15 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -299,23 +324,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5E567D028F9C21D00584B6D /* Fontisto.ttf in Resources */,
-				F5E567DB28F9C21D00584B6D /* FontAwesome.ttf in Resources */,
-				F5E567D728F9C21D00584B6D /* Foundation.ttf in Resources */,
-				F5E567DA28F9C21D00584B6D /* FontAwesome5_Regular.ttf in Resources */,
-				F5E567D828F9C21D00584B6D /* Ionicons.ttf in Resources */,
-				F5E567DD28F9C21D00584B6D /* EvilIcons.ttf in Resources */,
-				F5E567D328F9C21D00584B6D /* Entypo.ttf in Resources */,
+				F565DC26290090BC00997F51 /* splashscreen.json in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				F5E567DC28F9C21D00584B6D /* Zocial.ttf in Resources */,
-				F5E567DE28F9C21D00584B6D /* SimpleLineIcons.ttf in Resources */,
-				F5E567D228F9C21D00584B6D /* Feather.ttf in Resources */,
-				F5E567D128F9C21D00584B6D /* Octicons.ttf in Resources */,
-				F5E567D428F9C21D00584B6D /* FontAwesome5_Brands.ttf in Resources */,
-				F5E567D628F9C21D00584B6D /* AntDesign.ttf in Resources */,
-				F5E567DF28F9C21D00584B6D /* MaterialIcons.ttf in Resources */,
-				F5E567D928F9C21D00584B6D /* FontAwesome5_Solid.ttf in Resources */,
-				F5E567D528F9C21D00584B6D /* MaterialCommunityIcons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52E61D429000A86005F9A15 /* Dynamic.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -505,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-registryapp-registryappTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -532,6 +544,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-registryapp-registryappTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = registryappTests/Info.plist;
@@ -559,7 +572,56 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFlashList\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-bridging\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-lottie-splash-screen\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+					"\"$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\"\n\n$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\n\n$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\n\n\"$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\"",
+				);
 				INFOPLIST_FILE = registryapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,6 +634,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = registryapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "registryapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -585,6 +648,55 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFlashList\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-bridging\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-lottie-splash-screen\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+					"\"$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\"\n\n$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\n\n$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\n\n\"$(SRCROOT)/../node_modules/react-native-lottie-splash-screen/ios\"",
+				);
 				INFOPLIST_FILE = registryapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -597,6 +709,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = registryapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "registryapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
