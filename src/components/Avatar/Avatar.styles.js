@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Colors from '~/helpers/Colors';
 import {getRandomColor} from '~/helpers/Functions';
 
 const getStyles = () => {
@@ -9,12 +10,16 @@ const getStyles = () => {
       borderRadius: 35,
       backgroundColor: getRandomColor(0.2),
       justifyContent: 'center',
-      alignItems: 'center',
     },
     avatarInitials: {
-      fontSize: 40,
+      fontSize: 50,
       fontWeight: 'bold',
+      textAlign: 'center',
+      textAlignVertical: 'center',
       color: getRandomColor(1),
+    },
+    avatarImage: {
+      alignSelf: 'center',
     },
   });
 };

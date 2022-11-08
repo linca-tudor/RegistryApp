@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from '~/navigation/RootNavigator';
+import RootTabNavigator from '~/navigation/Navigators';
 import SplashScreen from 'react-native-lottie-splash-screen';
+import {StatusBar} from 'react-native';
+import Colors from '~/helpers/Colors';
 
 const App = () => {
   useEffect(() => {
@@ -11,7 +13,8 @@ const App = () => {
   }, []);
   return (
     <NavigationContainer>
-      <RootNavigator />
+      <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
+      <RootTabNavigator />
     </NavigationContainer>
   );
 };
