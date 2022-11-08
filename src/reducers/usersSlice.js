@@ -9,20 +9,24 @@ const sliceOptions = {
     hasError: false,
   },
   reducers: {},
-  extraReducers: {
-    [getUsers.pending]: (state, action) => {
-      state.isLoading = true;
-      state.hasError = false;
-    },
-    [getUsers.fulfilled]: (state, action) => {
-      state.users = action.payload;
-      state.isLoading = false;
-      state.hasError = false;
-    },
-    [getUsers.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.hasError = true;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(getUsers.pending, (state, action) => {
+        state.isLoading = true;
+        state.hasError = false;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+        state.isLoading = false;
+        state.hasError = false;
+      })
+      .addMatcher(getUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.hasError = true;
+      })
+      .addDefaultCase((state, action) => {
+        console.warn('usersSlice reducer Default Case!');
+      });
   },
 };
 
