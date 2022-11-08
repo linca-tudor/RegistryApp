@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import {Provider} from 'react-redux';
+import store from '~/store/store';
 import {NavigationContainer} from '@react-navigation/native';
 import RootTabNavigator from '~/navigation/Navigators';
 import SplashScreen from 'react-native-lottie-splash-screen';
@@ -12,10 +14,12 @@ const App = () => {
     }, 5_000);
   }, []);
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
-      <RootTabNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
+        <RootTabNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
 
