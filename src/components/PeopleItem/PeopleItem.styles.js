@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
@@ -25,12 +25,14 @@ const getStyles = () => {
       overflow: 'hidden',
     },
     primaryText: {
+      width: '100%',
       fontSize: 18,
       fontWeight: 'bold',
       color: Colors.black,
       marginBottom: 7.5,
     },
     secondaryText: {
+      width: '100%',
       fontSize: 16,
       color: Colors.warmGrey,
       marginTop: 2.5,

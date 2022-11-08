@@ -1,14 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUsers} from '~/actions/loadUsers';
 import PeopleList from '../screen';
+import {useNavigation} from '@react-navigation/native';
+import Routes from '~/helpers/Routes';
+import {selectAllUsers} from '~/reducers/usersSlice';
 
 const PeopleListContainer = () => {
-  const data = require('~/assets/data/MOCK_DATA.json');
+  const dispatch = useDispatch();
+  const hasError = useSelector(state => state.users.hasError);
+  const isLoading = useSelector(state => state.users.isLoading);
+  const users = useSelector(selectAllUsers);
+  const {navigate} = useNavigation();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  const onTryAgainHandler = () => {
+    dispatch(getUsers());
+  };
 
   return (
     <PeopleList
-      data={data}
+      data={users}
       onItemPress={() => {
-        console.log('The item has been pressed!');
+        navigate(Routes.details, {id: 'coaie'});
       }}
     />
   );

@@ -24,7 +24,7 @@ const PeopleList = ({data, onItemPress}) => {
     <FlashList
       data={data}
       keyExtractor={(item, index) => item.id}
-      renderItem={item => renderItem(item, onItemPress)}
+      renderItem={item => renderItem(item, () => onItemPress(item.id))}
       estimatedItemSize={150}
     />
   );

@@ -1,7 +1,11 @@
 import React, {useEffect} from 'react';
+import {Provider} from 'react-redux';
+import store from '~/store/store';
 import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from '~/navigation/RootNavigator';
+import RootTabNavigator from '~/navigation/Navigators';
 import SplashScreen from 'react-native-lottie-splash-screen';
+import {StatusBar} from 'react-native';
+import Colors from '~/helpers/Colors';
 
 const App = () => {
   useEffect(() => {
@@ -10,9 +14,12 @@ const App = () => {
     }, 5_000);
   }, []);
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
+        <RootTabNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
 
