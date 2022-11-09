@@ -6,10 +6,13 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native';
 import {useFlipper} from '@react-navigation/devtools';
+import {LogBox} from 'react-native';
 import RootTabNavigator from '~/navigation/Navigators';
 import SplashScreen from 'react-native-lottie-splash-screen';
 import {StatusBar} from 'react-native';
 import Colors from '~/helpers/Colors';
+
+LogBox.ignoreAllLogs();
 
 const App = () => {
   const navigationRef = useNavigationContainerRef();
