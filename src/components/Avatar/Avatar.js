@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import getStyles from './Avatar.styles';
 import {getRandomColor} from '~/helpers/Functions';
 
-const Avatar = ({avatar, initials}) => {
-  const styles = getStyles();
+const Avatar = ({avatar, initials, size}) => {
+  const styles = getStyles(size);
   if (!avatar && initials) {
     return (
       <View style={styles.avatarContainer}>
@@ -23,11 +23,11 @@ const Avatar = ({avatar, initials}) => {
             ? {uri: avatar}
             : Icon.getImageSourceSync(
                 Strings.iconNames.unknownAvatar,
-                125,
+                size,
                 getRandomColor(1),
               )
         }
-        size={avatar ? 125 : 100}
+        size={avatar ? size : size - 25}
         borderRadius={30}
         style={styles.avatarImage}
       />
