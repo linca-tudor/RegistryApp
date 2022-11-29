@@ -11,6 +11,7 @@ const PeopleListContainer = () => {
   const hasFeedError = useSelector(state => state.users.hasFeedError);
   const isFeedLoading = useSelector(state => state.users.isFeedLoading);
   const usersFeed = useSelector(selectAllUsers);
+  console.log(usersFeed);
   const {navigate} = useNavigation();
 
   useEffect(() => {

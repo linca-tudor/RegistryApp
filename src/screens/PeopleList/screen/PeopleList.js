@@ -5,8 +5,8 @@ import {getName} from '~/helpers/Functions';
 import Strings from '~/helpers/Strings';
 
 const renderItem = ({item}, onPress) => {
-  const {avatar, first_name, last_name, quote, address} = item;
-  let name = getName(first_name, last_name);
+  const {avatar, firstName, lastName, quote, address} = item;
+  let name = getName(firstName, lastName);
 
   return (
     <PeopleItem
