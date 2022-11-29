@@ -14,51 +14,21 @@ const DetailsScreenContainer = () => {
 
   const userProfile = useSelector(state => selectUserById(state, id));
 
-  const [isFirstTabActive, setIsFirstTabActive] = useState(true);
-  // const userProfile = {
-  //   isLoading: 'false',
-  //   error: '',
-  //   age: 85,
-  //   email: 'cabbs2@t-online.de',
-  //   phone_number: '+86 604 452 9490',
-  //   avatar:
-  //     'https://robohash.org/molestiasadipisciplaceat.png?size=125x125&set=set1',
-  //   address: '251 Paget Crossing',
-  //   quote: 'Compatible neutral migration',
-  //   gender: 'Male',
-  //   last_name: 'Abbs',
-  //   first_name: 'Chrissy',
-  //   job: 'GIS Technical Architect',
-  //   id: '550622dc-6c25-4d0e-a25c-6810ebb8c596',
-  // };
-
-  if (userProfile) {
-    console.log('In DetailScreenContainer userProfile is ', userProfile);
-    if (userProfile.isLoading) {
-      console.log(
-        'In DetailsScreenContainer profile is loading, ${isLoading} is: ',
-        userProfile.isLoading,
-      );
-    } else {
-      console.log(
-        'DetailsScreenContainer userProfile is: ',
-        JSON.stringify(userProfile, 0, 2),
-      );
-    }
-  }
-
-  // if (userProfile && !userProfile.isLoading) {
-  //   return <DetailsScreen profile={userProfile} />;
-  // }
-
-  // return (
-  //   <DetailsScreen
-  //     profile={userProfile}
-  //     onButtonPress={setIsFirstTabActive}
-  //     isFirstTabActive={isFirstTabActive}
-  //   />
-  // );
-  return null;
+  return (
+    <DetailsScreen
+      address={userProfile?.address}
+      age={userProfile?.age}
+      avatar={userProfile?.avatar}
+      email={userProfile?.email}
+      firstName={userProfile?.first_name}
+      gender={userProfile?.gender}
+      job={userProfile?.job}
+      lastName={userProfile?.last_name}
+      phoneNumber={userProfile?.phone_number}
+      quote={userProfile?.quote}
+      isLoading={userProfile?.isLoading ?? true}
+    />
+  );
 };
 
 export default DetailsScreenContainer;

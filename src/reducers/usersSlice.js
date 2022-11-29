@@ -32,7 +32,7 @@ const sliceOptions = {
         state.profiles = {
           ...state.profiles,
           [action.meta.arg]: {
-            isLoading: 'true',
+            isLoading: true,
             error: '',
           },
         };
@@ -42,7 +42,7 @@ const sliceOptions = {
           ...state.profiles,
           [action.payload.id]: {
             ...action.payload,
-            isLoading: 'false',
+            isLoading: false,
             error: '',
           },
         };
@@ -51,7 +51,7 @@ const sliceOptions = {
         state.profiles = {
           ...state.profiles,
           [action.meta.arg]: {
-            isLoading: 'false',
+            isLoading: false,
             error: action.payload,
           },
         };

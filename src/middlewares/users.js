@@ -14,7 +14,7 @@ export const getUserById = createAsyncThunk(
   'users/getProfiles',
   async (id, thunkAPI) => {
     const data = require('~/assets/data/MOCK_DATA.json');
-    // await sleep(500);
+    await sleep(1000);
     const searchedUser = data.find(item => item.id === id);
 
     if (searchedUser === undefined) {
