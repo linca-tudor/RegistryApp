@@ -3,8 +3,8 @@ import {View, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import Routes from '~/helpers/Routes';
-import PeopleListContainer from '~/screens/PeopleList';
-import DetailsScreenContainer from '~/screens/DetailsScreen';
+import FeedContainer from '~/screens/Feed';
+import ProfileScreenContainer from '~/screens/PofileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '~/helpers/Colors';
 
@@ -16,10 +16,10 @@ const ListStackNavigator = () => {
     <Stack.Navigator
       initialRouteName={Routes.list}
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name={Routes.list} component={PeopleListContainer} />
+      <Stack.Screen name={Routes.list} component={FeedContainer} />
       <Stack.Screen
         name={Routes.details}
-        component={DetailsScreenContainer}
+        component={ProfileScreenContainer}
         id={({params}) => params.id}
       />
     </Stack.Navigator>

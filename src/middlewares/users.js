@@ -15,7 +15,7 @@ export const getFeed = createAsyncThunk(
 );
 
 export const getUserById = createAsyncThunk(
-  'users/getProfiles',
+  'users/getProfile',
   async (id, thunkAPI) => {
     const searchedUser = (await axios.get('/users', config)).data.find(
       item => item.id === id,
@@ -28,3 +28,10 @@ export const getUserById = createAsyncThunk(
     }
   },
 );
+
+// export const addUser = createAsyncThunk(
+//   'users/addProfile',
+//   async (profile, thunkAPI) => {
+
+//   }
+// )
