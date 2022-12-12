@@ -6,12 +6,11 @@ import {useNavigation} from '@react-navigation/native';
 import Routes from '~/helpers/Routes';
 import {selectAllUsers} from '~/reducers/usersSlice';
 
-const FeedContainer = () => {
+const FeedScreenContainer = () => {
   const dispatch = useDispatch();
   const hasFeedError = useSelector(state => state.users.hasFeedError);
-  const isFeedLoading = useSelector(state => state.users.isFeedLoading);
+  const isFeedPending = useSelector(state => state.users.isFeedPending);
   const usersFeed = useSelector(selectAllUsers);
-  console.log(usersFeed);
   const {navigate} = useNavigation();
 
   useEffect(() => {
@@ -29,4 +28,4 @@ const FeedContainer = () => {
   return <PeopleList data={usersFeed} onItemPress={onItemPress} />;
 };
 
-export default FeedContainer;
+export default FeedScreenContainer;

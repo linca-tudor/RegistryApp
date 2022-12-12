@@ -24,7 +24,7 @@ const ProfileScreen = ({
   lastName,
   phoneNumber,
   quote,
-  isLoading,
+  isPending,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -107,7 +107,7 @@ const ProfileScreen = ({
         style={[
           useAnimatedStyle(() => {
             return {
-              opacity: withTiming(isLoading ? 1 : 0, {
+              opacity: withTiming(isPending ? 1 : 0, {
                 duration: 250,
               }),
             };
@@ -129,7 +129,7 @@ const ProfileScreen = ({
           styles.container,
           useAnimatedStyle(() => {
             return {
-              opacity: withTiming(isLoading ? 0 : 1, {
+              opacity: withTiming(isPending ? 0 : 1, {
                 duration: 250,
               }),
             };
@@ -148,6 +148,7 @@ const ProfileScreen = ({
             renderScene={renderScene}
             renderTabBar={renderTabBar}
             onIndexChange={setIndex}
+            style={{overflow: 'visible'}}
           />
         </View>
       </Animated.View>

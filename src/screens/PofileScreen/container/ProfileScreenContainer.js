@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useRoute} from '@react-navigation/native';
 import ProfileScreen from '../screen';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,7 +26,7 @@ const ProfileScreenContainer = () => {
       lastName={userProfile?.last_name}
       phoneNumber={userProfile?.phone_number}
       quote={userProfile?.quote}
-      isLoading={userProfile?.isLoading ?? true}
+      isPending={userProfile?.isPending ?? true}
     />
   );
 };

@@ -6,6 +6,15 @@ const getStyles = () => {
     container: {
       backgroundColor: Colors.white,
     },
+    footerContainer: {
+      height: 60,
+      marginBottom: 35,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    footerText: {
+      color: Colors.warmGrey,
+    },
   });
 };
 

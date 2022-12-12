@@ -1,10 +1,10 @@
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import {FlashList} from '@shopify/flash-list';
 import {getName} from '~/helpers/Functions';
 import FeedItem from '~/components/FeedItem';
 import Strings from '~/helpers/Strings';
-import getStyles from './Feed.styles';
+import getStyles from './FeedScreen.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const renderItem = ({item}, onPress) => {
@@ -14,15 +14,25 @@ const renderItem = ({item}, onPress) => {
   return (
     <FeedItem
       avatar={avatar}
-      name={name ?? Strings.itemTextDefaults.noName}
-      description={quote ?? Strings.itemTextDefaults.noDescription}
-      address={address ?? Strings.itemTextDefaults.noAddress}
+      name={name}
+      description={quote ?? Strings.feedScreen.placeholders.noDescription}
+      address={address ?? Strings.feedScreen.placeholders.noAddress}
       onPress={onPress}
     />
   );
 };
 
-const Feed = ({data, onItemPress}) => {
+const FeedFooter = () => {
+  const styles = getStyles();
+
+  return (
+    <View style={styles.footerContainer}>
+      <Text style={styles.footerText}>{Strings.feedScreen.footerText}</Text>
+    </View>
+  );
+};
+
+const FeedScreen = ({data, onItemPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   return (
@@ -36,9 +46,10 @@ const Feed = ({data, onItemPress}) => {
           })
         }
         estimatedItemSize={150}
+        ListFooterComponent={FeedFooter}
       />
     </SafeAreaView>
   );
 };
 
-export default Feed;
+export default FeedScreen;
