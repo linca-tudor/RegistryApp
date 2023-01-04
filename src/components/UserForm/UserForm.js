@@ -9,6 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import DateInputIcon from '~/components/DateInputIcon';
+import PhoneInput from 'react-native-phone-number-input';
 
 const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
