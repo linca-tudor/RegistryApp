@@ -13,6 +13,7 @@ const TextInputIcon = ({
   placeholder,
   value,
   onTextUpdate,
+  onEndEditing,
   onCrossPress,
   style,
   icon,
@@ -37,6 +38,9 @@ const TextInputIcon = ({
             value={value}
             onChangeText={txt => {
               onTextUpdate(txt);
+            }}
+            onEndEditing={txt => {
+              onEndEditing(txt);
             }}
             style={styles.input}
           />

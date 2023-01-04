@@ -305,6 +305,8 @@ PODS:
   - React-jsinspector (0.70.3)
   - React-logger (0.70.3):
     - glog
+  - react-native-date-picker (4.2.6):
+    - React-Core
   - react-native-flipper (0.173.0):
     - React-Core
   - react-native-lottie-splash-screen (1.0.1):
@@ -475,6 +477,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-lottie-splash-screen (from `../node_modules/react-native-lottie-splash-screen`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
@@ -564,6 +567,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-date-picker:
+    :path: "../node_modules/react-native-date-picker"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
   react-native-lottie-splash-screen:
@@ -648,6 +653,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7e2e1772ef7b97168c880eeaf3749d8c145ffd6e
   React-jsinspector: 0553c9fe7218e1f127be070bd5a4d2fc19fb8190
   React-logger: cffcc09e8aba8a3014be8d18da7f922802e9f19e
+  react-native-date-picker: 93e43b3084cea595b4d68b1405d6d99849663bd6
   react-native-flipper: 64998cd1c415826bf49ef391e5bc0adcb7dcb77a
   react-native-lottie-splash-screen: 068688c15dd478301fda00f8d87d7fb7d5b9a93e
   react-native-pager-view: 3c66c4e2f3ab423643d07b2c7041f8ac48395f72
