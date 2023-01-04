@@ -4,12 +4,11 @@ import TextInputIcon from '~/components/TextInputIcon';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
 import Colors from '~/helpers/Colors';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import DateInputIcon from '~/components/DateInputIcon';
-import PhoneInput from 'react-native-phone-number-input';
+import PhoneInputIcon from '~/components/PhoneInputIcon';
 
 const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
@@ -161,24 +160,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <TextInputIcon
-        secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
-        }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
-        }}
-        style={styles.textInput}
-        text={inputText}
-        title="Phone Number"
-        placeholder="+0 (123) 456-789"
-        icon={<MaterialIcons name="phone" size={30} color={Colors.lavander} />}
-      />
+
       <TextInputIcon
         secureText={false}
         value={inputText}
