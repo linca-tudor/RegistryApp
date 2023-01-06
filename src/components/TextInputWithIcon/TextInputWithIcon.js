@@ -6,13 +6,14 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './TextInputIcon.styles';
+import getStyles from './TextInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
 
-const TextInputIcon = ({
+const TextInputWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
+  onEndEditing,
   onCrossPress,
   style,
   icon,
@@ -38,6 +39,9 @@ const TextInputIcon = ({
             onChangeText={txt => {
               onTextUpdate(txt);
             }}
+            onEndEditing={txt => {
+              onEndEditing(txt);
+            }}
             style={styles.input}
           />
         </View>
@@ -55,4 +59,4 @@ const TextInputIcon = ({
   );
 };
 
-export default TextInputIcon;
+export default TextInputWithIcon;

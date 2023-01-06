@@ -5,7 +5,7 @@ const getStyles = () => {
   return StyleSheet.create({
     container: {
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       backgroundColor: Colors.white,
     },
   });

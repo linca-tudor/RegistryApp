@@ -4,18 +4,18 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
+      width: '100%',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      height: 90,
+      height: 75,
       borderRadius: 12.5,
       paddingLeft: 5,
       paddingRight: 20,
-      paddingVertical: 10,
       backgroundColor: Colors.white,
     },
     iconContainer: {
-      height: '80%',
+      height: '65%',
       width: 60,
       justifyContent: 'center',
       alignItems: 'center',
@@ -30,12 +30,12 @@ const getStyles = () => {
     textContainer: {
       maxWidth: '70%',
       height: '100%',
-      paddingTop: 10,
+      paddingTop: 12.5,
       marginLeft: 15,
     },
     title: {
       flex: 1,
-      fontSize: 13,
+      fontSize: 13.5,
       color: Colors.warmGrey,
     },
     inputContainer: {
@@ -44,8 +44,7 @@ const getStyles = () => {
       alignItems: 'center',
     },
     input: {
-      // flexGrow: 1,
-      fontSize: 17,
+      fontSize: 16.5,
       fontWeight: '400',
       paddingRight: 10,
     },
