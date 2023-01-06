@@ -65,3 +65,6 @@ buck-out/
 
 # Media and reference photos
 src/assets/reference
+
+# Sensitive Info
+.env

@@ -8,8 +8,7 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './PhoneInputIcon.styles';
 import Colors from '~/helpers/Colors';
-import PhoneInput from 'react-native-phone-number-input-formatted';
-import {CardStyleInterpolators} from '@react-navigation/stack';
+// import PhoneInput from 'react-native-phone-number-input-formatted';
 
 const PhoneInputIcon = ({
   placeholder,
@@ -36,7 +35,7 @@ const PhoneInputIcon = ({
       <TouchableOpacity style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inputContainer}>
-          <PhoneInput
+          {/* <PhoneInput
             // ref={phoneInput}
             defaultValue={inputText}
             defaultCode="RO"
@@ -49,7 +48,7 @@ const PhoneInputIcon = ({
             }}
             textContainerStyle={{backgroundColor: Colors.white}}
             containerStyle={{width: '100%', backgroundColor: 'magenta'}}
-          />
+          /> */}
         </View>
       </TouchableOpacity>
       {inputText && (
