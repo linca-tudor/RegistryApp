@@ -1,37 +1,70 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getUsers} from '~/actions/loadUsers';
+import {getFeed, getUserById} from '~/middlewares/users';
 
 const sliceOptions = {
   name: 'users',
   initialState: {
-    users: [],
-    isLoading: false,
-    hasError: false,
+    feed: [],
+    search: [],
+    profiles: {},
+    isFeedLoading: false,
+    hasFeedError: '',
+    searchLoading: false,
+    hasLoadingError: '',
   },
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getUsers.pending, (state, action) => {
-        state.isLoading = true;
-        state.hasError = false;
+      .addCase(getFeed.pending, (state, action) => {
+        state.isFeedLoading = true;
+        state.hasFeedError = '';
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
-        state.isLoading = false;
-        state.hasError = false;
+      .addCase(getFeed.fulfilled, (state, action) => {
+        state.feed = action.payload;
+        state.isFeedLoading = false;
+        state.hasFeedError = '';
       })
-      .addMatcher(getUsers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.hasError = true;
+      .addCase(getFeed.rejected, (state, action) => {
+        state.isFeedLoading = false;
+        state.hasFeedError = action.payload;
       })
-      .addDefaultCase((state, action) => {
-        console.warn('usersSlice reducer Default Case!');
+      .addCase(getUserById.pending, (state, action) => {
+        state.profiles = {
+          ...state.profiles,
+          [action.meta.arg]: {
+            isLoading: true,
+            error: '',
+          },
+        };
+      })
+      .addCase(getUserById.fulfilled, (state, action) => {
+        state.profiles = {
+          ...state.profiles,
+          [action.payload.id]: {
+            ...action.payload,
+            isLoading: false,
+            error: '',
+          },
+        };
+      })
+      .addCase(getUserById.rejected, (state, action) => {
+        state.profiles = {
+          ...state.profiles,
+          [action.meta.arg]: {
+            isLoading: false,
+            error: action.payload,
+          },
+        };
       });
   },
 };
 
 export const usersSlice = createSlice(sliceOptions);
 
-export const selectAllUsers = state => state.users.users;
+export const selectAllUsers = state => state.users.feed;
+
+export const selectUserById = (state, id) => {
+  return state.users.profiles[id];
+};
 
 export default usersSlice.reducer;

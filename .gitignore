@@ -64,4 +64,4 @@ buck-out/
 /vendor/bundle/
 
 # Media and reference photos
-reference-photos/
+src/assets/reference

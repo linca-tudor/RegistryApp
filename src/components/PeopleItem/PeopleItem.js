@@ -12,7 +12,7 @@ const PeopleItem = ({avatar, name, description, address, onPress}) => {
   const globalStyles = getGlobalStyles();
 
   const renderAvatar = () => {
-    return <Avatar avatar={avatar} initials={getInitials(name)} />;
+    return <Avatar avatar={avatar} initials={getInitials(name)} size={125} />;
   };
 
   return (
@@ -42,7 +42,10 @@ const PeopleItem = ({avatar, name, description, address, onPress}) => {
           <DashedLine
             axis="horizontal"
             dashColor={Colors.warmGrey}
-            dashThickness={1}
+            dashThickness={2}
+            dashGap={4}
+            dashLength={3}
+            dashStyle={{borderRadius: 2}}
           />
         </View>
         {renderAvatar()}

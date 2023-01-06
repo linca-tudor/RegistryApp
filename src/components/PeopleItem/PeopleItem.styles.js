@@ -8,6 +8,7 @@ const getStyles = () => {
       paddingHorizontal: 20,
       height: 150,
       alignItems: 'center',
+      backgroundColor: Colors.white,
     },
     textDividerContainer: {
       paddingRight: 15,
