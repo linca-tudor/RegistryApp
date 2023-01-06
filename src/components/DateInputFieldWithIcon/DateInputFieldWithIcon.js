@@ -6,10 +6,10 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './DateInputIcon.styles';
+import getStyles from './DateInputFieldWithIcon.styles';
 import Colors from '~/helpers/Colors';
 
-const DateInputIcon = ({
+const DateInputFieldWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
@@ -59,4 +59,4 @@ const DateInputIcon = ({
   );
 };
 
-export default DateInputIcon;
+export default DateInputFieldWithIcon;

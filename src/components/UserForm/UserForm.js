@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
-import TextInputIcon from '~/components/TextInputIcon';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
 import Colors from '~/helpers/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
-import DateInputIcon from '~/components/DateInputIcon';
-import PhoneInputIcon from '~/components/PhoneInputIcon';
+import DateInputFieldWithIcon from '~/components/DateInputFieldWithIcon';
+import PhoneInputFieldWithIcon from '~/components/PhoneInputFieldWithIcon';
+import TextInputFieldWithIcon from '~/components/TextInputFieldWithIcon';
 
 const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
@@ -16,7 +16,7 @@ const UserForm = ({onTextInput}) => {
 
   return (
     <View style={styles.container}>
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -40,7 +40,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -64,7 +64,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -112,7 +112,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       /> */}
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -136,7 +136,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -161,7 +161,7 @@ const UserForm = ({onTextInput}) => {
         }
       />
 
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -185,7 +185,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <TextInputIcon
+      <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {

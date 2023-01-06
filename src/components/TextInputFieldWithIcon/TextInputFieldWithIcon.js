@@ -6,10 +6,10 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './TextInputIcon.styles';
+import getStyles from './TextInputFieldWithIcon.styles';
 import Colors from '~/helpers/Colors';
 
-const TextInputIcon = ({
+const TextInputFieldWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
@@ -59,4 +59,4 @@ const TextInputIcon = ({
   );
 };
 
-export default TextInputIcon;
+export default TextInputFieldWithIcon;

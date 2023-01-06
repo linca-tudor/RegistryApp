@@ -6,11 +6,11 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './PhoneInputIcon.styles';
+import getStyles from './PhoneInputFieldWithIcon.styles';
 import Colors from '~/helpers/Colors';
 // import PhoneInput from 'react-native-phone-number-input-formatted';
 
-const PhoneInputIcon = ({
+const PhoneInputFieldWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
@@ -64,4 +64,4 @@ const PhoneInputIcon = ({
   );
 };
 
-export default PhoneInputIcon;
+export default PhoneInputFieldWithIcon;
