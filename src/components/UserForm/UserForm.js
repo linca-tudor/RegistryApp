@@ -6,9 +6,9 @@ import Colors from '~/helpers/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
-import DateInputFieldWithIcon from '~/components/DateInputFieldWithIcon';
-import PhoneInputFieldWithIcon from '~/components/PhoneInputFieldWithIcon';
-import TextInputFieldWithIcon from '~/components/TextInputFieldWithIcon';
+import DateInputWithIcon from '~/components/DateInputWithIcon';
+import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
+import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 
 const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
@@ -88,7 +88,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      {/* <DateInputIcon
+      <DateInputWithIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -111,7 +111,7 @@ const UserForm = ({onTextInput}) => {
             color={Colors.lavander}
           />
         }
-      /> */}
+      />
       <TextInputFieldWithIcon
         secureText={false}
         value={inputText}

@@ -6,10 +6,11 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './TextInputFieldWithIcon.styles';
+import getStyles from './PhoneInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
+// import PhoneInput from 'react-native-phone-number-input-formatted';
 
-const TextInputFieldWithIcon = ({
+const PhoneInputWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
@@ -22,6 +23,7 @@ const TextInputFieldWithIcon = ({
 }) => {
   const styles = getStyles('');
   const [inputText, setInputText] = useState('');
+  const [inputTextFormatted, setInputTextFormatted] = useState('');
 
   useEffect(() => {
     setInputText(text);
@@ -30,22 +32,25 @@ const TextInputFieldWithIcon = ({
   return (
     <View style={[style, styles.container]}>
       <View style={styles.iconContainer}>{icon}</View>
-      <View style={styles.textContainer}>
+      <TouchableOpacity style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inputContainer}>
-          <RNTextInput
-            placeholder={placeholder}
-            value={value}
-            onChangeText={txt => {
-              onTextUpdate(txt);
+          {/* <PhoneInput
+            // ref={phoneInput}
+            defaultValue={inputText}
+            defaultCode="RO"
+            layout="first"
+            onChangeText={text => {
+              setInputText(text);
             }}
-            onEndEditing={txt => {
-              onEndEditing(txt);
+            onChangeFormattedText={text => {
+              setInputTextFormatted(text);
             }}
-            style={styles.input}
-          />
+            textContainerStyle={{backgroundColor: Colors.white}}
+            containerStyle={{width: '100%', backgroundColor: 'magenta'}}
+          /> */}
         </View>
-      </View>
+      </TouchableOpacity>
       {inputText && (
         <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
           <Entypo
@@ -59,4 +64,4 @@ const TextInputFieldWithIcon = ({
   );
 };
 
-export default TextInputFieldWithIcon;
+export default PhoneInputWithIcon;

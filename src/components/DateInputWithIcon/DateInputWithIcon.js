@@ -6,11 +6,10 @@ import {
   Text,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './PhoneInputFieldWithIcon.styles';
+import getStyles from './DateInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
-// import PhoneInput from 'react-native-phone-number-input-formatted';
 
-const PhoneInputFieldWithIcon = ({
+const DateInputWithIcon = ({
   placeholder,
   value,
   onTextUpdate,
@@ -23,7 +22,6 @@ const PhoneInputFieldWithIcon = ({
 }) => {
   const styles = getStyles('');
   const [inputText, setInputText] = useState('');
-  const [inputTextFormatted, setInputTextFormatted] = useState('');
 
   useEffect(() => {
     setInputText(text);
@@ -32,25 +30,22 @@ const PhoneInputFieldWithIcon = ({
   return (
     <View style={[style, styles.container]}>
       <View style={styles.iconContainer}>{icon}</View>
-      <TouchableOpacity style={styles.textContainer}>
+      <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inputContainer}>
-          {/* <PhoneInput
-            // ref={phoneInput}
-            defaultValue={inputText}
-            defaultCode="RO"
-            layout="first"
-            onChangeText={text => {
-              setInputText(text);
+          <RNTextInput
+            placeholder={placeholder}
+            value={value}
+            onChangeText={txt => {
+              onTextUpdate(txt);
             }}
-            onChangeFormattedText={text => {
-              setInputTextFormatted(text);
+            onEndEditing={txt => {
+              onEndEditing(txt);
             }}
-            textContainerStyle={{backgroundColor: Colors.white}}
-            containerStyle={{width: '100%', backgroundColor: 'magenta'}}
-          /> */}
+            style={styles.input}
+          />
         </View>
-      </TouchableOpacity>
+      </View>
       {inputText && (
         <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
           <Entypo
@@ -64,4 +59,4 @@ const PhoneInputFieldWithIcon = ({
   );
 };
 
-export default PhoneInputFieldWithIcon;
+export default DateInputWithIcon;
