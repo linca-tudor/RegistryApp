@@ -88,7 +88,7 @@ const UserForm = ({onTextInput}) => {
           />
         }
       />
-      <DateInputIcon
+      {/* <DateInputIcon
         secureText={false}
         value={inputText}
         onTextUpdate={text => {
@@ -111,7 +111,7 @@ const UserForm = ({onTextInput}) => {
             color={Colors.lavander}
           />
         }
-      />
+      /> */}
       <TextInputIcon
         secureText={false}
         value={inputText}
