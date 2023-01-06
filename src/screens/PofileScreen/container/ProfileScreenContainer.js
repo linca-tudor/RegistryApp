@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useRoute} from '@react-navigation/native';
-import DetailsScreen from '../screen';
+import ProfileScreen from '../screen';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserById} from '~/middlewares/users';
 import {selectUserById} from '~/reducers/usersSlice';
 
-const DetailsScreenContainer = () => {
+const ProfileScreenContainer = () => {
   const id = useRoute().params.id;
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,7 +15,7 @@ const DetailsScreenContainer = () => {
   const userProfile = useSelector(state => selectUserById(state, id));
 
   return (
-    <DetailsScreen
+    <ProfileScreen
       address={userProfile?.address}
       age={userProfile?.age}
       avatar={userProfile?.avatar}
@@ -26,9 +26,9 @@ const DetailsScreenContainer = () => {
       lastName={userProfile?.last_name}
       phoneNumber={userProfile?.phone_number}
       quote={userProfile?.quote}
-      isLoading={userProfile?.isLoading ?? true}
+      isPending={userProfile?.isPending ?? true}
     />
   );
 };
 
-export default DetailsScreenContainer;
+export default ProfileScreenContainer;

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {View, Text, Linking} from 'react-native';
 import Lottie from 'lottie-react-native';
 import Avatar from '~/components/Avatar';
-import ListItem from '~/components/ListItem';
-import getStyles from './DetailsScreen.styles';
+import MenuItem from '~/components/MenuItem';
+import getStyles from './ProfileScreen.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -13,7 +13,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 
-const DetailsScreen = ({
+const ProfileScreen = ({
   address,
   age,
   avatar,
@@ -24,7 +24,7 @@ const DetailsScreen = ({
   lastName,
   phoneNumber,
   quote,
-  isLoading,
+  isPending,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -37,15 +37,15 @@ const DetailsScreen = ({
 
   const FirstTab = () => (
     <View style={styles.infoTextContainer}>
-      <ListItem
+      <MenuItem
         icon={<AntDesign name="user" size={25} color={Colors.lavander} />}
         text={`${age} years old`}
       />
-      <ListItem
+      <MenuItem
         icon={<AntDesign name="staro" size={25} color={Colors.lavander} />}
         text={`${gender}`}
       />
-      <ListItem
+      <MenuItem
         icon={<Foundation name="quote" size={25} color={Colors.lavander} />}
         text={`${quote}`}
       />
@@ -53,7 +53,7 @@ const DetailsScreen = ({
   );
   const SecondTab = () => (
     <View style={styles.infoTextContainer}>
-      <ListItem
+      <MenuItem
         icon={
           <MaterialCommunityIcons
             name="email-send-outline"
@@ -66,13 +66,13 @@ const DetailsScreen = ({
         }}
         text={email}
       />
-      <ListItem
+      <MenuItem
         icon={
           <SimpleLineIcons name="call-out" size={24} color={Colors.lavander} />
         }
         text={phoneNumber}
       />
-      <ListItem
+      <MenuItem
         icon={
           <MaterialCommunityIcons
             name="map-marker-radius-outline"
@@ -107,7 +107,7 @@ const DetailsScreen = ({
         style={[
           useAnimatedStyle(() => {
             return {
-              opacity: withTiming(isLoading ? 1 : 0, {
+              opacity: withTiming(isPending ? 1 : 0, {
                 duration: 250,
               }),
             };
@@ -129,7 +129,7 @@ const DetailsScreen = ({
           styles.container,
           useAnimatedStyle(() => {
             return {
-              opacity: withTiming(isLoading ? 0 : 1, {
+              opacity: withTiming(isPending ? 0 : 1, {
                 duration: 250,
               }),
             };
@@ -148,6 +148,7 @@ const DetailsScreen = ({
             renderScene={renderScene}
             renderTabBar={renderTabBar}
             onIndexChange={setIndex}
+            style={{overflow: 'visible'}}
           />
         </View>
       </Animated.View>
@@ -155,4 +156,4 @@ const DetailsScreen = ({
   );
 };
 
-export default DetailsScreen;
+export default ProfileScreen;

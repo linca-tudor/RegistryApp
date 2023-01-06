@@ -1,21 +1,25 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {sleep} from '~/helpers/SleepFunction'; //mock delay function, remove after backend implementation
+import axios from 'axios';
+import {DATABASE_URL, API_KEY} from '@env';
+
+const config = {
+  baseURL: DATABASE_URL,
+  headers: {'X-api-key': API_KEY},
+};
 
 export const getFeed = createAsyncThunk(
   'users/getFeed',
   async (_, thunkAPI) => {
-    const data = require('~/assets/data/MOCK_DATA.json');
-    await sleep(1000);
-    return data;
+    return (await axios.get('/users', config)).data;
   },
 );
 
 export const getUserById = createAsyncThunk(
-  'users/getProfiles',
+  'users/getProfile',
   async (id, thunkAPI) => {
-    const data = require('~/assets/data/MOCK_DATA.json');
-    await sleep(1000);
-    const searchedUser = data.find(item => item.id === id);
+    const searchedUser = (await axios.get('/users', config)).data.find(
+      item => item.id === id,
+    );
 
     if (searchedUser === undefined) {
       throw 'Thunk did not find any matching';
@@ -24,3 +28,10 @@ export const getUserById = createAsyncThunk(
     }
   },
 );
+
+// export const addUser = createAsyncThunk(
+//   'users/addProfile',
+//   async (profile, thunkAPI) => {
+
+//   }
+// )

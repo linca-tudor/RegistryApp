@@ -2,10 +2,12 @@ const Strings = {
   iconNames: {
     unknownAvatar: 'question',
   },
-  itemTextDefaults: {
-    noName: 'User',
-    noDescription: 'This is a lovely user',
-    noAddress: 'Cloud Ave, Local Database, Localhost',
+  feedScreen: {
+    placeholders: {
+      noDescription: 'A lovely user',
+      noAddress: 'Lives at an amazing place',
+    },
+    footerText: 'You reached the end of the list',
   },
 };
 

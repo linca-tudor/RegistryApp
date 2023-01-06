@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
+import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
   return StyleSheet.create({
-    itemContainer: {
-      flex: 1,
-      height: 200,
-      justifyContent: 'center',
+    container: {
       alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: Colors.white,
     },
   });
 };

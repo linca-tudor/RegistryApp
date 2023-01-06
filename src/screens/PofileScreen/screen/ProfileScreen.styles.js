@@ -31,10 +31,7 @@ const getStyles = () => {
     infoContainer: {
       flex: 1,
       width: '100%',
-      shadowColor: Colors.black,
-      shadowOffset: {width: 1, height: 1},
-      shadowOpacity: 0.1,
-      shadowRadius: 3,
+      overflow: 'visible',
     },
     infoTextContainer: {
       marginTop: 15,
@@ -46,12 +43,17 @@ const getStyles = () => {
       backgroundColor: Colors.white,
       marginBottom: 10,
       borderRadius: 25,
+      shadowColor: Colors.black,
+      shadowOffset: {width: 1, height: 1},
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
     },
     tabBarIndicator: {
       height: '100%',
       backgroundColor: Colors.lavander,
       borderRadius: 25,
       opacity: 0.1,
+      overflow: 'visible',
     },
     tabBarLabel: {
       fontSize: 14,

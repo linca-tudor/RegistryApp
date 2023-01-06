@@ -1,8 +1,8 @@
 import React from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
-import getStyles from './ListItem.styles';
+import getStyles from './MenuItem.styles';
 
-const ListItem = ({icon, text, onPress}) => {
+const MenuItem = ({icon, text, onPress}) => {
   const styles = getStyles();
   return (
     <TouchableOpacity onPress={onPress}>
@@ -13,4 +13,4 @@ const ListItem = ({icon, text, onPress}) => {
     </TouchableOpacity>
   );
 };
-export default ListItem;
+export default MenuItem;

@@ -2,12 +2,12 @@ import React from 'react';
 import {TouchableOpacity, Text, View, SafeAreaView} from 'react-native';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import {getInitials} from '~/helpers/Functions';
-import getStyles from './PeopleItem.styles';
+import getStyles from './FeedItem.styles';
 import Avatar from '~/components/Avatar';
 import Colors from '~/helpers/Colors';
 import DashedLine from 'react-native-dashed-line';
 
-const PeopleItem = ({avatar, name, description, address, onPress}) => {
+const FeedItem = ({avatar, name, description, address, onPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -54,4 +54,4 @@ const PeopleItem = ({avatar, name, description, address, onPress}) => {
   );
 };
 
-export default PeopleItem;
+export default FeedItem;

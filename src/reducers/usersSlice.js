@@ -7,32 +7,32 @@ const sliceOptions = {
     feed: [],
     search: [],
     profiles: {},
-    isFeedLoading: false,
+    isFeedPending: false,
     hasFeedError: '',
-    searchLoading: false,
+    isSearchPending: false,
     hasLoadingError: '',
   },
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(getFeed.pending, (state, action) => {
-        state.isFeedLoading = true;
+        state.isFeedPending = true;
         state.hasFeedError = '';
       })
       .addCase(getFeed.fulfilled, (state, action) => {
         state.feed = action.payload;
-        state.isFeedLoading = false;
+        state.isFeedPending = false;
         state.hasFeedError = '';
       })
       .addCase(getFeed.rejected, (state, action) => {
-        state.isFeedLoading = false;
+        state.isFeedPending = false;
         state.hasFeedError = action.payload;
       })
       .addCase(getUserById.pending, (state, action) => {
         state.profiles = {
           ...state.profiles,
           [action.meta.arg]: {
-            isLoading: true,
+            isPending: true,
             error: '',
           },
         };
@@ -42,7 +42,7 @@ const sliceOptions = {
           ...state.profiles,
           [action.payload.id]: {
             ...action.payload,
-            isLoading: false,
+            isPending: false,
             error: '',
           },
         };
@@ -51,7 +51,7 @@ const sliceOptions = {
         state.profiles = {
           ...state.profiles,
           [action.meta.arg]: {
-            isLoading: false,
+            isPending: false,
             error: action.payload,
           },
         };
