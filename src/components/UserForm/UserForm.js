@@ -12,6 +12,7 @@ import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 
 const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
+  const [birthdate, setBirthdate] = useState(null);
   const styles = getStyles();
 
   return (
@@ -89,21 +90,22 @@ const UserForm = ({onTextInput}) => {
         }
       />
       <DateInputWithIcon
-        secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
+        value={birthdate}
+        onInputUpdate={date => {
+          setBirthdate(date);
+          console.log(`In userform date is: ${date}`);
+          console.log(`In userform birthdate is: ${birthdate}`);
         }}
         // onEndEditing={text => {
         //   onTextInput(text);
         // }}
         onCrossPress={() => {
-          setInputText('');
+          setBirthdate(null);
         }}
         style={styles.textInput}
-        text={inputText}
+        date={birthdate}
         title="Birthdate"
-        placeholder="birthdate goes here"
+        placeholder="Select your date of birth"
         icon={
           <MaterialCommunityIcons
             name="calendar-multiselect"

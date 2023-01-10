@@ -12,10 +12,10 @@ const getStyles = () => {
       borderRadius: 12.5,
       paddingLeft: 5,
       paddingRight: 20,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
     },
     iconContainer: {
-      height: '65 %',
+      height: '65%',
       width: 60,
       justifyContent: 'center',
       alignItems: 'center',
@@ -28,8 +28,7 @@ const getStyles = () => {
       marginLeft: 'auto',
     },
     textContainer: {
-      maxWidth: '70%',
-      height: '100%',
+      flexGrow: 1,
       paddingTop: 12.5,
       marginLeft: 15,
     },
@@ -47,6 +46,11 @@ const getStyles = () => {
       fontSize: 16.5,
       fontWeight: '400',
       paddingRight: 10,
+      color: Colors.black,
+    },
+    placeholder: {
+      fontSize: 16.5,
+      color: Colors.cloud,
     },
   });
 };
