@@ -13,7 +13,7 @@ import moment from 'moment';
 
 const DateInputWithIcon = ({
   placeholder,
-  onInputUpdate,
+  onInputUpdate: onEndEditing,
   onCrossPress,
   style,
   icon,
@@ -50,7 +50,7 @@ const DateInputWithIcon = ({
             maximumDate={moment().toDate()}
             minimumDate={moment().subtract(100, 'years').toDate()}
             onConfirm={timestamp => {
-              onInputUpdate(moment(timestamp).toDate());
+              onEndEditing(moment(timestamp).toDate());
               setModalOpen(false);
             }}
             onCancel={() => {

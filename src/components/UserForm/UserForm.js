@@ -14,9 +14,10 @@ const UserForm = ({onTextInput}) => {
   const [inputText, setInputText] = useState('');
   const [birthdate, setBirthdate] = useState(null);
   const styles = getStyles();
+  const globalStyles = getGlobalStyles();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
         value={inputText}
@@ -29,14 +30,13 @@ const UserForm = ({onTextInput}) => {
         onCrossPress={() => {
           setInputText('');
         }}
-        style={styles.textInput}
         text={inputText}
         title="First Name"
         placeholder="John / Jane"
         icon={
           <MaterialIcons
             name="drive-file-rename-outline"
-            size={30}
+            size={35}
             color={Colors.lavander}
           />
         }
@@ -60,7 +60,7 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialIcons
             name="drive-file-rename-outline"
-            size={30}
+            size={35}
             color={Colors.lavander}
           />
         }
@@ -84,21 +84,16 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialCommunityIcons
             name="gender-non-binary"
-            size={40}
+            size={45}
             color={Colors.lavander}
           />
         }
       />
       <DateInputWithIcon
         value={birthdate}
-        onInputUpdate={date => {
+        onEndEditing={date => {
           setBirthdate(date);
-          console.log(`In userform date is: ${date}`);
-          console.log(`In userform birthdate is: ${birthdate}`);
         }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
         onCrossPress={() => {
           setBirthdate(null);
         }}
@@ -109,7 +104,7 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialCommunityIcons
             name="calendar-multiselect"
-            size={30}
+            size={35}
             color={Colors.lavander}
           />
         }
@@ -133,7 +128,7 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialCommunityIcons
             name="home-map-marker"
-            size={35}
+            size={40}
             color={Colors.lavander}
           />
         }
@@ -157,7 +152,7 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialCommunityIcons
             name="email-outline"
-            size={30}
+            size={35}
             color={Colors.lavander}
           />
         }
@@ -182,7 +177,7 @@ const UserForm = ({onTextInput}) => {
         icon={
           <MaterialCommunityIcons
             name="tools"
-            size={30}
+            size={35}
             color={Colors.lavander}
           />
         }
@@ -203,7 +198,7 @@ const UserForm = ({onTextInput}) => {
         text={inputText}
         title="Favourite Quote"
         placeholder="Roses are red, violets are blue"
-        icon={<Foundation name="quote" size={32.5} color={Colors.lavander} />}
+        icon={<Foundation name="quote" size={37.5} color={Colors.lavander} />}
       />
     </View>
   );

@@ -28,20 +28,21 @@ const TextInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={[style, styles.container]}>
+    <View style={[styles.container, style]}>
       <View style={styles.iconContainer}>{icon}</View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
+            placeholderTextColor={Colors.cloud}
             value={value}
             onChangeText={txt => {
               onTextUpdate(txt);
             }}
-            onEndEditing={txt => {
-              onEndEditing(txt);
-            }}
+            // onEndEditing={txt => {
+            //   onEndEditing(txt);
+            // }}
             style={styles.input}
           />
         </View>
