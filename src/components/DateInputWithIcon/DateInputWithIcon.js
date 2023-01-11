@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './DateInputWithIcon.styles';
+import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
@@ -20,7 +21,8 @@ const DateInputWithIcon = ({
   title,
   date,
 }) => {
-  const styles = getStyles('');
+  const styles = getStyles();
+  const globalStyles = getGlobalStyles();
   const [pickedDate, setPickedDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -29,24 +31,27 @@ const DateInputWithIcon = ({
   }, [date]);
 
   return (
-    <View style={[style, styles.container]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
+    <View style={[style, globalStyles.form.container]}>
+      <View style={globalStyles.form.iconContainer}>{icon}</View>
+      <View style={globalStyles.form.textContainer}>
+        <Text style={globalStyles.form.title}>{title}</Text>
         <TouchableOpacity
-          style={styles.inputContainer}
+          style={globalStyles.form.inputContainer}
           onPress={() => setModalOpen('true')}>
           {date && (
-            <Text style={styles.input}>
+            <Text style={globalStyles.form.input}>
               {moment(pickedDate).format('MMM Do, YYYY')}
             </Text>
           )}
           {!date && <Text style={styles.placeholder}>{placeholder}</Text>}
           <DatePicker
             modal
+            theme="light"
             open={modalOpen}
             date={pickedDate}
             mode={'date'}
+            but
+            androidVariant={'iosClone'}
             maximumDate={moment().toDate()}
             minimumDate={moment().subtract(100, 'years').toDate()}
             onConfirm={timestamp => {
@@ -60,7 +65,9 @@ const DateInputWithIcon = ({
         </TouchableOpacity>
       </View>
       {date && (
-        <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
+        <TouchableOpacity
+          onPress={onCrossPress}
+          style={globalStyles.form.crossIcon}>
           <Entypo
             name="circle-with-cross"
             size={24}

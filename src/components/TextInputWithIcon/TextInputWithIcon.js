@@ -8,6 +8,7 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './TextInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
+import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const TextInputWithIcon = ({
   placeholder,
@@ -20,7 +21,8 @@ const TextInputWithIcon = ({
   title,
   text,
 }) => {
-  const styles = getStyles('');
+  const styles = getStyles();
+  const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
 
   useEffect(() => {
@@ -28,11 +30,11 @@ const TextInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={[styles.container, style]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.inputContainer}>
+    <View style={[globalStyles.form.container, style]}>
+      <View style={globalStyles.form.iconContainer}>{icon}</View>
+      <View style={globalStyles.form.textContainer}>
+        <Text style={globalStyles.form.title}>{title}</Text>
+        <View style={globalStyles.form.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
             placeholderTextColor={Colors.cloud}
@@ -43,12 +45,14 @@ const TextInputWithIcon = ({
             // onEndEditing={txt => {
             //   onEndEditing(txt);
             // }}
-            style={styles.input}
+            style={globalStyles.form.input}
           />
         </View>
       </View>
       {inputText && (
-        <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
+        <TouchableOpacity
+          onPress={onCrossPress}
+          style={globalStyles.form.crossIcon}>
           <Entypo
             name="circle-with-cross"
             size={24}
