@@ -14,7 +14,7 @@ import moment from 'moment';
 
 const DateInputWithIcon = ({
   placeholder,
-  onInputUpdate: onEndEditing,
+  onEndEditing,
   onCrossPress,
   style,
   icon,
@@ -33,11 +33,11 @@ const DateInputWithIcon = ({
   return (
     <View style={[style, globalStyles.form.container]}>
       <View style={globalStyles.form.iconContainer}>{icon}</View>
-      <View style={globalStyles.form.textContainer}>
+      <TouchableOpacity
+        onPress={() => setModalOpen('true')}
+        style={globalStyles.form.textContainer}>
         <Text style={globalStyles.form.title}>{title}</Text>
-        <TouchableOpacity
-          style={globalStyles.form.inputContainer}
-          onPress={() => setModalOpen('true')}>
+        <View style={globalStyles.form.inputContainer}>
           {date && (
             <Text style={globalStyles.form.input}>
               {moment(pickedDate).format('MMM Do, YYYY')}
@@ -50,20 +50,19 @@ const DateInputWithIcon = ({
             open={modalOpen}
             date={pickedDate}
             mode={'date'}
-            but
             androidVariant={'iosClone'}
             maximumDate={moment().toDate()}
             minimumDate={moment().subtract(100, 'years').toDate()}
             onConfirm={timestamp => {
-              onEndEditing(moment(timestamp).toDate());
               setModalOpen(false);
+              onEndEditing(moment(timestamp).toDate());
             }}
             onCancel={() => {
               setModalOpen(false);
             }}
           />
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
       {date && (
         <TouchableOpacity
           onPress={onCrossPress}

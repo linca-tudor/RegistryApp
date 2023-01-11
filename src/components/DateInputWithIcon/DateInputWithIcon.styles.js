@@ -5,7 +5,7 @@ const getStyles = () => {
   return StyleSheet.create({
     placeholder: {
       fontSize: 16.5,
-      color: Colors.cloud,
+      color: Colors.starDust,
     },
   });
 };

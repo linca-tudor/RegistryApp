@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import Colors from '~/helpers/Colors';
 
 const getGlobalStyles = () => {
@@ -12,10 +12,11 @@ const getGlobalStyles = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        height: 75,
+        height: 67.5,
         borderRadius: 12.5,
         paddingRight: 15,
         backgroundColor: Colors.white,
+        marginVertical: 7.5,
       },
       iconContainer: {
         height: '65%',
@@ -32,26 +33,31 @@ const getGlobalStyles = () => {
       },
       textContainer: {
         flexGrow: 1,
-        paddingTop: 12.5,
+        paddingTop: 7.5,
         marginLeft: 15,
         overflow: 'hidden',
+        backgroundColor: Colors.magnolia,
+        borderRadius: 5,
       },
       title: {
         flex: 1,
         fontSize: 13.5,
-        color: Colors.warmGrey,
+        color: Colors.lavander,
+        paddingLeft: 6,
       },
       inputContainer: {
         flex: 3,
         flexDirection: 'row',
         alignItems: 'center',
         overflow: 'hidden',
+        paddingLeft: 6,
       },
       input: {
         fontSize: 16.5,
         fontWeight: '400',
         paddingRight: 10,
         color: Colors.black,
+        marginLeft: Platform.OS === 'android' ? -3.5 : 0,
       },
     },
   });

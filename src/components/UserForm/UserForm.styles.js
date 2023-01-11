@@ -9,7 +9,7 @@ const getStyles = () => {
       alignItems: 'center',
       justifyContent: 'flex-start',
       backgroundColor: Colors.white,
-      paddingHorizontal: 30,
+      paddingHorizontal: 15,
     },
   });
 };

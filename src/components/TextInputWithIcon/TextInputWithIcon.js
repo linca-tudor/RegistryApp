@@ -37,7 +37,7 @@ const TextInputWithIcon = ({
         <View style={globalStyles.form.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
-            placeholderTextColor={Colors.cloud}
+            placeholderTextColor={Colors.starDust}
             value={value}
             onChangeText={txt => {
               onTextUpdate(txt);
