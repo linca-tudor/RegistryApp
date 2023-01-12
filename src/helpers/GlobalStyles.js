@@ -12,7 +12,6 @@ const getGlobalStyles = () => {
         flexDirection: 'row',
         alignItems: 'center',
         height: 67.5,
-        borderRadius: 12.5,
         marginVertical: 7.5,
         marginRight: 15,
         // overflow: 'hidden',
@@ -36,7 +35,7 @@ const getGlobalStyles = () => {
         flexGrow: 1,
         marginLeft: 15,
         backgroundColor: Colors.magnolia,
-        borderRadius: 5,
+        borderRadius: 10,
       },
       title: {
         fontSize: 13.5,
@@ -52,10 +51,12 @@ const getGlobalStyles = () => {
         paddingHorizontal: 6,
       },
       input: {
+        flex: 1,
         fontSize: 16.5,
         fontWeight: '400',
         color: Colors.black,
         marginLeft: Platform.OS === 'android' ? -3.5 : 0,
+        marginRight: 35,
       },
     },
   });

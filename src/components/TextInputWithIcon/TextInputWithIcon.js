@@ -13,7 +13,6 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 const TextInputWithIcon = ({
   placeholder,
   onEndEditing,
-  onCrossPress,
   style,
   icon,
   title,

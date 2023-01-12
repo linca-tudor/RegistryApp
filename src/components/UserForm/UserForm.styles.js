@@ -4,7 +4,7 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
-      alignItems: 'center',
+      width: '100%',
       justifyContent: 'flex-start',
       backgroundColor: Colors.white,
       paddingHorizontal: 15,

@@ -9,6 +9,7 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
+import Button from '~/components/Button';
 
 const UserForm = ({onTextInput}) => {
   const [firstName, setFirstName] = useState('');
@@ -23,7 +24,7 @@ const UserForm = ({onTextInput}) => {
   const globalStyles = getGlobalStyles();
 
   return (
-    <View style={[globalStyles.flex, styles.container]}>
+    <View style={[styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
         onEndEditing={text => {
@@ -161,6 +162,12 @@ const UserForm = ({onTextInput}) => {
         title="Favourite Quote"
         placeholder="Roses are red, violets are blue"
         icon={<Foundation name="quote" size={37.5} color={Colors.lavander} />}
+      />
+      <Button
+        onPress={() => {
+          console.log('Button has been pressed');
+        }}
+        title={'Submit Data'}
       />
     </View>
   );
