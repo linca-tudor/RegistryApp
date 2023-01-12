@@ -12,8 +12,6 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const TextInputWithIcon = ({
   placeholder,
-  value,
-  onTextUpdate,
   onEndEditing,
   onCrossPress,
   style,
@@ -38,28 +36,30 @@ const TextInputWithIcon = ({
           <RNTextInput
             placeholder={placeholder}
             placeholderTextColor={Colors.starDust}
-            value={value}
+            value={inputText}
             onChangeText={txt => {
-              onTextUpdate(txt);
+              setInputText(txt);
             }}
-            // onEndEditing={txt => {
-            //   onEndEditing(txt);
-            // }}
+            onEndEditing={() => {
+              onEndEditing(inputText);
+            }}
             style={globalStyles.form.input}
           />
         </View>
+        {inputText && (
+          <TouchableOpacity
+            onPress={() => {
+              setInputText('');
+            }}
+            style={globalStyles.form.crossIcon}>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={Colors.ultramarineBlue}
+            />
+          </TouchableOpacity>
+        )}
       </View>
-      {inputText && (
-        <TouchableOpacity
-          onPress={onCrossPress}
-          style={globalStyles.form.crossIcon}>
-          <Entypo
-            name="circle-with-cross"
-            size={24}
-            color={Colors.ultramarineBlue}
-          />
-        </TouchableOpacity>
-      )}
     </View>
   );
 };

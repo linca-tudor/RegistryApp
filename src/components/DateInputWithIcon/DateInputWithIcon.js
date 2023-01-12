@@ -62,18 +62,18 @@ const DateInputWithIcon = ({
             }}
           />
         </View>
+        {date && (
+          <TouchableOpacity
+            onPress={onCrossPress}
+            style={globalStyles.form.crossIcon}>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={Colors.ultramarineBlue}
+            />
+          </TouchableOpacity>
+        )}
       </TouchableOpacity>
-      {date && (
-        <TouchableOpacity
-          onPress={onCrossPress}
-          style={globalStyles.form.crossIcon}>
-          <Entypo
-            name="circle-with-cross"
-            size={24}
-            color={Colors.ultramarineBlue}
-          />
-        </TouchableOpacity>
-      )}
     </View>
   );
 };

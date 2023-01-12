@@ -11,26 +11,25 @@ import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 
 const UserForm = ({onTextInput}) => {
-  const [inputText, setInputText] = useState('');
-  const [birthdate, setBirthdate] = useState(null);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [job, setJob] = useState('');
+  const [quote, setQuote] = useState('');
+  const [birthDate, setBirthDate] = useState(null);
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
   return (
-    <View style={[styles.container]}>
+    <View style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
+        onEndEditing={text => {
+          setFirstName(text);
         }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
-        }}
-        text={inputText}
+        text={firstName}
         title="First Name"
         placeholder="John / Jane"
         icon={
@@ -43,18 +42,11 @@ const UserForm = ({onTextInput}) => {
       />
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
-        }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
+        onEndEditing={text => {
+          setLastName(text);
         }}
         style={styles.textInput}
-        text={inputText}
+        text={lastName}
         title="Last Name"
         placeholder="Doe"
         icon={
@@ -67,18 +59,11 @@ const UserForm = ({onTextInput}) => {
       />
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
-        }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
+        onEndEditing={text => {
+          setGender(text);
         }}
         style={styles.textInput}
-        text={inputText}
+        text={gender}
         title="Gender"
         placeholder="Any <3"
         icon={
@@ -90,15 +75,14 @@ const UserForm = ({onTextInput}) => {
         }
       />
       <DateInputWithIcon
-        value={birthdate}
         onEndEditing={date => {
-          setBirthdate(date);
+          setBirthDate(date);
         }}
         onCrossPress={() => {
-          setBirthdate(null);
+          setBirthDate(null);
         }}
         style={styles.textInput}
-        date={birthdate}
+        date={birthDate}
         title="Birthdate"
         placeholder="Select your date of birth"
         icon={
@@ -111,18 +95,11 @@ const UserForm = ({onTextInput}) => {
       />
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
-        }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
+        onEndEditing={text => {
+          setAddress(text);
         }}
         style={styles.textInput}
-        text={inputText}
+        text={address}
         title="Address"
         placeholder="First Street"
         icon={
@@ -135,18 +112,11 @@ const UserForm = ({onTextInput}) => {
       />
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
-        }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
-        onCrossPress={() => {
-          setInputText('');
+        onEndEditing={text => {
+          setEmail(text);
         }}
         style={styles.textInput}
-        text={inputText}
+        text={email}
         title="E-mail Address"
         placeholder="myemail@domain.com"
         icon={
@@ -160,18 +130,14 @@ const UserForm = ({onTextInput}) => {
 
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
+        onEndEditing={text => {
+          setJob(text);
         }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
         onCrossPress={() => {
-          setInputText('');
+          setJob('');
         }}
         style={styles.textInput}
-        text={inputText}
+        text={job}
         title="Job Title"
         placeholder="Developer"
         icon={
@@ -184,18 +150,14 @@ const UserForm = ({onTextInput}) => {
       />
       <TextInputFieldWithIcon
         secureText={false}
-        value={inputText}
-        onTextUpdate={text => {
-          setInputText(text);
+        onEndEditing={text => {
+          setQuote(text);
         }}
-        // onEndEditing={text => {
-        //   onTextInput(text);
-        // }}
         onCrossPress={() => {
-          setInputText('');
+          setQuote('');
         }}
         style={styles.textInput}
-        text={inputText}
+        text={quote}
         title="Favourite Quote"
         placeholder="Roses are red, violets are blue"
         icon={<Foundation name="quote" size={37.5} color={Colors.lavander} />}
