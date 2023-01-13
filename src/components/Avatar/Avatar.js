@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import Strings from '~/helpers/Strings';
 import Image from '~/components/Image';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Colors from '~/helpers/Colors';
 import getStyles from './Avatar.styles';
 import {getRandomColor} from '~/helpers/Functions';
 
@@ -24,7 +25,7 @@ const Avatar = ({avatar, initials, size}) => {
             : Icon.getImageSourceSync(
                 Strings.iconNames.unknownAvatar,
                 size,
-                getRandomColor(1),
+                Colors.lavander,
               )
         }
         size={avatar ? size : size - 25}

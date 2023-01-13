@@ -1,19 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {
-  TouchableOpacity,
-  View,
-  TextInput as RNTextInput,
-  Text,
-} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './PhoneInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
-// import PhoneInput from 'react-native-phone-number-input-formatted';
+import PhoneInput from 'react-native-phone-number-input-formatted';
+import getGlobalStyles from '~/helpers/GlobalStyles';
+import getStyles from '~/components/PhoneInputWithIcon/PhoneInputWithIcon.styles';
 
 const PhoneInputWithIcon = ({
   placeholder,
-  value,
-  onTextUpdate,
   onEndEditing,
   onCrossPress,
   style,
@@ -21,7 +15,8 @@ const PhoneInputWithIcon = ({
   title,
   text,
 }) => {
-  const styles = getStyles('');
+  const styles = getStyles();
+  const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
   const [inputTextFormatted, setInputTextFormatted] = useState('');
 
@@ -30,29 +25,37 @@ const PhoneInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={[style, styles.container]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <TouchableOpacity style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.inputContainer}>
-          {/* <PhoneInput
-            // ref={phoneInput}
-            defaultValue={inputText}
-            defaultCode="RO"
-            layout="first"
-            onChangeText={text => {
-              setInputText(text);
-            }}
-            onChangeFormattedText={text => {
-              setInputTextFormatted(text);
-            }}
-            textContainerStyle={{backgroundColor: Colors.white}}
-            containerStyle={{width: '100%', backgroundColor: 'magenta'}}
-          /> */}
-        </View>
-      </TouchableOpacity>
+    <View style={globalStyles.form.container}>
+      <View style={globalStyles.form.iconContainer}>{icon}</View>
+      <View style={globalStyles.form.textContainer}>
+        <Text style={globalStyles.form.title}>{title}</Text>
+        <PhoneInput
+          placeholder={placeholder}
+          defaultValue={inputText}
+          defaultCode="RO"
+          layout="first"
+          autoFocus={false}
+          onChangeText={txt => {
+            setInputText(txt);
+          }}
+          onChangeFormattedText={txt => {
+            setInputTextFormatted(txt);
+          }}
+          containerStyle={styles.container}
+          textContainerStyle={styles.textContainer}
+          textInputStyle={styles.textInput}
+          countryPickerButtonStyle={styles.countryPickerButton}
+          flagButtonStyle={styles.flagButton}
+          disableArrowIcon
+        />
+      </View>
       {inputText && (
-        <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
+        <TouchableOpacity
+          onPress={() => {
+            setInputText('');
+            setInputTextFormatted('');
+          }}
+          style={globalStyles.form.crossIcon}>
           <Entypo
             name="circle-with-cross"
             size={24}

@@ -15,11 +15,12 @@ const UserForm = ({onTextInput}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [birthDate, setBirthDate] = useState(null);
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
   const [quote, setQuote] = useState('');
-  const [birthDate, setBirthDate] = useState(null);
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -85,10 +86,25 @@ const UserForm = ({onTextInput}) => {
         style={styles.textInput}
         date={birthDate}
         title="Birthdate"
-        placeholder="Select your date of birth"
+        placeholder="Jan 15th, 1997"
         icon={
           <MaterialCommunityIcons
             name="calendar-multiselect"
+            size={35}
+            color={Colors.lavander}
+          />
+        }
+      />
+      <PhoneInputWithIcon
+        onEndEditing={text => {
+          setPhoneNumber(text);
+        }}
+        text={phoneNumber}
+        title="Phone Number"
+        placeholder="(012) 345-6789"
+        icon={
+          <MaterialCommunityIcons
+            name="phone-dial"
             size={35}
             color={Colors.lavander}
           />

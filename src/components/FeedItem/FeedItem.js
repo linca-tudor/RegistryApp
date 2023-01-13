@@ -41,7 +41,7 @@ const FeedItem = ({avatar, name, description, address, onPress}) => {
           </View>
           <DashedLine
             axis="horizontal"
-            dashColor={Colors.warmGrey}
+            dashColor={Colors.cloud}
             dashThickness={2}
             dashGap={4}
             dashLength={3}

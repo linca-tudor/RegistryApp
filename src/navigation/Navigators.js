@@ -61,8 +61,8 @@ const RootTabNavigator = () => {
         tabBarActiveTintColor: Colors.lavander,
         tabBarInactiveTintColor: Colors.warmGrey,
       })}>
-      <Tab.Screen name={Routes.listNavigator} component={ListStackNavigator} />
       <Tab.Screen name={Routes.search} component={AddProfileContainer} />
+      <Tab.Screen name={Routes.listNavigator} component={ListStackNavigator} />
     </Tab.Navigator>
   );
 };

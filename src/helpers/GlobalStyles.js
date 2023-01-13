@@ -14,7 +14,6 @@ const getGlobalStyles = () => {
         height: 67.5,
         marginVertical: 7.5,
         marginRight: 15,
-        // overflow: 'hidden',
       },
       iconContainer: {
         height: '65%',
@@ -40,12 +39,11 @@ const getGlobalStyles = () => {
       title: {
         fontSize: 13.5,
         color: Colors.lavander,
-        paddingTop: 7.5,
-        paddingHorizontal: 6,
+        marginTop: 7.5,
+        marginLeft: 6,
       },
       inputContainer: {
-        width: '100%',
-        flexGrow: 1,
+        height: 42.5,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 6,
