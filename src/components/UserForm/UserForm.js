@@ -25,7 +25,7 @@ const UserForm = ({onSubmitPress}) => {
   const globalStyles = getGlobalStyles();
 
   return (
-    <SafeAreaView style={[globalStyles.flex, styles.container]}>
+    <View style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
         onEndEditing={text => {
@@ -181,12 +181,25 @@ const UserForm = ({onSubmitPress}) => {
       />
       <Button
         onPress={() => {
-          console.log('Button has been pressed');
+          onSubmitPress({
+            id: '6eda2c76-6a85-438c-9f4a-4e4613c604fd',
+            avatar:
+              'https://robohash.org/doloremquevelvel.png?size=125x125&set=set1',
+            firstName: 'Licha',
+            lastName: 'Postance',
+            email: 'lpostance36@posterous.com',
+            gender: 'Female',
+            quote: 'Phased 4th generation migration',
+            address: '7400 Sauthoff Place',
+            phoneNumber: '734 239 5515',
+            birthDate: '1945-09-14',
+            job: 'Dental Hygienist',
+          });
         }}
         title={'Submit Data'}
         containerStyle={{marginTop: 20, marginBottom: 30}}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

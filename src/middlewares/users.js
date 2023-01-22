@@ -23,16 +23,17 @@ export const getUserById = createAsyncThunk(
     );
 
     if (searchedUser === undefined) {
-      throw 'Thunk did not find any matching';
+      throw 'Thunk did not find any matching profile with the one requested';
     } else {
       return searchedUser;
     }
   },
 );
 
-// export const addUser = createAsyncThunk(
-//   'users/addProfile',
-//   async (profile, thunkAPI) => {
-
-//   }
-// )
+export const addUser = createAsyncThunk(
+  'users/addProfile',
+  async (profile, thunkAPI) => {
+    const addedUser = await axios.post('/users', profile, config);
+    return addedUser.data;
+  },
+);
