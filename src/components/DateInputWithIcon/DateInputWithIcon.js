@@ -26,6 +26,8 @@ const DateInputWithIcon = ({
   const [pickedDate, setPickedDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
 
+  console.log(placeholder);
+
   useEffect(() => {
     setPickedDate(date || moment().toDate());
   }, [date]);
@@ -43,7 +45,11 @@ const DateInputWithIcon = ({
               {moment(pickedDate).format('MMM Do, YYYY')}
             </Text>
           )}
-          {!date && <Text style={styles.placeholder}>{placeholder}</Text>}
+          {!date && (
+            <Text style={styles.placeholder}>
+              {moment(placeholder).format('MMM Do, YYYY')}
+            </Text>
+          )}
           <DatePicker
             modal
             theme="light"

@@ -86,7 +86,7 @@ const UserForm = ({onSubmitPress}) => {
         style={styles.textInput}
         date={birthDate}
         title="Birthdate"
-        placeholder="Jan 15th, 1997"
+        placeholder={new Date()}
         icon={
           <MaterialCommunityIcons
             name="calendar-multiselect"
