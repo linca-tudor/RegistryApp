@@ -8,6 +8,7 @@ const getStyles = () => {
       justifyContent: 'flex-start',
       backgroundColor: Colors.white,
       paddingHorizontal: 15,
+      paddingTop: 10,
     },
   });
 };

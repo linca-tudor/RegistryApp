@@ -53,7 +53,7 @@ const RootTabNavigator = () => {
         tabBarStyle: {
           height: 55,
           paddingBottom: 5,
-          position: 'absolute',
+          // position: 'absolute',
         },
         tabBarLabelStyle: {
           width: 50,

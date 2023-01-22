@@ -25,15 +25,16 @@ const PhoneInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={globalStyles.form.container}>
-      <View style={globalStyles.form.iconContainer}>{icon}</View>
-      <View style={globalStyles.form.textContainer}>
-        <Text style={globalStyles.form.title}>{title}</Text>
+    <View style={globalStyles.formItem.container}>
+      <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <View style={globalStyles.formItem.textContainer}>
+        <Text style={globalStyles.formItem.title}>{title}</Text>
         <PhoneInput
           placeholder={placeholder}
           defaultValue={inputText}
           defaultCode="RO"
           layout="first"
+          disableArrowIcon
           autoFocus={false}
           onChangeText={txt => {
             setInputText(txt);
@@ -46,7 +47,6 @@ const PhoneInputWithIcon = ({
           textInputStyle={styles.textInput}
           countryPickerButtonStyle={styles.countryPickerButton}
           flagButtonStyle={styles.flagButton}
-          disableArrowIcon
         />
       </View>
       {inputText && (
@@ -55,7 +55,7 @@ const PhoneInputWithIcon = ({
             setInputText('');
             setInputTextFormatted('');
           }}
-          style={globalStyles.form.crossIcon}>
+          style={globalStyles.formItem.crossIcon}>
           <Entypo
             name="circle-with-cross"
             size={24}

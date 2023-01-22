@@ -31,15 +31,15 @@ const DateInputWithIcon = ({
   }, [date]);
 
   return (
-    <View style={[style, globalStyles.form.container]}>
-      <View style={globalStyles.form.iconContainer}>{icon}</View>
+    <View style={[style, globalStyles.formItem.container]}>
+      <View style={globalStyles.formItem.iconContainer}>{icon}</View>
       <TouchableOpacity
         onPress={() => setModalOpen('true')}
-        style={globalStyles.form.textContainer}>
-        <Text style={globalStyles.form.title}>{title}</Text>
-        <View style={globalStyles.form.inputContainer}>
+        style={globalStyles.formItem.textContainer}>
+        <Text style={globalStyles.formItem.title}>{title}</Text>
+        <View style={globalStyles.formItem.inputContainer}>
           {date && (
-            <Text style={globalStyles.form.input}>
+            <Text style={globalStyles.formItem.input}>
               {moment(pickedDate).format('MMM Do, YYYY')}
             </Text>
           )}
@@ -65,7 +65,7 @@ const DateInputWithIcon = ({
         {date && (
           <TouchableOpacity
             onPress={onCrossPress}
-            style={globalStyles.form.crossIcon}>
+            style={globalStyles.formItem.crossIcon}>
             <Entypo
               name="circle-with-cross"
               size={24}

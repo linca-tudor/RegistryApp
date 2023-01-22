@@ -27,11 +27,11 @@ const TextInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={[globalStyles.form.container, style]}>
-      <View style={globalStyles.form.iconContainer}>{icon}</View>
-      <View style={globalStyles.form.textContainer}>
-        <Text style={globalStyles.form.title}>{title}</Text>
-        <View style={globalStyles.form.inputContainer}>
+    <View style={[globalStyles.formItem.container, style]}>
+      <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <View style={globalStyles.formItem.textContainer}>
+        <Text style={globalStyles.formItem.title}>{title}</Text>
+        <View style={globalStyles.formItem.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
             placeholderTextColor={Colors.starDust}
@@ -42,7 +42,7 @@ const TextInputWithIcon = ({
             onEndEditing={() => {
               onEndEditing(inputText);
             }}
-            style={globalStyles.form.input}
+            style={globalStyles.formItem.input}
           />
         </View>
         {inputText && (
@@ -50,7 +50,7 @@ const TextInputWithIcon = ({
             onPress={() => {
               setInputText('');
             }}
-            style={globalStyles.form.crossIcon}>
+            style={globalStyles.formItem.crossIcon}>
             <Entypo
               name="circle-with-cross"
               size={24}

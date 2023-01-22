@@ -6,7 +6,7 @@ const getGlobalStyles = () => {
     flex: {
       flex: 1,
     },
-    form: {
+    formItem: {
       container: {
         width: '100%',
         flexDirection: 'row',

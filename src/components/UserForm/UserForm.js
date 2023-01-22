@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
 import Colors from '~/helpers/Colors';
@@ -11,7 +11,7 @@ import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 import Button from '~/components/Button';
 
-const UserForm = ({onTextInput}) => {
+const UserForm = ({onSubmitPress}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -25,7 +25,7 @@ const UserForm = ({onTextInput}) => {
   const globalStyles = getGlobalStyles();
 
   return (
-    <View style={[styles.container]}>
+    <SafeAreaView style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
         onEndEditing={text => {
@@ -184,8 +184,9 @@ const UserForm = ({onTextInput}) => {
           console.log('Button has been pressed');
         }}
         title={'Submit Data'}
+        containerStyle={{marginTop: 20, marginBottom: 30}}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
