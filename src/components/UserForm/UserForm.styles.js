@@ -5,9 +5,10 @@ const getStyles = () => {
   return StyleSheet.create({
     container: {
       width: '100%',
-      alignItems: 'center',
       justifyContent: 'flex-start',
-      // backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
+      paddingHorizontal: 15,
+      paddingTop: 10,
     },
   });
 };

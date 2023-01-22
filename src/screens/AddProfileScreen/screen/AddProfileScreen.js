@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useEffect} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, ScrollView, View} from 'react-native';
 import UserForm from '~/components/UserForm';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './AddProfileScreen.styles';
@@ -11,7 +11,9 @@ const AddProfileScreen = ({}) => {
 
   return (
     <SafeAreaView style={[globalStyles.flex, styles.container]}>
-      <UserForm />
+      <ScrollView style={{width: '100%'}} showsVerticalScrollIndicator={false}>
+        <UserForm />
+      </ScrollView>
     </SafeAreaView>
   );
 };

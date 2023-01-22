@@ -8,19 +8,18 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './TextInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
+import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const TextInputWithIcon = ({
   placeholder,
-  value,
-  onTextUpdate,
   onEndEditing,
-  onCrossPress,
   style,
   icon,
   title,
   text,
 }) => {
-  const styles = getStyles('');
+  const styles = getStyles();
+  const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
 
   useEffect(() => {
@@ -28,33 +27,38 @@ const TextInputWithIcon = ({
   }, [text]);
 
   return (
-    <View style={[style, styles.container]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.inputContainer}>
+    <View style={[globalStyles.formItem.container, style]}>
+      <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <View style={globalStyles.formItem.textContainer}>
+        <Text style={globalStyles.formItem.title}>{title}</Text>
+        <View style={globalStyles.formItem.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
-            value={value}
+            placeholderTextColor={Colors.starDust}
+            value={inputText}
             onChangeText={txt => {
-              onTextUpdate(txt);
+              setInputText(txt);
             }}
-            onEndEditing={txt => {
-              onEndEditing(txt);
+            onEndEditing={() => {
+              onEndEditing(inputText);
             }}
-            style={styles.input}
+            style={globalStyles.formItem.input}
           />
         </View>
+        {inputText && (
+          <TouchableOpacity
+            onPress={() => {
+              setInputText('');
+            }}
+            style={globalStyles.formItem.crossIcon}>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={Colors.ultramarineBlue}
+            />
+          </TouchableOpacity>
+        )}
       </View>
-      {inputText && (
-        <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
-          <Entypo
-            name="circle-with-cross"
-            size={24}
-            color={Colors.ultramarineBlue}
-          />
-        </TouchableOpacity>
-      )}
     </View>
   );
 };

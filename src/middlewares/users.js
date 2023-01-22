@@ -10,7 +10,8 @@ const config = {
 export const getFeed = createAsyncThunk(
   'users/getFeed',
   async (_, thunkAPI) => {
-    return (await axios.get('/users', config)).data;
+    const response = await axios.get('/users', config);
+    return response.data;
   },
 );
 

@@ -7,54 +7,77 @@ import {
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './DateInputWithIcon.styles';
+import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
+import DatePicker from 'react-native-date-picker';
+import moment from 'moment';
 
 const DateInputWithIcon = ({
   placeholder,
-  value,
-  onTextUpdate,
   onEndEditing,
   onCrossPress,
   style,
   icon,
   title,
-  text,
+  date,
 }) => {
-  const styles = getStyles('');
-  const [inputText, setInputText] = useState('');
+  const styles = getStyles();
+  const globalStyles = getGlobalStyles();
+  const [pickedDate, setPickedDate] = useState(new Date());
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    setInputText(text);
-  }, [text]);
+    setPickedDate(date || moment().toDate());
+  }, [date]);
 
   return (
-    <View style={[style, styles.container]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.inputContainer}>
-          <RNTextInput
-            placeholder={placeholder}
-            value={value}
-            onChangeText={txt => {
-              onTextUpdate(txt);
+    <View style={[style, globalStyles.formItem.container]}>
+      <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <TouchableOpacity
+        onPress={() => setModalOpen(true)}
+        style={globalStyles.formItem.textContainer}>
+        <Text style={globalStyles.formItem.title}>{title}</Text>
+        <View style={globalStyles.formItem.inputContainer}>
+          {date && (
+            <Text style={globalStyles.formItem.input}>
+              {moment(pickedDate).format('MMM Do, YYYY')}
+            </Text>
+          )}
+          {!date && (
+            <Text style={styles.placeholder}>
+              {moment(placeholder).format('MMM Do, YYYY')}
+            </Text>
+          )}
+          <DatePicker
+            modal
+            theme="light"
+            open={modalOpen}
+            date={pickedDate}
+            mode={'date'}
+            androidVariant={'iosClone'}
+            maximumDate={moment().toDate()}
+            minimumDate={moment().subtract(100, 'years').toDate()}
+            onConfirm={timestamp => {
+              setModalOpen(false);
+              onEndEditing(moment(timestamp).toDate());
             }}
-            onEndEditing={txt => {
-              onEndEditing(txt);
+            onCancel={() => {
+              setModalOpen(false);
             }}
-            style={styles.input}
           />
         </View>
-      </View>
-      {inputText && (
-        <TouchableOpacity onPress={onCrossPress} style={styles.crossIcon}>
-          <Entypo
-            name="circle-with-cross"
-            size={24}
-            color={Colors.ultramarineBlue}
-          />
-        </TouchableOpacity>
-      )}
+        {date && (
+          <TouchableOpacity
+            onPress={onCrossPress}
+            style={globalStyles.formItem.crossIcon}>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={Colors.ultramarineBlue}
+            />
+          </TouchableOpacity>
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
