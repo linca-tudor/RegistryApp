@@ -96,7 +96,7 @@ const UserForm = ({onSubmitPress}) => {
         }
       />
       <PhoneInputWithIcon
-        onEndEditing={text => {
+        onChangeInput={text => {
           setPhoneNumber(text);
         }}
         text={phoneNumber}

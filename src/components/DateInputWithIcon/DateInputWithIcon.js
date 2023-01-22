@@ -26,8 +26,6 @@ const DateInputWithIcon = ({
   const [pickedDate, setPickedDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
 
-  console.log(placeholder);
-
   useEffect(() => {
     setPickedDate(date || moment().toDate());
   }, [date]);
@@ -36,7 +34,7 @@ const DateInputWithIcon = ({
     <View style={[style, globalStyles.formItem.container]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
       <TouchableOpacity
-        onPress={() => setModalOpen('true')}
+        onPress={() => setModalOpen(true)}
         style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
         <View style={globalStyles.formItem.inputContainer}>

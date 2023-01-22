@@ -8,12 +8,11 @@ import getStyles from '~/components/PhoneInputWithIcon/PhoneInputWithIcon.styles
 
 const PhoneInputWithIcon = ({
   placeholder,
-  onEndEditing,
-  onCrossPress,
   style,
   icon,
   title,
   text,
+  onChangeInput,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -31,7 +30,7 @@ const PhoneInputWithIcon = ({
         <Text style={globalStyles.formItem.title}>{title}</Text>
         <PhoneInput
           placeholder={placeholder}
-          defaultValue={inputText}
+          defaultValue={inputTextFormatted}
           defaultCode="RO"
           layout="first"
           disableArrowIcon
@@ -40,7 +39,7 @@ const PhoneInputWithIcon = ({
             setInputText(txt);
           }}
           onChangeFormattedText={txt => {
-            setInputTextFormatted(txt);
+            onChangeInput(txt);
           }}
           containerStyle={styles.container}
           textContainerStyle={styles.textContainer}
@@ -49,7 +48,7 @@ const PhoneInputWithIcon = ({
           flagButtonStyle={styles.flagButton}
         />
       </View>
-      {inputText && (
+      {inputTextFormatted && (
         <TouchableOpacity
           onPress={() => {
             setInputText('');
