@@ -34,6 +34,6 @@ export const addUser = createAsyncThunk(
   'users/addProfile',
   async (profile, thunkAPI) => {
     const addedUser = await axios.post('/users', profile, config);
-    return addedUser.data;
+    return addedUser;
   },
 );

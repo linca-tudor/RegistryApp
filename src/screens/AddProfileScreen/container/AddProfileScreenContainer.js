@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import AddProfileScreen from '../screen';
 import {selectNewUser} from '~/reducers/usersSlice';
 import {addUser} from '~/middlewares/users';
+import 'react-native-get-random-values';
+import {v4 as uuidv4} from 'uuid';
 
 const AddProfileContainer = () => {
   const [firstName, setFirstName] = useState('');
@@ -16,22 +18,8 @@ const AddProfileContainer = () => {
 
   const dispatch = useDispatch();
 
-  const profile = {
-    id: '6eda2c76-6a85-438c-9f4a-4e4613c604fd',
-    avatar: 'https://robohash.org/doloremquevelvel.png?size=125x125&set=set1',
-    firstName: '',
-    lastName: 'Postance',
-    email: 'lpostance36@posterous.com',
-    gender: 'Female',
-    quote: 'Phased 4th generation migration',
-    address: '7400 Sauthoff Place',
-    phoneNumber: '734 239 5515',
-    birthDate: '1945-09-14',
-    job: 'Dental Hygienist',
-  };
-
-  const onSubmitPress = () => {
-    dispatch(addUser(profile));
+  const onSubmitPress = profile => {
+    dispatch(addUser({['id']: uuidv4(), ...profile}));
   };
 
   // const addedUser = useSelector(state => selectNewUser(state, profile));

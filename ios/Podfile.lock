@@ -309,6 +309,8 @@ PODS:
     - React-Core
   - react-native-flipper (0.173.0):
     - React-Core
+  - react-native-get-random-values (1.8.0):
+    - React-Core
   - react-native-lottie-splash-screen (1.0.1):
     - React
   - react-native-pager-view (6.1.1):
@@ -479,6 +481,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-lottie-splash-screen (from `../node_modules/react-native-lottie-splash-screen`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -571,6 +574,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-date-picker"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-lottie-splash-screen:
     :path: "../node_modules/react-native-lottie-splash-screen"
   react-native-pager-view:
@@ -655,6 +660,7 @@ SPEC CHECKSUMS:
   React-logger: cffcc09e8aba8a3014be8d18da7f922802e9f19e
   react-native-date-picker: 93e43b3084cea595b4d68b1405d6d99849663bd6
   react-native-flipper: 64998cd1c415826bf49ef391e5bc0adcb7dcb77a
+  react-native-get-random-values: a6ea6a8a65dc93e96e24a11105b1a9c8cfe1d72a
   react-native-lottie-splash-screen: 068688c15dd478301fda00f8d87d7fb7d5b9a93e
   react-native-pager-view: 3c66c4e2f3ab423643d07b2c7041f8ac48395f72
   react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
