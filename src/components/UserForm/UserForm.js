@@ -10,13 +10,14 @@ import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 import Button from '~/components/Button';
+import moment from 'moment';
 
 const UserForm = ({onSubmitPress}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [birthDate, setBirthDate] = useState(null);
+  const [birthDate, setBirthDate] = useState(new Date());
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
@@ -25,7 +26,7 @@ const UserForm = ({onSubmitPress}) => {
   const globalStyles = getGlobalStyles();
 
   return (
-    <SafeAreaView style={[globalStyles.flex, styles.container]}>
+    <View style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
         secureText={false}
         onEndEditing={text => {
@@ -96,12 +97,12 @@ const UserForm = ({onSubmitPress}) => {
         }
       />
       <PhoneInputWithIcon
-        onChangeInput={text => {
+        onEndEditing={text => {
           setPhoneNumber(text);
         }}
         text={phoneNumber}
         title="Phone Number"
-        placeholder="(012) 345-6789"
+        placeholder="Type here"
         icon={
           <MaterialCommunityIcons
             name="phone-dial"
@@ -181,12 +182,24 @@ const UserForm = ({onSubmitPress}) => {
       />
       <Button
         onPress={() => {
-          console.log('Button has been pressed');
+          onSubmitPress({
+            avatar:
+              'http://www.geek-officiel.com/wp-content/uploads/2015/06/gecko.jpg',
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            gender: gender,
+            quote: quote,
+            address: address,
+            phoneNumber: phoneNumber,
+            birthDate: moment(birthDate).format('YYYY-MM-DD'),
+            job: job,
+          });
         }}
         title={'Submit Data'}
         containerStyle={{marginTop: 20, marginBottom: 30}}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
