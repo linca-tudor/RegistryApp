@@ -9,7 +9,7 @@ const ProfileScreenContainer = () => {
   const id = useRoute().params.id;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserById('2'));
+    dispatch(getUserById(id));
   }, [id, dispatch]);
 
   const userProfile = useSelector(state => selectUserById(state, id));
