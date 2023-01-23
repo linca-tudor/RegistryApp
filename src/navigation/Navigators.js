@@ -3,11 +3,12 @@ import {View, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import Routes from '~/helpers/Routes';
-import FeedScreenContainer from '~/screens/FeedScreen';
-import ProfileScreenContainer from '~/screens/PofileScreen';
+import FeedScreen from '~/screens/FeedScreen';
+import ProfileScreen from '~/screens/PofileScreen';
 import AddProfileContainer from '~/screens/AddProfileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '~/helpers/Colors';
+import AddProfileScreen from '~/screens/AddProfileScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,12 +18,13 @@ const ListStackNavigator = () => {
     <Stack.Navigator
       initialRouteName={Routes.list}
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name={Routes.list} component={FeedScreenContainer} />
+      <Stack.Screen name={Routes.list} component={FeedScreen} />
       <Stack.Screen
         name={Routes.details}
-        component={ProfileScreenContainer}
+        component={ProfileScreen}
         id={({params}) => params.id}
       />
+      <Stack.Screen name={Routes.newProfile} component={AddProfileScreen} />
     </Stack.Navigator>
   );
 };
@@ -61,8 +63,8 @@ const RootTabNavigator = () => {
         tabBarActiveTintColor: Colors.lavander,
         tabBarInactiveTintColor: Colors.warmGrey,
       })}>
-      <Tab.Screen name={Routes.search} component={AddProfileContainer} />
       <Tab.Screen name={Routes.listNavigator} component={ListStackNavigator} />
+      <Tab.Screen name={Routes.search} component={AddProfileContainer} />
     </Tab.Navigator>
   );
 };

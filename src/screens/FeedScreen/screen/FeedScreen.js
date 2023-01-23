@@ -6,6 +6,9 @@ import FeedItem from '~/components/FeedItem';
 import Strings from '~/helpers/Strings';
 import getStyles from './FeedScreen.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
+import RoundButton from '~/components/RoundButton';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Colors from '~/helpers/Colors';
 
 const renderItem = ({item}, onPress) => {
   const {avatar, firstName, lastName, quote, address} = item;
@@ -32,7 +35,7 @@ const FeedFooter = () => {
   );
 };
 
-const FeedScreen = ({data, onItemPress}) => {
+const FeedScreen = ({data, onItemPress, onAddIconPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   return (
@@ -47,6 +50,16 @@ const FeedScreen = ({data, onItemPress}) => {
         }
         estimatedItemSize={150}
         ListFooterComponent={FeedFooter}
+      />
+      <RoundButton
+        icon={
+          <Entypo
+            name="plus"
+            size={50}
+            color={Colors.white}
+            onPress={onAddIconPress}
+          />
+        }
       />
     </SafeAreaView>
   );

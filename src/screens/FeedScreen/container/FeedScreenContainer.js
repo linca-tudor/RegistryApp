@@ -25,7 +25,17 @@ const FeedScreenContainer = () => {
     navigate(Routes.details, {id: id});
   };
 
-  return <PeopleList data={usersFeed} onItemPress={onItemPress} />;
+  const onAddIconPress = () => {
+    navigate(Routes.newProfile);
+  };
+
+  return (
+    <PeopleList
+      data={usersFeed}
+      onItemPress={onItemPress}
+      onAddIconPress={onAddIconPress}
+    />
+  );
 };
 
 export default FeedScreenContainer;
