@@ -3,13 +3,15 @@ import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
   return StyleSheet.create({
-    buttonContainer: {
+    button: {
       width: 70,
       height: 70,
       bottom: 10,
       // right: 20,
       // left: 10,
       alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
       backgroundColor: Colors.lavander,
       borderRadius: 35,
       position: 'absolute',
@@ -21,12 +23,6 @@ const getStyles = () => {
       shadowOpacity: 0.3,
       shadowRadius: 5,
       shadowColor: Colors.black,
-    },
-    button: {
-      width: '100%',
-      height: '100%',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
   });
 };

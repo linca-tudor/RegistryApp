@@ -52,14 +52,8 @@ const FeedScreen = ({data, onItemPress, onAddIconPress}) => {
         ListFooterComponent={FeedFooter}
       />
       <RoundButton
-        icon={
-          <Entypo
-            name="plus"
-            size={50}
-            color={Colors.white}
-            onPress={onAddIconPress}
-          />
-        }
+        icon={<Entypo name="plus" size={50} color={Colors.white} />}
+        onPress={onAddIconPress}
       />
     </SafeAreaView>
   );
