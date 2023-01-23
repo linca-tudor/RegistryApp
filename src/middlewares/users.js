@@ -18,14 +18,12 @@ export const getFeed = createAsyncThunk(
 export const getUserById = createAsyncThunk(
   'users/getProfile',
   async (id, thunkAPI) => {
-    const searchedUser = (await axios.get('/users', config)).data.find(
-      item => item.id === id,
-    );
+    const searchedUser = await axios.get(`/users/${id}`, config);
 
-    if (searchedUser === undefined) {
+    if (searchedUser.status !== 200) {
       throw 'Thunk did not find any matching profile with the one requested';
     } else {
-      return searchedUser;
+      return searchedUser.data;
     }
   },
 );
@@ -34,6 +32,14 @@ export const addUser = createAsyncThunk(
   'users/addProfile',
   async (profile, thunkAPI) => {
     const addedUser = await axios.post('/users', profile, config);
+    return addedUser;
+  },
+);
+
+export const editUser = createAsyncThunk(
+  'users/editProfile',
+  async (profile, thunkAPI) => {
+    const addedUser = await axios.put(`/users/${profile.id}`, profile, config);
     return addedUser;
   },
 );

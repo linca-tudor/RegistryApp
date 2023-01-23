@@ -1,28 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import AddProfileScreen from '../screen';
-import {selectNewUser} from '~/reducers/usersSlice';
-import {addUser} from '~/middlewares/users';
+import {useRoute} from '@react-navigation/native';
+import EditProfileScreen from '../screen';
+import {selectUserById} from '~/reducers/usersSlice';
+import {editUser} from '~/middlewares/users';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 
-const AddProfileContainer = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setlastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [gender, setGender] = useState('');
-  const [address, setAddress] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [job, setJob] = useState('');
-
+const EditProfileContainer = () => {
   const dispatch = useDispatch();
+  const id = useRoute().params.id;
+
+  const userProfile = useSelector(state => selectUserById(state, id));
 
   const onSubmitPress = profile => {
-    dispatch(addUser({['id']: uuidv4(), ...profile}));
+    dispatch(editUser({['id']: id, ...profile}));
   };
 
-  return <AddProfileScreen onSubmitPress={onSubmitPress} />;
+  return (
+    <EditProfileScreen onSubmitPress={onSubmitPress} profile={userProfile} />
+  );
 };
 
-export default AddProfileContainer;
+export default EditProfileContainer;
