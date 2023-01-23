@@ -1,69 +1,90 @@
 import React, {useState, useEffect} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  TextInput as RNTextInput,
+  Text,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import getStyles from './PhoneInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
-import PhoneInput from 'react-native-phone-number-input-formatted';
 import getGlobalStyles from '~/helpers/GlobalStyles';
-import getStyles from '~/components/PhoneInputWithIcon/PhoneInputWithIcon.styles';
 
-const PhoneInputWithIcon = ({
+const TextInputWithIcon = ({
   placeholder,
+  onEndEditing,
   style,
   icon,
   title,
   text,
-  onChangeInput,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
-  const [inputTextFormatted, setInputTextFormatted] = useState('');
+
+  const formatPhoneNumber = txt => {
+    if (!txt) {
+      return txt;
+    }
+    const phoneNumber = txt.replace(/[^\d]/g, '');
+
+    const phoneNumberLength = phoneNumber.length;
+
+    if (phoneNumberLength < 4) {
+      return phoneNumber;
+    }
+
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    }
+
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+      3,
+      6,
+    )}-${phoneNumber.slice(6, 10)}`;
+  };
 
   useEffect(() => {
-    setInputText(text);
+    setInputText(formatPhoneNumber(text));
   }, [text]);
 
   return (
-    <View style={globalStyles.formItem.container}>
+    <View style={[globalStyles.formItem.container, style]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
       <View style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
-        <PhoneInput
-          placeholder={placeholder}
-          defaultValue={inputTextFormatted}
-          defaultCode="RO"
-          layout="first"
-          disableArrowIcon
-          autoFocus={false}
-          onChangeText={txt => {
-            setInputText(txt);
-          }}
-          onChangeFormattedText={txt => {
-            onChangeInput(txt);
-          }}
-          containerStyle={styles.container}
-          textContainerStyle={styles.textContainer}
-          textInputStyle={styles.textInput}
-          countryPickerButtonStyle={styles.countryPickerButton}
-          flagButtonStyle={styles.flagButton}
-        />
-      </View>
-      {inputTextFormatted && (
-        <TouchableOpacity
-          onPress={() => {
-            setInputText('');
-            setInputTextFormatted('');
-          }}
-          style={globalStyles.formItem.crossIcon}>
-          <Entypo
-            name="circle-with-cross"
-            size={24}
-            color={Colors.ultramarineBlue}
+        <View style={globalStyles.formItem.inputContainer}>
+          <RNTextInput
+            maxLength={14}
+            keyboardType={'decimal-pad'}
+            placeholder={placeholder}
+            placeholderTextColor={Colors.starDust}
+            value={inputText}
+            onChangeText={txt => {
+              setInputText(formatPhoneNumber(txt));
+            }}
+            onEndEditing={() => {
+              onEndEditing(inputText.replace(/[()]/g, ''));
+            }}
+            style={globalStyles.formItem.input}
           />
-        </TouchableOpacity>
-      )}
+        </View>
+        {inputText && (
+          <TouchableOpacity
+            onPress={() => {
+              setInputText('');
+            }}
+            style={globalStyles.formItem.crossIcon}>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={Colors.ultramarineBlue}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
 
-export default PhoneInputWithIcon;
+export default TextInputWithIcon;

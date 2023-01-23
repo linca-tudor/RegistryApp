@@ -102,7 +102,7 @@ const UserForm = ({onSubmitPress}) => {
         }}
         text={phoneNumber}
         title="Phone Number"
-        placeholder="Type here"
+        placeholder="(021) 234-5678"
         icon={
           <MaterialCommunityIcons
             name="phone-dial"
