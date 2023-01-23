@@ -5,10 +5,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Routes from '~/helpers/Routes';
 import FeedScreen from '~/screens/FeedScreen';
 import ProfileScreen from '~/screens/PofileScreen';
-import AddProfileContainer from '~/screens/AddProfileScreen';
+import AddProfileScreen from '~/screens/AddProfileScreen';
+import EditProfileScreen from '~/screens/EditProfileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '~/helpers/Colors';
-import AddProfileScreen from '~/screens/AddProfileScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -25,6 +25,7 @@ const ListStackNavigator = () => {
         id={({params}) => params.id}
       />
       <Stack.Screen name={Routes.newProfile} component={AddProfileScreen} />
+      <Stack.Screen name={Routes.editProfile} component={EditProfileScreen} />
     </Stack.Navigator>
   );
 };
@@ -64,7 +65,7 @@ const RootTabNavigator = () => {
         tabBarInactiveTintColor: Colors.warmGrey,
       })}>
       <Tab.Screen name={Routes.listNavigator} component={ListStackNavigator} />
-      <Tab.Screen name={Routes.search} component={AddProfileContainer} />
+      <Tab.Screen name={Routes.search} component={SearchScreen} />
     </Tab.Navigator>
   );
 };

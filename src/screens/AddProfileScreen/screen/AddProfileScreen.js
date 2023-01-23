@@ -12,7 +12,7 @@ const AddProfileScreen = ({onSubmitPress}) => {
   return (
     <SafeAreaView style={[globalStyles.flex, styles.container]}>
       <ScrollView style={{width: '100%'}} showsVerticalScrollIndicator={false}>
-        <UserForm onSubmitPress={onSubmitPress} />
+        <UserForm onSubmitPress={onSubmitPress} buttonTitle={'Submit'} />
       </ScrollView>
     </SafeAreaView>
   );

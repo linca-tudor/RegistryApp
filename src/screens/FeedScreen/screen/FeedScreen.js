@@ -35,7 +35,7 @@ const FeedFooter = () => {
   );
 };
 
-const FeedScreen = ({data, onItemPress, onAddIconPress}) => {
+const FeedScreen = ({data, onItemPress, onAddPress}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   return (
@@ -53,7 +53,7 @@ const FeedScreen = ({data, onItemPress, onAddIconPress}) => {
       />
       <RoundButton
         icon={<Entypo name="plus" size={50} color={Colors.white} />}
-        onPress={onAddIconPress}
+        onPress={onAddPress}
       />
     </SafeAreaView>
   );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
@@ -12,7 +12,7 @@ import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 import Button from '~/components/Button';
 import moment from 'moment';
 
-const UserForm = ({onSubmitPress}) => {
+const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -24,6 +24,20 @@ const UserForm = ({onSubmitPress}) => {
   const [quote, setQuote] = useState('');
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
+
+  useEffect(() => {
+    if (profile) {
+      setFirstName(profile.firstName);
+      setLastName(profile.lastName);
+      setGender(profile.gender);
+      setPhoneNumber(profile.phoneNumber);
+      setBirthDate(moment(profile.birthDate).toDate());
+      setAddress(profile.address);
+      setEmail(profile.email);
+      setJob(profile.job);
+      setQuote(profile.quote);
+    }
+  }, [profile]);
 
   return (
     <View style={[globalStyles.flex, styles.container]}>
@@ -196,7 +210,7 @@ const UserForm = ({onSubmitPress}) => {
             job: job,
           });
         }}
-        title={'Submit Data'}
+        title={buttonTitle}
         containerStyle={{marginTop: 20, marginBottom: 30}}
       />
     </View>

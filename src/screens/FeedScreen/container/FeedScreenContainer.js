@@ -25,7 +25,7 @@ const FeedScreenContainer = () => {
     navigate(Routes.details, {id: id});
   };
 
-  const onAddIconPress = () => {
+  const onAddPress = () => {
     navigate(Routes.newProfile);
   };
 
@@ -33,7 +33,7 @@ const FeedScreenContainer = () => {
     <PeopleList
       data={usersFeed}
       onItemPress={onItemPress}
-      onAddIconPress={onAddIconPress}
+      onAddPress={onAddPress}
     />
   );
 };
