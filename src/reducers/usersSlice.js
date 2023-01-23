@@ -68,8 +68,8 @@ const sliceOptions = {
       .addCase(addUser.fulfilled, (state, action) => {
         state.profiles = {
           ...state.profiles,
-          [action.payload.data.id]: {
-            ...action.payload.data,
+          [action.payload.data.data.id]: {
+            ...action.payload.data.data,
             isPending: false,
             error: '',
           },

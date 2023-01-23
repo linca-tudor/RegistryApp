@@ -3,6 +3,7 @@ const Routes = {
   listNavigator: 'List',
   search: 'Search',
   details: 'DetailsScreen',
+  newProfile: 'AddProfileScreen',
 };
 
 export default Routes;

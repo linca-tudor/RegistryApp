@@ -17,7 +17,7 @@ const UserForm = ({onSubmitPress}) => {
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [birthDate, setBirthDate] = useState(new Date());
+  const [birthDate, setBirthDate] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
