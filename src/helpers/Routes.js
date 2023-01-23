@@ -4,6 +4,7 @@ const Routes = {
   search: 'Search',
   details: 'DetailsScreen',
   newProfile: 'AddProfileScreen',
+  editProfile: 'EditProfileScreen',
 };
 
 export default Routes;

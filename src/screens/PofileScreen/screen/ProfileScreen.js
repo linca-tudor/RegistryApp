@@ -10,8 +10,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Foundation from 'react-native-vector-icons/Foundation';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
+import RoundButton from '~/components/RoundButton';
 
 const ProfileScreen = ({
   address,
@@ -25,6 +27,7 @@ const ProfileScreen = ({
   phoneNumber,
   quote,
   isPending,
+  onEditPress,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -152,6 +155,11 @@ const ProfileScreen = ({
           />
         </View>
       </Animated.View>
+      <RoundButton
+        icon={<MaterialIcons name="edit" size={40} color={Colors.white} />}
+        onPress={onEditPress}
+        position={'right'}
+      />
     </>
   );
 };

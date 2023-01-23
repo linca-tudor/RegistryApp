@@ -1,15 +1,35 @@
 import {Platform, StyleSheet} from 'react-native';
 import Colors from '~/helpers/Colors';
 
-const getStyles = () => {
+const getStyles = position => {
+  var alignment = {};
+
+  switch (position) {
+    case 'left':
+      alignment = {
+        alignSelf: 'flex-start',
+        left: 20,
+      };
+      break;
+    case 'right':
+      alignment = {
+        alignSelf: 'flex-end',
+        right: 20,
+      };
+      break;
+
+    default:
+      alignment = {
+        alignSelf: 'center',
+      };
+      break;
+  }
   return StyleSheet.create({
     button: {
       width: 70,
       height: 70,
-      bottom: 10,
-      // right: 20,
-      // left: 10,
-      alignSelf: 'center',
+      bottom: 20,
+      ...alignment,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Colors.lavander,
