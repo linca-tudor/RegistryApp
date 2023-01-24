@@ -13,15 +13,12 @@ const getGlobalStyles = () => {
         alignItems: 'center',
         height: 67.5,
         marginVertical: 7.5,
-        marginRight: 15,
       },
       iconContainer: {
-        height: '65%',
-        width: 60,
+        height: 43.9,
+        width: 50,
         justifyContent: 'center',
-        alignItems: 'center',
-        borderRightColor: Colors.warmGrey,
-        borderRightWidth: 2,
+        alignItems: 'flex-start',
       },
       crossIcon: {
         position: 'absolute',

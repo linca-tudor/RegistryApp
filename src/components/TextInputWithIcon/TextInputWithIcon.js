@@ -5,6 +5,7 @@ import {
   TextInput as RNTextInput,
   Text,
 } from 'react-native';
+import SimpleLineDivider from '~/components/SimpleLineDivider';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './TextInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
@@ -29,6 +30,13 @@ const TextInputWithIcon = ({
   return (
     <View style={[globalStyles.formItem.container, style]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <SimpleLineDivider
+        orientation={'vertical'}
+        size={43.9}
+        thickness={2}
+        color={Colors.warmGrey}
+        borderRadius={1}
+      />
       <View style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
         <View style={globalStyles.formItem.inputContainer}>

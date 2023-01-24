@@ -88,6 +88,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             name="gender-non-binary"
             size={45}
             color={Colors.lavander}
+            style={{marginLeft: -5}}
           />
         }
       />
@@ -138,6 +139,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             name="home-map-marker"
             size={40}
             color={Colors.lavander}
+            style={{marginLeft: -2}}
           />
         }
       />
@@ -199,7 +201,14 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         value={quote}
         title="Favourite Quote"
         placeholder="Roses are red, violets are blue"
-        icon={<Foundation name="quote" size={37.5} color={Colors.lavander} />}
+        icon={
+          <Foundation
+            name="quote"
+            size={37.5}
+            color={Colors.lavander}
+            style={{marginLeft: 1}}
+          />
+        }
       />
       <Button
         onPress={() => {

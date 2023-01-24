@@ -5,6 +5,7 @@ import {
   TextInput as RNTextInput,
   Text,
 } from 'react-native';
+import SimpleLineDivider from '~/components/SimpleLineDivider';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './DateInputWithIcon.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
@@ -33,6 +34,13 @@ const DateInputWithIcon = ({
   return (
     <View style={[style, globalStyles.formItem.container]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
+      <SimpleLineDivider
+        orientation={'vertical'}
+        size={43.2}
+        thickness={2}
+        color={Colors.warmGrey}
+        borderRadius={1}
+      />
       <TouchableOpacity
         onPress={() => setModalOpen(true)}
         style={globalStyles.formItem.textContainer}>
