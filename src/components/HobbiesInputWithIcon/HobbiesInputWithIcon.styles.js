@@ -8,7 +8,7 @@ const getStyles = () => {
       flexDirection: 'row',
       alignItems: 'flex-start',
       marginVertical: 7.5,
-      marginRight: 15,
+      marginRight: 53,
     },
     iconContainer: {
       height: 43.9,
@@ -24,7 +24,6 @@ const getStyles = () => {
       paddingRight: 10,
     },
     textContainer: {
-      // flexGrow: 1,
       marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
@@ -42,12 +41,11 @@ const getStyles = () => {
       paddingHorizontal: 6,
     },
     input: {
-      flexGrow: 1,
       fontSize: 16.5,
       fontWeight: '400',
       color: Colors.black,
       marginLeft: Platform.OS === 'android' ? -3.5 : 0,
-      marginRight: 35,
+      marginRight: 29,
     },
   });
 };

@@ -43,7 +43,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   }, [profile]);
 
   return (
-    <View style={[styles.container]}>
+    <View style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
         onEndEditing={text => {
           setFirstName(text);

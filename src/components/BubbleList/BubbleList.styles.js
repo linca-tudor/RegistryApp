@@ -22,6 +22,7 @@ const getStyles = () => {
       marginRight: 2.5,
     },
     text: {
+      flex: 1,
       fontSize: 14,
       color: Colors.black,
     },

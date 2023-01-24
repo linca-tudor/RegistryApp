@@ -13,7 +13,7 @@ const BubbleList = ({items}) => {
     return (
       <View style={styles.bubbleContainer}>
         <View style={styles.textContainer}>
-          <Text numberOfLines={2} style={styles.text}>
+          <Text lineBreakMode="tail" numberOfLines={2} style={styles.text}>
             {item.name}
           </Text>
         </View>
