@@ -5,10 +5,8 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
-      width: '100%',
       flexDirection: 'row',
       alignItems: 'flex-start',
-      // height: 67.5,
       marginVertical: 7.5,
       marginRight: 15,
     },
@@ -26,8 +24,7 @@ const getStyles = () => {
       paddingRight: 10,
     },
     textContainer: {
-      height: 200,
-      flexGrow: 1,
+      // flexGrow: 1,
       marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
@@ -45,7 +42,7 @@ const getStyles = () => {
       paddingHorizontal: 6,
     },
     input: {
-      flex: 1,
+      flexGrow: 1,
       fontSize: 16.5,
       fontWeight: '400',
       color: Colors.black,

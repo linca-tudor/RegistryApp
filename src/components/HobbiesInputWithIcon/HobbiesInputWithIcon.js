@@ -32,18 +32,18 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
     {
       name: 'Reading',
     },
-    // {
-    //   name: 'Research',
-    // },
-    // {
-    //   name: 'Shortwave listening',
-    // },
-    // {
-    //   name: 'Audiophile',
-    // },
-    // {
-    //   name: 'Aircraft spotting',
-    // },
+    {
+      name: 'Research',
+    },
+    {
+      name: 'Shortwave listening',
+    },
+    {
+      name: 'Audiophile',
+    },
+    {
+      name: 'Aircraft spotting',
+    },
   ];
 
   return (
@@ -51,14 +51,14 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
       <View style={styles.iconContainer}>{icon}</View>
       <SimpleLineDivider
         orientation={'vertical'}
-        size={200}
+        size={50}
         thickness={2}
         color={Colors.warmGrey}
         borderRadius={1}
       />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
-        {/* <BubbleList items={selectedHobbies} /> */}
+        <BubbleList items={selectedHobbies} />
         <View style={styles.inputContainer}>
           <RNTextInput
             placeholder={placeholder}

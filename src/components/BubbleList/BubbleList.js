@@ -11,16 +11,20 @@ const BubbleList = ({items}) => {
 
   const Bubble = ({item, index}) => {
     return (
-      <View>
-        <Text>{item.name}</Text>
+      <View style={styles.bubbleContainer}>
+        <View style={styles.textContainer}>
+          <Text numberOfLines={2} style={styles.text}>
+            {item.name}
+          </Text>
+        </View>
         <TouchableOpacity
           onPress={() => {
             console.log(`Cross pressed on item no. ${index}`);
           }}
-          style={globalStyles.formItem.crossIcon}>
+          style={styles.crossIcon}>
           <Entypo
             name="circle-with-cross"
-            size={24}
+            size={15}
             color={Colors.ultramarineBlue}
           />
         </TouchableOpacity>
@@ -28,7 +32,7 @@ const BubbleList = ({items}) => {
     );
   };
   return (
-    <View>
+    <View style={styles.container}>
       {items.map((item, index) => {
         return <Bubble item={item} index={index} />;
       })}
