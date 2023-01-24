@@ -9,7 +9,7 @@ import {v4 as uuidv4} from 'uuid';
 const AddProfileContainer = () => {
   const dispatch = useDispatch();
 
-  const onSubmitPress = profile => {
+  const onSubmitPress = async profile => {
     dispatch(addUser({['id']: uuidv4(), ...profile}));
   };
 

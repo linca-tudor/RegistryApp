@@ -16,15 +16,15 @@ const TextInputWithIcon = ({
   style,
   icon,
   title,
-  text,
+  value,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
 
   useEffect(() => {
-    setInputText(text);
-  }, [text]);
+    setInputText(value);
+  }, [value]);
 
   return (
     <View style={[globalStyles.formItem.container, style]}>

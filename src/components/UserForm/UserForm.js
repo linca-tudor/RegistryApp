@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
+import moment from 'moment';
+import DateInputWithIcon from '~/components/DateInputWithIcon';
+import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
+import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
+import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
+import Button from '~/components/Button';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
 import Colors from '~/helpers/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
-import DateInputWithIcon from '~/components/DateInputWithIcon';
-import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
-import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
-import Button from '~/components/Button';
-import moment from 'moment';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -22,6 +24,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
   const [quote, setQuote] = useState('');
+  const [hobbies, setHobbies] = useState([]);
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -42,11 +45,10 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   return (
     <View style={[globalStyles.flex, styles.container]}>
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setFirstName(text);
         }}
-        text={firstName}
+        value={firstName}
         title="First Name"
         placeholder="John / Jane"
         icon={
@@ -58,12 +60,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setLastName(text);
         }}
         style={styles.textInput}
-        text={lastName}
+        value={lastName}
         title="Last Name"
         placeholder="Doe"
         icon={
@@ -75,12 +76,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setGender(text);
         }}
         style={styles.textInput}
-        text={gender}
+        value={gender}
         title="Gender"
         placeholder="Any <3"
         icon={
@@ -114,7 +114,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         onEndEditing={text => {
           setPhoneNumber(text);
         }}
-        text={phoneNumber}
+        value={phoneNumber}
         title="Phone Number"
         placeholder="(021) 234-5678"
         icon={
@@ -126,12 +126,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setAddress(text);
         }}
         style={styles.textInput}
-        text={address}
+        value={address}
         title="Address"
         placeholder="First Street"
         icon={
@@ -143,12 +142,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setEmail(text);
         }}
         style={styles.textInput}
-        text={email}
+        value={email}
         title="E-mail Address"
         placeholder="myemail@domain.com"
         icon={
@@ -159,9 +157,19 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           />
         }
       />
-
+      <HobbiesInputWithIcon
+        onEndEditing={text => {
+          setHobbies(text);
+        }}
+        style={styles.textInput}
+        value={hobbies}
+        title="Hobbies"
+        placeholder="Playing guitar"
+        icon={
+          <Ionicons name="game-controller" size={35} color={Colors.lavander} />
+        }
+      />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setJob(text);
         }}
@@ -169,7 +177,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           setJob('');
         }}
         style={styles.textInput}
-        text={job}
+        value={job}
         title="Job Title"
         placeholder="Developer"
         icon={
@@ -181,7 +189,6 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <TextInputFieldWithIcon
-        secureText={false}
         onEndEditing={text => {
           setQuote(text);
         }}
@@ -189,7 +196,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           setQuote('');
         }}
         style={styles.textInput}
-        text={quote}
+        value={quote}
         title="Favourite Quote"
         placeholder="Roses are red, violets are blue"
         icon={<Foundation name="quote" size={37.5} color={Colors.lavander} />}

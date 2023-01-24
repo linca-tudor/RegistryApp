@@ -5,66 +5,59 @@ import {
   TextInput as RNTextInput,
   Text,
 } from 'react-native';
+import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './PhoneInputWithIcon.styles';
-import Colors from '~/helpers/Colors';
+import getStyles from './HobbiesInputWithIcon.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
+import Colors from '~/helpers/Colors';
+import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
+import BubbleList from '~/components//BubbleList';
 
-const TextInputWithIcon = ({
-  placeholder,
-  onEndEditing,
-  style,
-  icon,
-  title,
-  value,
-}) => {
+const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
-
-  const formatPhoneNumber = txt => {
-    if (!txt) {
-      return txt;
-    }
-    const phoneNumber = txt.replace(/[^\d]/g, '');
-
-    const phoneNumberLength = phoneNumber.length;
-
-    if (phoneNumberLength < 4) {
-      return phoneNumber;
-    }
-
-    if (phoneNumberLength < 7) {
-      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    }
-
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-      3,
-      6,
-    )}-${phoneNumber.slice(6, 10)}`;
-  };
+  const [filteredData, setFilteredData] = useState('');
 
   useEffect(() => {
-    setInputText(formatPhoneNumber(value));
-  }, [value]);
+    setFilteredData(formattedHobbies);
+  }, [filteredData]);
+
+  const renderItem = ({item}, onPress) => {
+    return <Text style={{height: 100, width: 50}}>item</Text>;
+  };
+
+  const selectedHobbies = [
+    {
+      name: 'Reading',
+    },
+    {
+      name: 'Research',
+    },
+    {
+      name: 'Shortwave listening',
+    },
+    {
+      name: 'Audiophile',
+    },
+    {
+      name: 'Aircraft spotting',
+    },
+  ];
 
   return (
     <View style={[globalStyles.formItem.container, style]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
       <View style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
-        <View style={globalStyles.formItem.inputContainer}>
+        <BubbleList items={selectedHobbies} />
+        <View style={styles.inputContainer}>
           <RNTextInput
-            maxLength={14}
-            keyboardType={'decimal-pad'}
             placeholder={placeholder}
             placeholderTextColor={Colors.starDust}
             value={inputText}
             onChangeText={txt => {
-              setInputText(formatPhoneNumber(txt));
-            }}
-            onEndEditing={() => {
-              onEndEditing(inputText.replace(/[()]/g, ''));
+              setInputText(txt);
             }}
             style={globalStyles.formItem.input}
           />
@@ -82,9 +75,17 @@ const TextInputWithIcon = ({
             />
           </TouchableOpacity>
         )}
+        {inputText && (
+          <FlashList
+            data={filteredData}
+            // keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => <Text>{item.name}</Text>}
+            estimatedItemSize={50}
+          />
+        )}
       </View>
     </View>
   );
 };
 
-export default TextInputWithIcon;
+export default HobbiesInputWithIcon;
