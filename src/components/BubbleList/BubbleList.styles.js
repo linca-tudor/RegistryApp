@@ -4,11 +4,13 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
+      marginTop: 10,
+      marginLeft: 4,
       flexDirection: 'row',
       flexWrap: 'wrap',
     },
     bubbleContainer: {
-      backgroundColor: Colors.lavander,
+      backgroundColor: Colors.paleLavender,
       margin: 2,
       flexDirection: 'row',
       alignItems: 'center',

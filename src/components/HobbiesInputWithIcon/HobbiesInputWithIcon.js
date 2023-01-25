@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {
+import React, {useState, useEffect, useCallback} from 'react';
+import ReactNative, {
   TouchableOpacity,
   View,
   TextInput as RNTextInput,
@@ -19,16 +19,36 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
   const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
   const [filteredData, setFilteredData] = useState('');
+  const [showDropDown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     setFilteredData(formattedHobbies);
   }, [filteredData]);
 
-  // const renderItem = ({item}, onPress) => {
-  //   return <Text style={{height: 100, width: 50}}>item</Text>;
-  // };
+  const renderDropDown = () => {
+    return (
+      <View style={{height: 100, width: '100%', backgroundColor: 'magenta'}}>
+        <Text>Dropdown</Text>
+      </View>
+    );
+  };
 
   const selectedHobbies = [
+    {
+      name: 'Reading',
+    },
+    {
+      name: 'Research',
+    },
+    {
+      name: 'Shortwave listening',
+    },
+    {
+      name: 'Audiophile',
+    },
+    {
+      name: 'Aircraft spotting',
+    },
     {
       name: 'Reading',
     },
@@ -68,21 +88,26 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
               setInputText(txt);
             }}
             style={styles.input}
-          />
-        </View>
-        {inputText && (
-          <TouchableOpacity
-            onPress={() => {
-              setInputText('');
+            onFocus={() => setShowDropdown(true)}
+            onEndEditing={() => {
+              setShowDropdown(false);
             }}
-            style={styles.crossIcon}>
-            <Entypo
-              name="circle-with-cross"
-              size={24}
-              color={Colors.ultramarineBlue}
-            />
-          </TouchableOpacity>
-        )}
+          />
+          {inputText && (
+            <TouchableOpacity
+              onPress={() => {
+                setInputText('');
+              }}
+              style={styles.crossIcon}>
+              <Entypo
+                name="circle-with-cross"
+                size={24}
+                color={Colors.ultramarineBlue}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
+        {showDropDown && renderDropDown()}
         {/* {inputText && (
           <FlashList
             data={filteredData}

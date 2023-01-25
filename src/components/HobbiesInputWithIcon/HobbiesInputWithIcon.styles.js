@@ -8,7 +8,6 @@ const getStyles = () => {
       flexDirection: 'row',
       alignItems: 'flex-start',
       marginVertical: 7.5,
-      marginRight: 53,
     },
     iconContainer: {
       height: 43.9,
@@ -18,13 +17,12 @@ const getStyles = () => {
     },
     crossIcon: {
       position: 'absolute',
-      alignSelf: 'flex-end',
-      // marginTop: 21.75,
       bottom: 15,
       opacity: 0.5,
       paddingRight: 10,
     },
     textContainer: {
+      flex: 1,
       marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
@@ -39,14 +37,18 @@ const getStyles = () => {
       height: 52.5,
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'flex-end',
       paddingHorizontal: 6,
+      // backgroundColor: 'magenta',
     },
     input: {
+      flex: 1,
+      // backgroundColor: 'blue',
       fontSize: 16.5,
       fontWeight: '400',
       color: Colors.black,
       marginLeft: Platform.OS === 'android' ? -3.5 : 0,
-      marginRight: 29,
+      marginRight: 35,
     },
   });
 };

@@ -11,9 +11,9 @@ const BubbleList = ({items}) => {
 
   const Bubble = ({item, index}) => {
     return (
-      <View style={styles.bubbleContainer}>
+      <View key={index} style={styles.bubbleContainer}>
         <View style={styles.textContainer}>
-          <Text lineBreakMode="tail" numberOfLines={2} style={styles.text}>
+          <Text numberOfLines={2} style={styles.text}>
             {item.name}
           </Text>
         </View>
@@ -34,7 +34,7 @@ const BubbleList = ({items}) => {
   return (
     <View style={styles.container}>
       {items.map((item, index) => {
-        return <Bubble item={item} index={index} />;
+        return <Bubble item={item} index={index} key={index} />;
       })}
     </View>
   );

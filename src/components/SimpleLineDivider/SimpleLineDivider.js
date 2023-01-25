@@ -8,10 +8,11 @@ const SimpleLineDivider = ({
   color,
   orientation,
   borderRadius,
+  style,
 }) => {
   const styles = getStyles(size, thickness, color, orientation, borderRadius);
 
-  return <View style={styles.divider} />;
+  return <View style={[styles.divider, style]} />;
 };
 
 export default SimpleLineDivider;
