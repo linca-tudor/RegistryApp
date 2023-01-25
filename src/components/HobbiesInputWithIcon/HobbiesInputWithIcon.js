@@ -20,10 +20,16 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
   const [inputText, setInputText] = useState('');
   const [filteredData, setFilteredData] = useState('');
   const [showDropDown, setShowDropdown] = useState(false);
+  const [fieldHeight, setFieldHeight] = useState(null);
 
   useEffect(() => {
     setFilteredData(formattedHobbies);
   }, [filteredData]);
+
+  const onLayout = event => {
+    const {x, y, height, width} = event.nativeEvent.layout;
+    setFieldHeight(height);
+  };
 
   const renderDropDown = () => {
     return (
@@ -71,14 +77,15 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
       <View style={styles.iconContainer}>{icon}</View>
       <SimpleLineDivider
         orientation={'vertical'}
-        size={50}
+        size={fieldHeight - 23.6}
         thickness={2}
         color={Colors.warmGrey}
         borderRadius={1}
+        style={{marginTop: 11.8}}
       />
-      <View style={styles.textContainer}>
+      <View style={styles.textContainer} onLayout={onLayout}>
         <Text style={styles.title}>{title}</Text>
-        <BubbleList items={selectedHobbies} />
+        {selectedHobbies.length > 0 && <BubbleList items={selectedHobbies} />}
         <View style={styles.inputContainer}>
           <RNTextInput
             placeholder={placeholder}
