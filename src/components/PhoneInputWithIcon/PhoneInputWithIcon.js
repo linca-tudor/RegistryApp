@@ -76,20 +76,20 @@ const TextInputWithIcon = ({
             }}
             style={globalStyles.formItem.input}
           />
+          {inputText && (
+            <TouchableOpacity
+              onPress={() => {
+                setInputText('');
+              }}
+              style={globalStyles.formItem.crossIcon}>
+              <Entypo
+                name="circle-with-cross"
+                size={24}
+                color={Colors.ultramarineBlue}
+              />
+            </TouchableOpacity>
+          )}
         </View>
-        {inputText && (
-          <TouchableOpacity
-            onPress={() => {
-              setInputText('');
-            }}
-            style={globalStyles.formItem.crossIcon}>
-            <Entypo
-              name="circle-with-cross"
-              size={24}
-              color={Colors.ultramarineBlue}
-            />
-          </TouchableOpacity>
-        )}
       </View>
     </View>
   );

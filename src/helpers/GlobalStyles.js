@@ -22,8 +22,7 @@ const getGlobalStyles = () => {
       },
       crossIcon: {
         position: 'absolute',
-        alignSelf: 'flex-end',
-        marginVertical: 21.75,
+        bottom: 21.95,
         opacity: 0.5,
         paddingRight: 10,
       },
@@ -43,6 +42,7 @@ const getGlobalStyles = () => {
         height: 42.5,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'flex-end',
         paddingHorizontal: 6,
       },
       input: {

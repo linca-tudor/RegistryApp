@@ -34,16 +34,14 @@ const getStyles = () => {
       marginLeft: 6,
     },
     inputContainer: {
-      height: 52.5,
+      height: 42.5,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-end',
       paddingHorizontal: 6,
-      // backgroundColor: 'magenta',
     },
     input: {
       flex: 1,
-      // backgroundColor: 'blue',
       fontSize: 16.5,
       fontWeight: '400',
       color: Colors.black,
