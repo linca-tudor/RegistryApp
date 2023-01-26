@@ -14,6 +14,7 @@ const getStyles = () => {
       width: 50,
       justifyContent: 'center',
       alignItems: 'flex-start',
+      marginTop: 11.8,
     },
     crossIcon: {
       position: 'absolute',
