@@ -12,7 +12,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DropdownInputWithIcon from '~/components/DropdownInputWithIcon';
+// import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
+import InputFieldWithDropdown from '~/components/InputFieldWithDropdown';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -159,7 +160,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           />
         }
       />
-      <DropdownInputWithIcon
+      <InputFieldWithDropdown
         onEndEditing={text => {
           setHobbies(text);
         }}
