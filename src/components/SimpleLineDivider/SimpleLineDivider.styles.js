@@ -1,22 +1,31 @@
 import {StyleSheet} from 'react-native';
 
-const getStyles = (size, thickness, color, orientation, borderRadius) => {
-  var usedHeight = 0;
-  var usedWidth = 0;
+const getStyles = (thickness, color, orientation, borderRadius, margin) => {
+  var height = 0;
+  var width = 0;
+  var marginVertical = 0;
+  var marginHorizontal = 0;
 
   if (orientation === 'vertical') {
-    usedHeight = size;
-    usedWidth = thickness;
+    height = undefined;
+    width = thickness;
+    marginVertical = margin;
+    marginHorizontal = undefined;
   } else if (orientation === 'horizontal') {
-    usedHeight = thickness;
-    usedWidth = size;
+    height = thickness;
+    width = undefined;
+    marginVertical = undefined;
+    marginHorizontal = margin;
   }
   return StyleSheet.create({
     divider: {
-      height: usedHeight,
-      width: usedWidth,
+      height: height,
+      width: width,
       backgroundColor: color,
       borderRadius: borderRadius,
+      marginVertical: marginVertical,
+      marginHorizontal: marginHorizontal,
+      flex: 1,
     },
   });
 };

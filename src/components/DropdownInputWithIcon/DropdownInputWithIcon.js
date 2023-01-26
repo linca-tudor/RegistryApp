@@ -32,53 +32,22 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
     setFieldHeight(height);
   };
 
-  const selectedHobbies = [
-    {
-      name: 'Reading',
-    },
-    {
-      name: 'Research',
-    },
-    {
-      name: 'Shortwave listening',
-    },
-    {
-      name: 'Audiophile',
-    },
-    {
-      name: 'Aircraft spotting',
-    },
-    {
-      name: 'Reading',
-    },
-    {
-      name: 'Research',
-    },
-    {
-      name: 'Shortwave listening',
-    },
-    {
-      name: 'Audiophile',
-    },
-    {
-      name: 'Aircraft spotting',
-    },
-  ];
-
   return (
     <View style={[styles.container, style]}>
       <View style={styles.iconContainer}>{icon}</View>
-      <SimpleLineDivider
-        orientation={'vertical'}
-        size={fieldHeight - 23.6}
-        thickness={2}
-        color={Colors.warmGrey}
-        borderRadius={1}
-        style={{marginTop: 11.8}}
-      />
+      <View>
+        <SimpleLineDivider
+          orientation={'vertical'}
+          thickness={2}
+          color={Colors.warmGrey}
+          borderRadius={1}
+          margin={11.8}
+        />
+      </View>
+
       <View style={styles.textContainer} onLayout={onLayout}>
         <Text style={styles.title}>{title}</Text>
-        {selectedHobbies.length > 0 && <BubbleList items={selectedHobbies} />}
+        {/* {selectedHobbies.length > 0 && <BubbleList items={selectedHobbies} />} */}
         <View style={styles.inputContainer}>
           <RNTextInput
             placeholder={placeholder}

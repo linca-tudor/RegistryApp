@@ -52,13 +52,15 @@ const TextInputWithIcon = ({
   return (
     <View style={[globalStyles.formItem.container, style]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
-      <SimpleLineDivider
-        orientation={'vertical'}
-        size={43.9}
-        thickness={2}
-        color={Colors.warmGrey}
-        borderRadius={1}
-      />
+      <View>
+        <SimpleLineDivider
+          orientation={'vertical'}
+          thickness={2}
+          color={Colors.warmGrey}
+          borderRadius={1}
+          margin={11.8}
+        />
+      </View>
       <View style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
         <View style={globalStyles.formItem.inputContainer}>

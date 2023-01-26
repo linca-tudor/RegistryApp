@@ -3,14 +3,14 @@ import {View} from 'react-native';
 import getStyles from './SimpleLineDivider.styles';
 
 const SimpleLineDivider = ({
-  size,
   thickness,
   color,
   orientation,
   borderRadius,
   style,
+  margin,
 }) => {
-  const styles = getStyles(size, thickness, color, orientation, borderRadius);
+  const styles = getStyles(thickness, color, orientation, borderRadius, margin);
 
   return <View style={[styles.divider, style]} />;
 };

@@ -34,13 +34,15 @@ const DateInputWithIcon = ({
   return (
     <View style={[style, globalStyles.formItem.container]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
-      <SimpleLineDivider
-        orientation={'vertical'}
-        size={43.2}
-        thickness={2}
-        color={Colors.warmGrey}
-        borderRadius={1}
-      />
+      <View>
+        <SimpleLineDivider
+          orientation={'vertical'}
+          thickness={2}
+          color={Colors.warmGrey}
+          borderRadius={1}
+          margin={11.8}
+        />
+      </View>
       <TouchableOpacity
         onPress={() => setModalOpen(true)}
         style={globalStyles.formItem.textContainer}>

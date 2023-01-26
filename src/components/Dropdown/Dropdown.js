@@ -21,45 +21,8 @@ const Dropdown = ({data, onSelect}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [selected, setSelected] = useState('');
 
-  const selectedHobbies = [
-    {
-      name: 'Reading',
-    },
-    {
-      name: 'Research',
-    },
-    {
-      name: 'Shortwave listening',
-    },
-    {
-      name: 'Audiophile',
-    },
-    {
-      name: 'Aircraft spotting',
-    },
-    {
-      name: 'Reading',
-    },
-    {
-      name: 'Research',
-    },
-    {
-      name: 'Shortwave listening',
-    },
-    {
-      name: 'Audiophile',
-    },
-    {
-      name: 'Aircraft spotting',
-    },
-  ];
-
   const toggleDropdown = () => {
-    console.log(
-      `In toggleDropdown function before if() state is: ${isVisible}`,
-    );
     isVisible ? setIsVisible(false) : openDropdown();
-    console.log(`In toggleDropdown function after if() state is: ${isVisible}`);
   };
 
   const openDropdown = () => {
@@ -71,8 +34,8 @@ const Dropdown = ({data, onSelect}) => {
     setIsVisible(true);
   };
 
-  const onItemPress = ({item}) => {
-    console.log(`onItem press: ${item}`);
+  const onItemPress = item => {
+    console.log(`onItem press: ${item.name}`);
     setSelected(item);
     onSelect(item);
     setIsVisible(false);
@@ -96,13 +59,7 @@ const Dropdown = ({data, onSelect}) => {
         <TouchableOpacity
           style={styles.overlay}
           onPress={() => {
-            console.log(
-              `In renderDropdown function before if() state is: ${isVisible}`,
-            );
             setIsVisible(false);
-            console.log(
-              `In renderDropdown function after if() state is: ${isVisible}`,
-            );
           }}>
           <View
             style={[
@@ -132,9 +89,7 @@ const Dropdown = ({data, onSelect}) => {
       ref={DropdownButton}
       style={styles.button}
       onPress={() => {
-        console.log(`In return function before if() state is: ${isVisible}`);
         toggleDropdown();
-        console.log(`In return function after if() state is: ${isVisible}`);
       }}>
       {renderDropDown()}
     </TouchableOpacity>

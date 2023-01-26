@@ -9,15 +9,8 @@ const getStyles = () => {
       alignItems: 'center',
       backgroundColor: Colors.lightLavender,
       height: 50,
-      zIndex: 1,
+      // zIndex: 1,
       elevation: 1,
-    },
-    buttonText: {
-      flex: 1,
-      textAlign: 'center',
-    },
-    icon: {
-      marginRight: 10,
     },
     dropdown: {
       position: 'absolute',
