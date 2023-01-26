@@ -3,7 +3,8 @@ import axios from 'axios';
 import {DATABASE_URL, API_KEY} from '@env';
 
 const config = {
-  baseURL: DATABASE_URL,
+  // baseURL: DATABASE_URL,
+  baseURL: '',
   headers: {'X-api-key': API_KEY},
 };
 
@@ -43,3 +44,35 @@ export const editUser = createAsyncThunk(
     return addedUser;
   },
 );
+
+// export const getFeed = createAsyncThunk(
+//   'users/getFeed',
+//   async (_, thunkAPI) => {
+//     console.warn('getFeed() Middleware');
+//     return null;
+//   },
+// );
+
+// export const getUserById = createAsyncThunk(
+//   'users/getProfile',
+//   async (id, thunkAPI) => {
+//     console.warn('geUserById() Middleware');
+//     return null;
+//   },
+// );
+
+// export const addUser = createAsyncThunk(
+//   'users/addProfile',
+//   async (profile, thunkAPI) => {
+//     console.warn('addUser() Middleware');
+//     return null;
+//   },
+// );
+
+// export const editUser = createAsyncThunk(
+//   'users/editProfile',
+//   async (profile, thunkAPI) => {
+//     console.warn('getFeed`() Middleware');
+//     return null;
+//   },
+// );

@@ -4,7 +4,6 @@ import moment from 'moment';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
-import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
 import Button from '~/components/Button';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './UserForm.styles';
@@ -13,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DropdownInputWithIcon from '~/components/DropdownInputWithIcon';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -159,7 +159,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           />
         }
       />
-      <HobbiesInputWithIcon
+      <DropdownInputWithIcon
         onEndEditing={text => {
           setHobbies(text);
         }}

@@ -7,19 +7,20 @@ import ReactNative, {
 } from 'react-native';
 import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
-import getStyles from './HobbiesInputWithIcon.styles';
+import getStyles from './DropdownInputWithIcon.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
 import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
 import BubbleList from '~/components//BubbleList';
 import SimpleLineDivider from '~/components/SimpleLineDivider';
+import Dropdown from '~/components/Dropdown';
 
 const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   const [inputText, setInputText] = useState('');
   const [filteredData, setFilteredData] = useState('');
-  const [showDropDown, setShowDropdown] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const [fieldHeight, setFieldHeight] = useState(null);
 
   useEffect(() => {
@@ -29,14 +30,6 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
   const onLayout = event => {
     const {x, y, height, width} = event.nativeEvent.layout;
     setFieldHeight(height);
-  };
-
-  const renderDropDown = () => {
-    return (
-      <View style={{height: 100, width: '100%', backgroundColor: 'magenta'}}>
-        <Text>Dropdown</Text>
-      </View>
-    );
   };
 
   const selectedHobbies = [
@@ -95,9 +88,9 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
               setInputText(txt);
             }}
             style={styles.input}
-            onFocus={() => setShowDropdown(true)}
+            onFocus={() => setIsInputFocused(true)}
             onEndEditing={() => {
-              setShowDropdown(false);
+              setIsInputFocused(false);
             }}
           />
           {inputText && (
@@ -114,15 +107,12 @@ const HobbiesInputWithIcon = ({placeholder, style, icon, title, value}) => {
             </TouchableOpacity>
           )}
         </View>
-        {showDropDown && renderDropDown()}
-        {/* {inputText && (
-          <FlashList
-            data={filteredData}
-            // keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => <Text>{item.name}</Text>}
-            estimatedItemSize={50}
-          />
-        )} */}
+        <Dropdown
+          data={formattedHobbies}
+          onSelect={item => {
+            console.log(item);
+          }}
+        />
       </View>
     </View>
   );
