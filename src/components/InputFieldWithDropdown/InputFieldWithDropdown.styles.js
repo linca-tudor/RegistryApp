@@ -4,20 +4,20 @@ import Colors from '~/helpers/Colors';
 
 const getStyles = () => {
   return StyleSheet.create({
-    crossIcon: {
-      position: 'absolute',
-      opacity: 0.5,
-      paddingRight: 10,
-    },
-    textContainer: {
+    container: {
       zIndex: 100,
       flexDirection: 'column',
       marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
     },
+    crossIcon: {
+      position: 'absolute',
+      opacity: 0.5,
+      paddingRight: 10,
+    },
     inputContainer: {
-      alignItems: 'center',
+      // alignItems: 'center',
       justifyContent: 'flex-end',
       paddingHorizontal: 6,
     },
@@ -38,6 +38,11 @@ const getStyles = () => {
       shadowRadius: 4,
       shadowOffset: {height: 4, width: 0},
       shadowOpacity: 0.5,
+    },
+    dropdownItem: {
+      paddingHorizontal: 10,
+      paddingVertical: 10,
+      borderBottomWidth: 1,
     },
   });
 };
