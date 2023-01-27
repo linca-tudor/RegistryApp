@@ -13,6 +13,7 @@ const HobbiesInputWithIcon = ({
   onChangeText,
   onEndEditing,
   onCrossPress,
+  onChangeHobbies,
   style,
   icon,
   title,
@@ -43,7 +44,9 @@ const HobbiesInputWithIcon = ({
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
-        {selectedHobbies?.length > 0 && <BubbleList items={selectedHobbies} />}
+        {selectedHobbies?.length > 0 && (
+          <BubbleList items={selectedHobbies} onChangeItem={onChangeHobbies} />
+        )}
         <InputFieldWithDropdown
           placeholder={placeholder}
           value={value}

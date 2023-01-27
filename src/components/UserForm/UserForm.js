@@ -24,7 +24,50 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
   const [quote, setQuote] = useState('');
-  const [hobbies, setHobbies] = useState([]);
+  const [hobbies, setHobbies] = useState([
+    {
+      name: '3D printing',
+    },
+    {
+      name: 'Acrobatics',
+    },
+    {
+      name: 'Acting',
+    },
+    {
+      name: 'Amateur radio',
+    },
+    {
+      name: 'Animation',
+    },
+    {
+      name: 'Aquascaping',
+    },
+    {
+      name: 'Astrology',
+    },
+    {
+      name: 'Astronomy',
+    },
+    {
+      name: 'Baking',
+    },
+    {
+      name: 'Baton twirling',
+    },
+    {
+      name: 'Blogging',
+    },
+    {
+      name: 'Building',
+    },
+    {
+      name: 'Board/tabletop games',
+    },
+    {
+      name: 'Book discussion clubs',
+    },
+  ]);
   const [hobbiesInput, setHobbiesInput] = useState('');
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -162,9 +205,12 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         onEndEditing={text => {
           setHobbiesInput(text);
         }}
+        onChangeHobbies={selectedHobbies => {
+          setHobbies(selectedHobbies);
+        }}
         style={styles.textInput}
         value={hobbiesInput}
-        // hobbies={profileHobbies}
+        hobbies={hobbies}
         title="Hobbies"
         placeholder="Playing guitar"
         icon={

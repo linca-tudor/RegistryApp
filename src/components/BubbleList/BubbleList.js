@@ -5,9 +5,13 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Colors from '~/helpers/Colors';
 
-const BubbleList = ({items}) => {
+const BubbleList = ({items, onChangeItem}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
+
+  const removeItem = itemToRemoveIndex => {
+    onChangeItem(items.filter((_, index) => index !== itemToRemoveIndex));
+  };
 
   const Bubble = ({item, index}) => {
     return (
@@ -19,7 +23,7 @@ const BubbleList = ({items}) => {
         </View>
         <TouchableOpacity
           onPress={() => {
-            console.log(`Cross pressed on item no. ${index}`);
+            removeItem(index);
           }}
           style={styles.crossIcon}>
           <Entypo
