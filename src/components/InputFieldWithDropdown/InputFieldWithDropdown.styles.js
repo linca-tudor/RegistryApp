@@ -5,9 +5,9 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
-      zIndex: 100,
+      height: 43.9,
       flexDirection: 'column',
-      marginLeft: 15,
+      // marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
     },
@@ -17,11 +17,14 @@ const getStyles = () => {
       paddingRight: 10,
     },
     inputContainer: {
-      // alignItems: 'center',
+      flex: 1,
+      flexDirection: 'row',
       justifyContent: 'flex-end',
+      alignItems: 'center',
       paddingHorizontal: 6,
     },
     input: {
+      flex: 1,
       fontSize: 16.5,
       fontWeight: '400',
       color: Colors.black,
@@ -29,20 +32,26 @@ const getStyles = () => {
       marginRight: 35,
     },
     dropdown: {
+      elevation: 1,
       position: 'absolute',
-      height: 100,
-      backgroundColor: Colors.lavander,
-      elevation: 5,
+      // marginTop: -10,
+      height: 150,
+      backgroundColor: Colors.paleLavender,
       width: '100%',
       shadowColor: Colors.black,
       shadowRadius: 4,
-      shadowOffset: {height: 4, width: 0},
-      shadowOpacity: 0.5,
+      shadowOffset: {height: 4, width: 1},
+      shadowOpacity: 0.2,
     },
     dropdownItem: {
       paddingHorizontal: 10,
       paddingVertical: 10,
-      borderBottomWidth: 1,
+    },
+    itemText: {
+      fontSize: 14,
+      color: Colors.black,
+      marginTop: 7.5,
+      marginLeft: 6,
     },
   });
 };

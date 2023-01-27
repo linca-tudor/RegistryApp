@@ -4,6 +4,8 @@ import ReactNative, {
   View,
   TextInput as RNTextInput,
   Text,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -11,15 +13,17 @@ import getStyles from './InputFieldWithDropdown.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
 import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
-import BubbleList from '~/components//BubbleList';
-import SimpleLineDivider from '~/components/SimpleLineDivider';
-import Dropdown from '~/components/Dropdown';
 
-const HobbiesInputWithIcon = ({placeholder, value, data}) => {
+const HobbiesInputWithIcon = ({
+  placeholder,
+  value,
+  data,
+  onChangeText,
+  onEndEditing,
+}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
   const [isVisible, setIsVisible] = useState(false);
-  const [inputText, setInputText] = useState('');
   const [filteredData, setFilteredData] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [selected, setSelected] = useState('');
@@ -41,39 +45,33 @@ const HobbiesInputWithIcon = ({placeholder, value, data}) => {
   const renderItem = item => {
     return (
       <TouchableOpacity
-        style={styles.item}
+        style={styles.dropdownItem}
         onPress={() => {
           onItemPress(item);
         }}>
-        <Text style={{color: Colors.black}}>{item.name}</Text>
+        <Text style={[styles.itemText]}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
 
   return (
-    <View style={styles.textContainer}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.inputContainer}>
         <RNTextInput
           placeholder={placeholder}
           placeholderTextColor={Colors.starDust}
-          value={inputText}
-          onChangeText={txt => {
-            setInputText(txt);
-          }}
+          value={value}
+          onChangeText={onChangeText}
           style={styles.input}
-          onFocus={() => {
-            setIsInputFocused(true);
-            setIsVisible(true);
-          }}
-          onEndEditing={() => {
-            setIsInputFocused(false);
-            setIsVisible(false);
-          }}
+          onFocus={toggleDropdown}
+          onEndEditing={toggleDropdown}
         />
-        {inputText && (
+        {value && (
           <TouchableOpacity
             onPress={() => {
-              setInputText('');
+              onChangeText('');
             }}
             style={styles.crossIcon}>
             <Entypo
@@ -84,11 +82,7 @@ const HobbiesInputWithIcon = ({placeholder, value, data}) => {
           </TouchableOpacity>
         )}
       </View>
-      <TouchableOpacity
-        style={styles.overlay}
-        onPress={() => {
-          setIsVisible(false);
-        }}>
+      <TouchableOpacity onPress={toggleDropdown}>
         {isVisible && (
           <View style={[styles.dropdown]}>
             <FlashList
@@ -100,7 +94,7 @@ const HobbiesInputWithIcon = ({placeholder, value, data}) => {
           </View>
         )}
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

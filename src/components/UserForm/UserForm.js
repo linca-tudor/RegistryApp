@@ -3,6 +3,7 @@ import {SafeAreaView, Text, View} from 'react-native';
 import moment from 'moment';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
+import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
 import TextInputFieldWithIcon from '~/components/TextInputWithIcon';
 import Button from '~/components/Button';
 import getGlobalStyles from '~/helpers/GlobalStyles';
@@ -12,8 +13,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
-import InputFieldWithDropdown from '~/components/InputFieldWithDropdown';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -26,6 +25,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [job, setJob] = useState('');
   const [quote, setQuote] = useState('');
   const [hobbies, setHobbies] = useState([]);
+  const [hobbiesInput, setHobbiesInput] = useState('');
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -40,6 +40,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
       setEmail(profile.email);
       setJob(profile.job);
       setQuote(profile.quote);
+      setHobbies(profile.hobbies);
     }
   }, [profile]);
 
@@ -160,12 +161,12 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
           />
         }
       />
-      <InputFieldWithDropdown
+      <HobbiesInputWithIcon
         onEndEditing={text => {
           setHobbies(text);
         }}
         style={styles.textInput}
-        value={hobbies}
+        value={hobbiesInput}
         title="Hobbies"
         placeholder="Playing guitar"
         icon={

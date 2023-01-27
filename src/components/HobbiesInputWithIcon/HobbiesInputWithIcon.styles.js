@@ -5,6 +5,7 @@ import Colors from '~/helpers/Colors';
 const getStyles = () => {
   return StyleSheet.create({
     container: {
+      zIndex: 1,
       flexDirection: 'row',
       alignItems: 'flex-start',
       marginVertical: 7.5,
@@ -15,12 +16,6 @@ const getStyles = () => {
       justifyContent: 'center',
       alignItems: 'flex-start',
       marginTop: 11.8,
-    },
-    crossIcon: {
-      position: 'absolute',
-      bottom: 15,
-      opacity: 0.5,
-      paddingRight: 10,
     },
     textContainer: {
       flex: 1,
@@ -40,14 +35,6 @@ const getStyles = () => {
       alignItems: 'center',
       justifyContent: 'flex-end',
       paddingHorizontal: 6,
-    },
-    input: {
-      flex: 1,
-      fontSize: 16.5,
-      fontWeight: '400',
-      color: Colors.black,
-      marginLeft: Platform.OS === 'android' ? -3.5 : 0,
-      marginRight: 35,
     },
   });
 };
