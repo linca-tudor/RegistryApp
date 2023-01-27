@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Dimensions, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import Routes from '~/helpers/Routes';
@@ -9,6 +9,8 @@ import AddProfileScreen from '~/screens/AddProfileScreen';
 import EditProfileScreen from '~/screens/EditProfileScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '~/helpers/Colors';
+
+const {width, height} = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,33 +42,42 @@ const SearchScreen = () => {
 
 const RootTabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        headerShown: false,
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
+    <View
+      style={{
+        width,
+        height: Platform.OS === 'android' ? height - 37 : height,
+      }}>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
 
-          if (route.name === Routes.listNavigator) {
-            iconName = focused ? 'ios-list' : 'list-outline';
-          } else if (route.name === Routes.search) {
-            iconName = focused ? 'ios-search' : 'search-outline';
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarStyle: {
-          height: 55,
-          paddingBottom: 5,
-          // position: 'absolute',
-        },
-        tabBarLabelStyle: {
-          width: 50,
-        },
-        tabBarActiveTintColor: Colors.lavander,
-        tabBarInactiveTintColor: Colors.warmGrey,
-      })}>
-      <Tab.Screen name={Routes.listNavigator} component={ListStackNavigator} />
-      <Tab.Screen name={Routes.search} component={SearchScreen} />
-    </Tab.Navigator>
+            if (route.name === Routes.listNavigator) {
+              iconName = focused ? 'ios-list' : 'list-outline';
+            } else if (route.name === Routes.search) {
+              iconName = focused ? 'ios-search' : 'search-outline';
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarStyle: {
+            height: 55,
+            paddingBottom: 5,
+            // position: 'absolute',
+          },
+          tabBarLabelStyle: {
+            width: 50,
+          },
+          tabBarActiveTintColor: Colors.lavander,
+          tabBarInactiveTintColor: Colors.warmGrey,
+        })}>
+        <Tab.Screen
+          name={Routes.listNavigator}
+          component={ListStackNavigator}
+        />
+        <Tab.Screen name={Routes.search} component={SearchScreen} />
+      </Tab.Navigator>
+    </View>
   );
 };
 
