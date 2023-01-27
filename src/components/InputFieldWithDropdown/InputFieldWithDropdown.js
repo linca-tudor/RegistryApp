@@ -20,13 +20,19 @@ const HobbiesInputWithIcon = ({
   data,
   onChangeText,
   onEndEditing,
+  onCrossPress,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
+  const [inputText, setInputText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [filteredData, setFilteredData] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [selected, setSelected] = useState('');
+
+  useEffect(() => {
+    setInputText(value);
+  }, [value]);
 
   const onItemPress = item => {
     console.log(`onItem press: ${item.name}`);
@@ -34,12 +40,12 @@ const HobbiesInputWithIcon = ({
     console.log(item);
   };
 
-  const toggleDropdown = () => {
-    isVisible ? setIsVisible(false) : openDropdown();
-  };
-
   const openDropdown = () => {
     setIsVisible(true);
+  };
+
+  const closeDropdown = () => {
+    setIsVisible(false);
   };
 
   const renderItem = item => {
@@ -62,16 +68,21 @@ const HobbiesInputWithIcon = ({
         <RNTextInput
           placeholder={placeholder}
           placeholderTextColor={Colors.starDust}
-          value={value}
-          onChangeText={onChangeText}
+          value={inputText}
           style={styles.input}
-          onFocus={toggleDropdown}
-          onEndEditing={toggleDropdown}
+          onFocus={openDropdown}
+          onChangeText={txt => {
+            setInputText(txt);
+          }}
+          onEndEditing={() => {
+            closeDropdown();
+            onEndEditing(inputText);
+          }}
         />
-        {value && (
+        {inputText && (
           <TouchableOpacity
             onPress={() => {
-              onChangeText('');
+              setInputText('');
             }}
             style={styles.crossIcon}>
             <Entypo
@@ -82,7 +93,7 @@ const HobbiesInputWithIcon = ({
           </TouchableOpacity>
         )}
       </View>
-      <TouchableOpacity onPress={toggleDropdown}>
+      <TouchableOpacity onPress={closeDropdown}>
         {isVisible && (
           <View style={[styles.dropdown]}>
             <FlashList

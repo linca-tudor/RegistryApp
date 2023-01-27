@@ -98,9 +98,6 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         onEndEditing={date => {
           setBirthDate(date);
         }}
-        onCrossPress={() => {
-          setBirthDate(null);
-        }}
         style={styles.textInput}
         date={birthDate}
         title="Birthdate"
@@ -163,10 +160,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
       />
       <HobbiesInputWithIcon
         onEndEditing={text => {
-          setHobbies(text);
+          setHobbiesInput(text);
         }}
         style={styles.textInput}
         value={hobbiesInput}
+        // hobbies={profileHobbies}
         title="Hobbies"
         placeholder="Playing guitar"
         icon={
@@ -176,9 +174,6 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
       <TextInputFieldWithIcon
         onEndEditing={text => {
           setJob(text);
-        }}
-        onCrossPress={() => {
-          setJob('');
         }}
         style={styles.textInput}
         value={job}
@@ -195,9 +190,6 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
       <TextInputFieldWithIcon
         onEndEditing={text => {
           setQuote(text);
-        }}
-        onCrossPress={() => {
-          setQuote('');
         }}
         style={styles.textInput}
         value={quote}

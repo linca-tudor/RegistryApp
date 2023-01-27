@@ -10,21 +10,24 @@ import InputFieldWithDropdown from '~/components/InputFieldWithDropdown';
 
 const HobbiesInputWithIcon = ({
   placeholder,
+  onChangeText,
   onEndEditing,
+  onCrossPress,
   style,
   icon,
   title,
   value,
+  hobbies,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
-  const [inputText, setInputText] = useState('');
+  const [selectedHobbies, setSelectedHobbies] = useState([]);
 
   const data = formattedHobbies;
 
   useEffect(() => {
-    setInputText(value);
-  }, [value]);
+    setSelectedHobbies(hobbies);
+  }, [hobbies]);
 
   return (
     <View style={[styles.container, style]}>
@@ -40,13 +43,14 @@ const HobbiesInputWithIcon = ({
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
-        {/* {selectedHobbies.length > 0 && <BubbleList items={selectedHobbies} />} */}
+        {selectedHobbies?.length > 0 && <BubbleList items={selectedHobbies} />}
         <InputFieldWithDropdown
           placeholder={placeholder}
-          value={inputText}
+          value={value}
           data={data}
-          onChangeText={txt => setInputText(txt)}
-          onEndEditing={() => onEndEditing(inputText)}
+          onChangeText={onChangeText}
+          onEndEditing={onEndEditing}
+          onCrossPress={onCrossPress}
         />
       </View>
     </View>
