@@ -34,6 +34,27 @@ const HobbiesInputWithIcon = ({
     setInputText(value);
   }, [value]);
 
+  useEffect(() => {
+    const filterData = query => {
+      if (!query) {
+        return data;
+      }
+
+      const formattedInput = query.toLowerCase().replace(/\s+/g, '');
+
+      const filteredResult = data.filter(element => {
+        return element.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(formattedInput);
+      });
+
+      return filteredResult;
+    };
+
+    setFilteredData(filterData(inputText));
+  }, [inputText, data]);
+
   const onItemPress = item => {
     console.log(`onItem press: ${item.name}`);
     setSelected(item);
@@ -97,7 +118,7 @@ const HobbiesInputWithIcon = ({
         {isVisible && (
           <View style={[styles.dropdown]}>
             <FlashList
-              data={formattedHobbies}
+              data={filteredData}
               renderItem={({item}) => renderItem(item)}
               keyExtractor={(item, index) => index.toString()}
               estimatedItemSize={50}

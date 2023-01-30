@@ -34,7 +34,7 @@ const getStyles = () => {
     dropdown: {
       elevation: 1,
       position: 'absolute',
-      // marginTop: -10,
+      marginTop: -10,
       height: 150,
       backgroundColor: Colors.paleLavender,
       width: '100%',
