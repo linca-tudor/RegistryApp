@@ -54,6 +54,7 @@ const HobbiesInputWithIcon = ({
           onChangeText={onChangeText}
           onEndEditing={onEndEditing}
           onCrossPress={onCrossPress}
+          onItemPress={item => onChangeHobbies([...selectedHobbies, item])}
         />
       </View>
     </View>

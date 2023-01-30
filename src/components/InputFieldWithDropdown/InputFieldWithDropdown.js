@@ -21,6 +21,7 @@ const HobbiesInputWithIcon = ({
   onChangeText,
   onEndEditing,
   onCrossPress,
+  onItemPress,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -54,12 +55,6 @@ const HobbiesInputWithIcon = ({
 
     setFilteredData(filterData(inputText));
   }, [inputText, data]);
-
-  const onItemPress = item => {
-    console.log(`onItem press: ${item.name}`);
-    setSelected(item);
-    console.log(item);
-  };
 
   const openDropdown = () => {
     setIsVisible(true);
