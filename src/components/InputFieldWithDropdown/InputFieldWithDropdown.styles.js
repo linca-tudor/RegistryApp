@@ -2,12 +2,17 @@ import {StyleSheet} from 'react-native';
 import {Platform} from 'react-native';
 import Colors from '~/helpers/Colors';
 
-const getStyles = () => {
+const getStyles = crossIconPosition => {
+  let bottom;
+  if (crossIconPosition === 'center') {
+    bottom = 21.95;
+  } else {
+    bottom = undefined;
+  }
   return StyleSheet.create({
     container: {
-      height: 43.9,
+      height: 42.5,
       flexDirection: 'column',
-      // marginLeft: 15,
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
     },
@@ -15,9 +20,10 @@ const getStyles = () => {
       position: 'absolute',
       opacity: 0.5,
       paddingRight: 10,
+      bottom: bottom,
     },
     inputContainer: {
-      flex: 1,
+      height: 42.5,
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'center',
@@ -32,16 +38,13 @@ const getStyles = () => {
       marginRight: 35,
     },
     dropdown: {
-      elevation: 1,
       position: 'absolute',
       marginTop: -10,
       height: 150,
       backgroundColor: Colors.paleLavender,
       width: '100%',
-      shadowColor: Colors.black,
-      shadowRadius: 4,
-      shadowOffset: {height: 4, width: 1},
-      shadowOpacity: 0.2,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
     },
     dropdownItem: {
       paddingHorizontal: 10,

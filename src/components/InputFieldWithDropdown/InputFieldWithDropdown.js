@@ -10,26 +10,22 @@ import ReactNative, {
 import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './InputFieldWithDropdown.styles';
-import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
-import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
+import difference from 'lodash.difference';
 
 const HobbiesInputWithIcon = ({
   placeholder,
   value,
   data,
-  onChangeText,
-  onEndEditing,
-  onCrossPress,
+  selected,
   onItemPress,
 }) => {
-  const styles = getStyles();
-  const globalStyles = getGlobalStyles();
+  const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [filteredData, setFilteredData] = useState('');
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [selected, setSelected] = useState('');
+  const [crossIconPosition, setCrossIconPosition] = useState('center');
+  const styles = getStyles(crossIconPosition);
 
   useEffect(() => {
     setInputText(value);
@@ -37,13 +33,15 @@ const HobbiesInputWithIcon = ({
 
   useEffect(() => {
     const filterData = query => {
+      const result = difference(data, selected);
+
       if (!query) {
-        return data;
+        return result;
       }
 
       const formattedInput = query.toLowerCase().replace(/\s+/g, '');
 
-      const filteredResult = data.filter(element => {
+      const filteredResult = result.filter(element => {
         return element.name
           .toLowerCase()
           .replace(/\s+/g, '')
@@ -54,7 +52,23 @@ const HobbiesInputWithIcon = ({
     };
 
     setFilteredData(filterData(inputText));
-  }, [inputText, data]);
+  }, [inputText, data, selected]);
+
+  useEffect(() => {
+    if (filteredData.length > 0 && isFocused) {
+      openDropdown();
+    } else {
+      closeDropdown();
+    }
+  }, [isFocused, filteredData]);
+
+  useEffect(() => {
+    if (selected.length > 0) {
+      setCrossIconPosition('bottom');
+    } else {
+      setCrossIconPosition('center');
+    }
+  }, [selected]);
 
   const openDropdown = () => {
     setIsVisible(true);
@@ -62,6 +76,44 @@ const HobbiesInputWithIcon = ({
 
   const closeDropdown = () => {
     setIsVisible(false);
+  };
+
+  const renderDropDown = () => {
+    return (
+      <View style={styles.dropdown}>
+        <View
+          style={{
+            height: 10,
+            width: '100%',
+            backgroundColor: Colors.magnolia,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }}
+        />
+        <FlashList
+          data={filteredData}
+          renderItem={({item}) => renderItem(item)}
+          keyExtractor={(item, index) => index.toString()}
+          estimatedItemSize={50}
+        />
+      </View>
+    );
+  };
+
+  const renderCrossIcon = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          setInputText('');
+        }}
+        style={styles.crossIcon}>
+        <Entypo
+          name="circle-with-cross"
+          size={24}
+          color={Colors.ultramarineBlue}
+        />
+      </TouchableOpacity>
+    );
   };
 
   const renderItem = item => {
@@ -86,40 +138,20 @@ const HobbiesInputWithIcon = ({
           placeholderTextColor={Colors.starDust}
           value={inputText}
           style={styles.input}
-          onFocus={openDropdown}
+          onFocus={() => {
+            setIsFocused(true);
+          }}
+          onBlur={() => {
+            setIsFocused(false);
+          }}
           onChangeText={txt => {
             setInputText(txt);
           }}
-          onEndEditing={() => {
-            closeDropdown();
-            onEndEditing(inputText);
-          }}
         />
-        {inputText && (
-          <TouchableOpacity
-            onPress={() => {
-              setInputText('');
-            }}
-            style={styles.crossIcon}>
-            <Entypo
-              name="circle-with-cross"
-              size={24}
-              color={Colors.ultramarineBlue}
-            />
-          </TouchableOpacity>
-        )}
+        {inputText && renderCrossIcon()}
       </View>
       <TouchableOpacity onPress={closeDropdown}>
-        {isVisible && (
-          <View style={[styles.dropdown]}>
-            <FlashList
-              data={filteredData}
-              renderItem={({item}) => renderItem(item)}
-              keyExtractor={(item, index) => index.toString()}
-              estimatedItemSize={50}
-            />
-          </View>
-        )}
+        {isVisible && renderDropDown()}
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );

@@ -31,6 +31,20 @@ const DateInputWithIcon = ({
     setPickedDate(date || moment().toDate());
   }, [date]);
 
+  const renderCrossIcon = () => {
+    return (
+      <TouchableOpacity
+        onPress={onCrossPress}
+        style={globalStyles.formItem.crossIcon}>
+        <Entypo
+          name="circle-with-cross"
+          size={24}
+          color={Colors.ultramarineBlue}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={[style, globalStyles.formItem.container]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
@@ -75,17 +89,7 @@ const DateInputWithIcon = ({
               setModalOpen(false);
             }}
           />
-          {date && (
-            <TouchableOpacity
-              onPress={onCrossPress}
-              style={globalStyles.formItem.crossIcon}>
-              <Entypo
-                name="circle-with-cross"
-                size={24}
-                color={Colors.ultramarineBlue}
-              />
-            </TouchableOpacity>
-          )}
+          {date && renderCrossIcon()}
         </View>
       </TouchableOpacity>
     </View>

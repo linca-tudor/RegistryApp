@@ -49,6 +49,22 @@ const TextInputWithIcon = ({
     setInputText(formatPhoneNumber(value));
   }, [value]);
 
+  const renderCrossIcon = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          setInputText('');
+        }}
+        style={globalStyles.formItem.crossIcon}>
+        <Entypo
+          name="circle-with-cross"
+          size={24}
+          color={Colors.ultramarineBlue}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={[globalStyles.formItem.container, style]}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
@@ -78,19 +94,7 @@ const TextInputWithIcon = ({
             }}
             style={globalStyles.formItem.input}
           />
-          {inputText && (
-            <TouchableOpacity
-              onPress={() => {
-                setInputText('');
-              }}
-              style={globalStyles.formItem.crossIcon}>
-              <Entypo
-                name="circle-with-cross"
-                size={24}
-                color={Colors.ultramarineBlue}
-              />
-            </TouchableOpacity>
-          )}
+          {inputText && renderCrossIcon()}
         </View>
       </View>
     </View>

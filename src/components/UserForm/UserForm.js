@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {View} from 'react-native';
 import moment from 'moment';
+import difference from 'lodash.difference';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
@@ -13,6 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -24,53 +26,14 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [email, setEmail] = useState('');
   const [job, setJob] = useState('');
   const [quote, setQuote] = useState('');
-  const [hobbies, setHobbies] = useState([
-    {
-      name: '3D printing',
-    },
-    {
-      name: 'Acrobatics',
-    },
-    {
-      name: 'Acting',
-    },
-    {
-      name: 'Amateur radio',
-    },
-    {
-      name: 'Animation',
-    },
-    {
-      name: 'Aquascaping',
-    },
-    {
-      name: 'Astrology',
-    },
-    {
-      name: 'Astronomy',
-    },
-    {
-      name: 'Baking',
-    },
-    {
-      name: 'Baton twirling',
-    },
-    {
-      name: 'Blogging',
-    },
-    {
-      name: 'Building',
-    },
-    {
-      name: 'Board/tabletop games',
-    },
-    {
-      name: 'Book discussion clubs',
-    },
-  ]);
-  const [hobbiesInput, setHobbiesInput] = useState('');
+  const [suggestedHobbies, setSuggestedHobbies] = useState([]);
+  const [hobbies, setHobbies] = useState([]);
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
+
+  useEffect(() => {
+    setSuggestedHobbies(formattedHobbies);
+  }, []);
 
   useEffect(() => {
     if (profile) {
@@ -86,6 +49,18 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
       setHobbies(profile.hobbies);
     }
   }, [profile]);
+
+  const addHobby = hobby => {
+    if (!hobbies.includes(hobby)) {
+      setHobbies([...hobbies, hobby]);
+    }
+  };
+
+  const removeHobby = hobby => {
+    if (hobbies.includes(hobby)) {
+      setHobbies(hobbies.filter(element => element !== hobby));
+    }
+  };
 
   return (
     <View style={[globalStyles.flex, styles.container]}>
@@ -202,15 +177,11 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         }
       />
       <HobbiesInputWithIcon
-        onEndEditing={text => {
-          setHobbiesInput(text);
-        }}
-        onChangeHobbies={selectedHobbies => {
-          setHobbies(selectedHobbies);
-        }}
-        style={styles.textInput}
-        value={hobbiesInput}
+        suggestions={suggestedHobbies}
         hobbies={hobbies}
+        addHobby={addHobby}
+        removeHobby={removeHobby}
+        style={styles.textInput}
         title="Hobbies"
         placeholder="Playing guitar"
         icon={
