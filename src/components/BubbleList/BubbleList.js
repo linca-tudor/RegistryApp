@@ -6,7 +6,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Colors from '~/helpers/Colors';
 import difference from 'lodash.difference';
 
-const BubbleList = ({items, onChangeItem}) => {
+const BubbleList = ({items, removeItem}) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -20,7 +20,7 @@ const BubbleList = ({items, onChangeItem}) => {
         </View>
         <TouchableOpacity
           onPress={() => {
-            onChangeItem(item);
+            removeItem(item);
           }}
           style={styles.crossIcon}>
           <Entypo

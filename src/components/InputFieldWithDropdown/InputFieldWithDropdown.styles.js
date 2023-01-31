@@ -46,6 +46,13 @@ const getStyles = crossIconPosition => {
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
     },
+    dropdownTopCover: {
+      height: 10,
+      width: '100%',
+      backgroundColor: Colors.magnolia,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+    },
     dropdownItem: {
       paddingHorizontal: 10,
       paddingVertical: 10,

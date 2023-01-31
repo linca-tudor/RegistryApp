@@ -25,7 +25,7 @@ const HobbiesInputWithIcon = ({
 
   const renderBubbleList = () => {
     return (
-      <BubbleList items={hobbies} onChangeItem={hobby => removeHobby(hobby)} />
+      <BubbleList items={hobbies} removeItem={hobby => removeHobby(hobby)} />
     );
   };
 
@@ -49,7 +49,7 @@ const HobbiesInputWithIcon = ({
           value={inputText}
           data={suggestions}
           selected={hobbies}
-          onItemPress={hobby => addHobby(hobby)}
+          addItem={hobby => addHobby(hobby)}
         />
       </View>
     </View>

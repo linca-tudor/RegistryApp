@@ -18,7 +18,7 @@ const HobbiesInputWithIcon = ({
   value,
   data,
   selected,
-  onItemPress,
+  addItem,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
@@ -78,18 +78,28 @@ const HobbiesInputWithIcon = ({
     setIsVisible(false);
   };
 
+  const createHobby = () => {
+    const newHobby = {name: inputText};
+    addItem(newHobby);
+    setInputText('');
+  };
+
+  const renderItem = item => {
+    return (
+      <TouchableOpacity
+        style={styles.dropdownItem}
+        onPress={() => {
+          addItem(item);
+        }}>
+        <Text style={[styles.itemText]}>{item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
+
   const renderDropDown = () => {
     return (
       <View style={styles.dropdown}>
-        <View
-          style={{
-            height: 10,
-            width: '100%',
-            backgroundColor: Colors.magnolia,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10,
-          }}
-        />
+        <View style={styles.dropdownTopCover} />
         <FlashList
           data={filteredData}
           renderItem={({item}) => renderItem(item)}
@@ -116,18 +126,6 @@ const HobbiesInputWithIcon = ({
     );
   };
 
-  const renderItem = item => {
-    return (
-      <TouchableOpacity
-        style={styles.dropdownItem}
-        onPress={() => {
-          onItemPress(item);
-        }}>
-        <Text style={[styles.itemText]}>{item.name}</Text>
-      </TouchableOpacity>
-    );
-  };
-
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -147,6 +145,7 @@ const HobbiesInputWithIcon = ({
           onChangeText={txt => {
             setInputText(txt);
           }}
+          onSubmitEditing={createHobby}
         />
         {inputText && renderCrossIcon()}
       </View>
