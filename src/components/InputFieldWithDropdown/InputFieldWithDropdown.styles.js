@@ -37,10 +37,9 @@ const getStyles = crossIconPosition => {
       marginLeft: Platform.OS === 'android' ? -3.5 : 0,
       marginRight: 35,
     },
-    dropdown: {
-      position: 'absolute',
+    dropdownContainer: {
+      // position: 'absolute',
       marginTop: -10,
-      height: 150,
       backgroundColor: Colors.paleLavender,
       width: '100%',
       borderBottomLeftRadius: 10,
@@ -53,14 +52,20 @@ const getStyles = crossIconPosition => {
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
     },
+    dropdownContentContainer: {
+      width: '100%',
+      paddingVertical: 5,
+    },
     dropdownItem: {
-      paddingHorizontal: 10,
-      paddingVertical: 10,
+      height: 31,
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
     },
     itemText: {
-      fontSize: 14,
-      color: Colors.black,
-      marginTop: 7.5,
+      fontSize: 15,
+      color: Colors.blackCow,
+      fontWeight: '400',
       marginLeft: 6,
     },
   });

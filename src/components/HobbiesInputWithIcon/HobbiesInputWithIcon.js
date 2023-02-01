@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import difference from 'lodash.difference';
 import getStyles from './HobbiesInputWithIcon.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import Colors from '~/helpers/Colors';
@@ -17,6 +16,8 @@ const HobbiesInputWithIcon = ({
   style,
   icon,
   title,
+  hasScrollableParent,
+  updateParentScrollStatus,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -50,6 +51,8 @@ const HobbiesInputWithIcon = ({
           data={suggestions}
           selected={hobbies}
           addItem={hobby => addHobby(hobby)}
+          hasScrollableParent={hasScrollableParent}
+          updateParentScrollStatus={updateParentScrollStatus}
         />
       </View>
     </View>

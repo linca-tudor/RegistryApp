@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import ReactNative, {
+import React, {useState, useEffect} from 'react';
+import {
   TouchableOpacity,
   View,
   TextInput as RNTextInput,
@@ -51,7 +51,7 @@ const HobbiesInputWithIcon = ({
       return filteredResult;
     };
 
-    setFilteredData(filterData(inputText));
+    setFilteredData(filterData(inputText).slice(0, 5));
   }, [inputText, data, selected]);
 
   useEffect(() => {
@@ -84,28 +84,24 @@ const HobbiesInputWithIcon = ({
     setInputText('');
   };
 
-  const renderItem = item => {
-    return (
-      <TouchableOpacity
-        style={styles.dropdownItem}
-        onPress={() => {
-          addItem(item);
-        }}>
-        <Text style={[styles.itemText]}>{item.name}</Text>
-      </TouchableOpacity>
-    );
-  };
-
   const renderDropDown = () => {
     return (
-      <View style={styles.dropdown}>
+      <View style={styles.dropdownContainer}>
         <View style={styles.dropdownTopCover} />
-        <FlashList
-          data={filteredData}
-          renderItem={({item}) => renderItem(item)}
-          keyExtractor={(item, index) => index.toString()}
-          estimatedItemSize={50}
-        />
+        <View style={styles.dropdownContentContainer}>
+          {filteredData.map((item, index) => {
+            return (
+              <TouchableOpacity
+                style={styles.dropdownItem}
+                onPress={() => {
+                  addItem(item);
+                }}
+                key={index}>
+                <Text style={[styles.itemText]}>{item.name}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
       </View>
     );
   };

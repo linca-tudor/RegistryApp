@@ -4,7 +4,6 @@ import getStyles from './BubbleList.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Colors from '~/helpers/Colors';
-import difference from 'lodash.difference';
 
 const BubbleList = ({items, removeItem}) => {
   const styles = getStyles();

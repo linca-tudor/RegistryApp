@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import moment from 'moment';
-import difference from 'lodash.difference';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
 import HobbiesInputWithIcon from '~/components/HobbiesInputWithIcon';
