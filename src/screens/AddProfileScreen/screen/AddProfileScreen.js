@@ -15,7 +15,6 @@ const AddProfileScreen = ({onSubmitPress}) => {
         style={{width: '100%'}}
         showsVerticalScrollIndicator={false}
         extraScrollHeight={Platform.OS === 'android' ? 102 : 132}
-        // 120 ios 82 android
         enableOnAndroid
         enableResetScrollToCoords={false}
         keyboardDismissMode="on-drag"
