@@ -3,8 +3,8 @@ import axios from 'axios';
 import {DATABASE_URL, API_KEY} from '@env';
 
 const config = {
-  // baseURL: DATABASE_URL,
-  baseURL: '',
+  baseURL: DATABASE_URL,
+  // baseURL: '',
   headers: {'X-api-key': API_KEY},
 };
 

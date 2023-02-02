@@ -13,15 +13,15 @@ const FeedScreenContainer = () => {
   const usersFeed = useSelector(selectAllUsers);
   const {navigate} = useNavigation();
 
-  // useEffect(() => {
-  //   dispatch(getFeed());
-  // }, [dispatch]);
-
-  //DEVELOPMENT ONLY
   useEffect(() => {
     dispatch(getFeed());
-    navigate(Routes.newProfile);
-  }, [dispatch, navigate]);
+  }, [dispatch]);
+
+  // //DEVELOPMENT ONLY
+  // useEffect(() => {
+  //   dispatch(getFeed());
+  //   navigate(Routes.newProfile);
+  // }, [dispatch, navigate]);
 
   const onTryAgainHandler = () => {
     dispatch(getFeed());
