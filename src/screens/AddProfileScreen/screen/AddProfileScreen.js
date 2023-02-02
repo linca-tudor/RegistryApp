@@ -17,6 +17,7 @@ const AddProfileScreen = ({onSubmitPress}) => {
         extraScrollHeight={Platform.OS === 'android' ? 102 : 132}
         // 120 ios 82 android
         enableOnAndroid
+        enableResetScrollToCoords={false}
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="handled">
         <UserForm onSubmitPress={onSubmitPress} buttonTitle={'Submit'} />

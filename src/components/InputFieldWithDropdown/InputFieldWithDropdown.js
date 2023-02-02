@@ -123,7 +123,7 @@ const HobbiesInputWithIcon = ({
   };
 
   return (
-    <KeyboardAvoidingView
+    <View
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.inputContainer}>
@@ -148,7 +148,7 @@ const HobbiesInputWithIcon = ({
       <TouchableOpacity onPress={closeDropdown}>
         {isVisible && renderDropDown()}
       </TouchableOpacity>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
