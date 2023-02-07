@@ -4,10 +4,8 @@ import {
   View,
   TextInput as RNTextInput,
   Text,
-  KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './InputFieldWithDropdown.styles';
 import Colors from '~/helpers/Colors';

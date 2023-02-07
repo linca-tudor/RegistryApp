@@ -36,16 +36,16 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
 
   useEffect(() => {
     if (profile) {
-      setFirstName(profile.firstName);
-      setLastName(profile.lastName);
-      setGender(profile.gender);
-      setPhoneNumber(profile.phoneNumber);
-      setBirthDate(moment(profile.birthDate).toDate());
-      setAddress(profile.address);
-      setEmail(profile.email);
-      setJob(profile.job);
-      setQuote(profile.quote);
-      setHobbies(profile.hobbies);
+      setFirstName(profile.firstName ? profile.firstName : '');
+      setLastName(profile.lastName ? profile.lastName : '');
+      setGender(profile.gender ? profile.gender : '');
+      setPhoneNumber(profile.phoneNumber ? profile.phoneNumber : '');
+      setBirthDate(profile.birthDate ? moment(profile.birthDate).toDate() : '');
+      setAddress(profile.address ? profile.address : '');
+      setEmail(profile.email ? profile.email : '');
+      setJob(profile.job ? profile.job : '');
+      setQuote(profile.quote ? profile.quote : '');
+      setHobbies(profile.hobbies ? profile.hobbies : []);
     }
   }, [profile]);
 
