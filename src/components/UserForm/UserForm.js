@@ -13,7 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
+import {hobbiesAsString} from '~/assets/data/MOCK_DATA_HOBBIES';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -31,7 +31,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const globalStyles = getGlobalStyles();
 
   useEffect(() => {
-    setSuggestedHobbies(formattedHobbies);
+    setSuggestedHobbies(hobbiesAsString);
   }, []);
 
   useEffect(() => {
@@ -234,6 +234,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             phoneNumber: phoneNumber,
             birthDate: moment(birthDate).format('YYYY-MM-DD'),
             job: job,
+            hobbies: hobbies,
           });
         }}
         title={buttonTitle}

@@ -88,6 +88,7 @@ const HobbiesInputWithIcon = ({
         <View style={styles.dropdownTopCover} />
         <View style={styles.dropdownContentContainer}>
           {filteredData.map((item, index) => {
+            console.log(item);
             return (
               <TouchableOpacity
                 style={styles.dropdownItem}
@@ -95,7 +96,7 @@ const HobbiesInputWithIcon = ({
                   addItem(item);
                 }}
                 key={index}>
-                <Text style={[styles.itemText]}>{item.name}</Text>
+                <Text style={[styles.itemText]}>{item}</Text>
               </TouchableOpacity>
             );
           })}

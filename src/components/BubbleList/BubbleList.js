@@ -14,7 +14,7 @@ const BubbleList = ({items, removeItem}) => {
       <View key={index} style={styles.bubbleContainer}>
         <View style={styles.textContainer}>
           <Text numberOfLines={2} style={styles.text}>
-            {item.name}
+            {item}
           </Text>
         </View>
         <TouchableOpacity

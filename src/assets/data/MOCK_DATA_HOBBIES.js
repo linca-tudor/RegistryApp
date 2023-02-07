@@ -1,4 +1,4 @@
-export const hobbies = [
+export const hobbiesAsString = [
   '3D printing',
   'Acrobatics',
   'Acting',
