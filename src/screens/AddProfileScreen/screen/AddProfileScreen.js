@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {useEffect} from 'react';
-import {SafeAreaView, ScrollView, View} from 'react-native';
+import React from 'react';
+import {Platform, SafeAreaView} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import UserForm from '~/components/UserForm';
 import getGlobalStyles from '~/helpers/GlobalStyles';
 import getStyles from './AddProfileScreen.styles';
@@ -11,9 +11,16 @@ const AddProfileScreen = ({onSubmitPress}) => {
 
   return (
     <SafeAreaView style={[globalStyles.flex, styles.container]}>
-      <ScrollView style={{width: '100%'}} showsVerticalScrollIndicator={false}>
+      <KeyboardAwareScrollView
+        style={{width: '100%'}}
+        showsVerticalScrollIndicator={false}
+        extraScrollHeight={Platform.OS === 'android' ? 102 : 132}
+        enableOnAndroid
+        enableResetScrollToCoords={false}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="handled">
         <UserForm onSubmitPress={onSubmitPress} buttonTitle={'Submit'} />
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };

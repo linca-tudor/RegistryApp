@@ -17,6 +17,12 @@ const FeedScreenContainer = () => {
     dispatch(getFeed());
   }, [dispatch]);
 
+  // //DEVELOPMENT ONLY
+  // useEffect(() => {
+  //   dispatch(getFeed());
+  //   navigate(Routes.newProfile);
+  // }, [dispatch, navigate]);
+
   const onTryAgainHandler = () => {
     dispatch(getFeed());
   };
