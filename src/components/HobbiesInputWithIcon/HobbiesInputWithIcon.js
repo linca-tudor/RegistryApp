@@ -16,8 +16,6 @@ const HobbiesInputWithIcon = ({
   style,
   icon,
   title,
-  hasScrollableParent,
-  updateParentScrollStatus,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -51,8 +49,6 @@ const HobbiesInputWithIcon = ({
           data={suggestions}
           selected={hobbies}
           addItem={hobby => addHobby(hobby)}
-          hasScrollableParent={hasScrollableParent}
-          updateParentScrollStatus={updateParentScrollStatus}
         />
       </View>
     </View>

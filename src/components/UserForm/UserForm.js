@@ -13,7 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {formattedHobbies} from '~/assets/data/MOCK_DATA_HOBBIES';
+import {hobbiesAsString} from '~/assets/data/MOCK_DATA_HOBBIES';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const [firstName, setFirstName] = useState('');
@@ -31,21 +31,21 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   const globalStyles = getGlobalStyles();
 
   useEffect(() => {
-    setSuggestedHobbies(formattedHobbies);
+    setSuggestedHobbies(hobbiesAsString);
   }, []);
 
   useEffect(() => {
     if (profile) {
-      setFirstName(profile.firstName);
-      setLastName(profile.lastName);
-      setGender(profile.gender);
-      setPhoneNumber(profile.phoneNumber);
-      setBirthDate(moment(profile.birthDate).toDate());
-      setAddress(profile.address);
-      setEmail(profile.email);
-      setJob(profile.job);
-      setQuote(profile.quote);
-      setHobbies(profile.hobbies);
+      setFirstName(profile.firstName ? profile.firstName : '');
+      setLastName(profile.lastName ? profile.lastName : '');
+      setGender(profile.gender ? profile.gender : '');
+      setPhoneNumber(profile.phoneNumber ? profile.phoneNumber : '');
+      setBirthDate(profile.birthDate ? moment(profile.birthDate).toDate() : '');
+      setAddress(profile.address ? profile.address : '');
+      setEmail(profile.email ? profile.email : '');
+      setJob(profile.job ? profile.job : '');
+      setQuote(profile.quote ? profile.quote : '');
+      setHobbies(profile.hobbies ? profile.hobbies : []);
     }
   }, [profile]);
 
@@ -234,6 +234,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             phoneNumber: phoneNumber,
             birthDate: moment(birthDate).format('YYYY-MM-DD'),
             job: job,
+            hobbies: hobbies,
           });
         }}
         title={buttonTitle}

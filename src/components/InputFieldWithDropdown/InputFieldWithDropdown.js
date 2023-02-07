@@ -4,10 +4,8 @@ import {
   View,
   TextInput as RNTextInput,
   Text,
-  KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import {FlashList} from '@shopify/flash-list';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './InputFieldWithDropdown.styles';
 import Colors from '~/helpers/Colors';
@@ -23,7 +21,7 @@ const HobbiesInputWithIcon = ({
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
-  const [filteredData, setFilteredData] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
   const [crossIconPosition, setCrossIconPosition] = useState('center');
   const styles = getStyles(crossIconPosition);
 
@@ -42,7 +40,7 @@ const HobbiesInputWithIcon = ({
       const formattedInput = query.toLowerCase().replace(/\s+/g, '');
 
       const filteredResult = result.filter(element => {
-        return element.name
+        return element
           .toLowerCase()
           .replace(/\s+/g, '')
           .includes(formattedInput);
@@ -79,8 +77,7 @@ const HobbiesInputWithIcon = ({
   };
 
   const createHobby = () => {
-    const newHobby = {name: inputText};
-    addItem(newHobby);
+    addItem(inputText);
     setInputText('');
   };
 
@@ -90,6 +87,7 @@ const HobbiesInputWithIcon = ({
         <View style={styles.dropdownTopCover} />
         <View style={styles.dropdownContentContainer}>
           {filteredData.map((item, index) => {
+            console.log(item);
             return (
               <TouchableOpacity
                 style={styles.dropdownItem}
@@ -97,7 +95,7 @@ const HobbiesInputWithIcon = ({
                   addItem(item);
                 }}
                 key={index}>
-                <Text style={[styles.itemText]}>{item.name}</Text>
+                <Text style={[styles.itemText]}>{item}</Text>
               </TouchableOpacity>
             );
           })}
