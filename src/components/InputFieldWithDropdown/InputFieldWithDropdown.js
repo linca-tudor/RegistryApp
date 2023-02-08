@@ -11,23 +11,13 @@ import getStyles from './InputFieldWithDropdown.styles';
 import Colors from '~/helpers/Colors';
 import difference from 'lodash.difference';
 
-const HobbiesInputWithIcon = ({
-  placeholder,
-  value,
-  data,
-  selected,
-  addItem,
-}) => {
+const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [crossIconPosition, setCrossIconPosition] = useState('center');
   const styles = getStyles(crossIconPosition);
-
-  useEffect(() => {
-    setInputText(value);
-  }, [value]);
 
   useEffect(() => {
     const filterData = query => {
@@ -87,7 +77,6 @@ const HobbiesInputWithIcon = ({
         <View style={styles.dropdownTopCover} />
         <View style={styles.dropdownContentContainer}>
           {filteredData.map((item, index) => {
-            console.log(item);
             return (
               <TouchableOpacity
                 style={styles.dropdownItem}

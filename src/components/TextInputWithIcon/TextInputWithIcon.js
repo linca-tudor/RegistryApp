@@ -13,7 +13,8 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const TextInputWithIcon = ({
   placeholder,
-  onEndEditing,
+  onChangeText,
+  onBlur,
   style,
   icon,
   title,
@@ -21,17 +22,12 @@ const TextInputWithIcon = ({
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
-  const [inputText, setInputText] = useState('');
-
-  useEffect(() => {
-    setInputText(value);
-  }, [value]);
 
   const renderCrossIcon = () => {
     return (
       <TouchableOpacity
         onPress={() => {
-          setInputText('');
+          onChangeText('');
         }}
         style={globalStyles.formItem.crossIcon}>
         <Entypo
@@ -61,16 +57,16 @@ const TextInputWithIcon = ({
           <RNTextInput
             placeholder={placeholder}
             placeholderTextColor={Colors.starDust}
-            value={inputText}
+            value={value}
             onChangeText={txt => {
-              setInputText(txt);
+              onChangeText(txt);
             }}
-            onEndEditing={() => {
-              onEndEditing(inputText);
+            onBlur={txt => {
+              onBlur(txt);
             }}
             style={globalStyles.formItem.input}
           />
-          {inputText && renderCrossIcon()}
+          {value && renderCrossIcon()}
         </View>
       </View>
     </View>
