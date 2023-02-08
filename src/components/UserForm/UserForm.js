@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import {Formik} from 'formik';
+import {Formik, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
 import moment from 'moment';
@@ -58,16 +58,16 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
   return (
     <Formik
       initialValues={{
-        firstName: profile?.firstName ? profile.firstName : '',
-        lastName: profile?.lastName ? profile.lastName : '',
-        gender: profile?.gender ? profile.gender : '',
-        phoneNumber: profile?.phoneNumber ? profile.phoneNumber : '',
+        firstName: profile?.firstName ?? '',
+        lastName: profile?.lastName ?? '',
+        gender: profile?.gender ?? '',
+        phoneNumber: profile?.phoneNumber ?? '',
         birthDate: profile?.birthDate ? moment(profile.birthDate).toDate() : '',
-        address: profile?.address ? profile.address : '',
-        email: profile?.email ? profile.email : '',
-        job: profile?.job ? profile.job : '',
-        quote: profile?.quote ? profile.quote : '',
-        hobbies: profile?.hobbies ? profile.hobbies : [],
+        address: profile?.address ?? '',
+        email: profile?.email ?? '',
+        job: profile?.job ?? '',
+        quote: profile?.quote ?? '',
+        hobbies: profile?.hobbies ?? [],
       }}
       onSubmit={values => {
         console.log(
@@ -180,7 +180,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
               />
             }
           />
-          {/* {errors.phoneNumber && <Text>{errors.phoneNumber}</Text>} */}
+          <ErrorMessage name={'phoneNumber'} />
           <TextInputFieldWithIcon
             onChangeText={handleChange('address')}
             onBlur={handleBlur('address')}
