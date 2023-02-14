@@ -9,6 +9,8 @@ const Colors = {
   lightLavender: '#E4C7FB',
   paleLavender: '#EBD5FC',
   magnolia: '#F8F1FE',
+  sunsetOrange: '#FF5C5C',
+  peachSchnapps: '#FFDFDF',
 };
 
 export default Colors;

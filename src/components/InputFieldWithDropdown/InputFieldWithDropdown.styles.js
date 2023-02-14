@@ -11,7 +11,6 @@ const getStyles = crossIconPosition => {
   }
   return StyleSheet.create({
     container: {
-      height: 42.5,
       flexDirection: 'column',
       backgroundColor: Colors.magnolia,
       borderRadius: 10,
@@ -23,6 +22,7 @@ const getStyles = crossIconPosition => {
       bottom: bottom,
     },
     inputContainer: {
+      zIndex: 1,
       height: 42.5,
       flexDirection: 'row',
       justifyContent: 'flex-end',
@@ -38,7 +38,7 @@ const getStyles = crossIconPosition => {
       marginRight: 35,
     },
     dropdownContainer: {
-      // position: 'absolute',
+      position: 'absolute',
       marginTop: -10,
       backgroundColor: Colors.paleLavender,
       width: '100%',
@@ -46,8 +46,8 @@ const getStyles = crossIconPosition => {
       borderBottomRightRadius: 10,
     },
     dropdownTopCover: {
-      height: 10,
-      width: '100%',
+      marginTop: -10,
+      height: 20,
       backgroundColor: Colors.magnolia,
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,

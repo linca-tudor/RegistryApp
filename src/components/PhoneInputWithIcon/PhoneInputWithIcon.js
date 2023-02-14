@@ -6,6 +6,7 @@ import {
   Text,
 } from 'react-native';
 import SimpleLineDivider from '~/components/SimpleLineDivider';
+import FieldErrorMessage from '~/components/FieldErrorMessage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './PhoneInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
@@ -19,6 +20,7 @@ const TextInputWithIcon = ({
   icon,
   title,
   value,
+  error,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -89,6 +91,7 @@ const TextInputWithIcon = ({
           />
           {value && renderCrossIcon()}
         </View>
+        {error && <FieldErrorMessage message={error} />}
       </View>
     </View>
   );

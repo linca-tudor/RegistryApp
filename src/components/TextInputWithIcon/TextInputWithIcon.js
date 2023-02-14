@@ -6,6 +6,7 @@ import {
   Text,
 } from 'react-native';
 import SimpleLineDivider from '~/components/SimpleLineDivider';
+import FieldErrorMessage from '~/components/FieldErrorMessage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './TextInputWithIcon.styles';
 import Colors from '~/helpers/Colors';
@@ -15,10 +16,10 @@ const TextInputWithIcon = ({
   placeholder,
   onChangeText,
   onBlur,
-  style,
   icon,
   title,
   value,
+  error,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -40,7 +41,7 @@ const TextInputWithIcon = ({
   };
 
   return (
-    <View style={[globalStyles.formItem.container, style]}>
+    <View style={globalStyles.formItem.container}>
       <View style={globalStyles.formItem.iconContainer}>{icon}</View>
       <View>
         <SimpleLineDivider
@@ -64,10 +65,14 @@ const TextInputWithIcon = ({
             onBlur={txt => {
               onBlur(txt);
             }}
-            style={globalStyles.formItem.input}
+            style={[
+              globalStyles.formItem.input,
+              {color: error ? Colors.sunsetOrange : Colors.black},
+            ]}
           />
           {value && renderCrossIcon()}
         </View>
+        {error && <FieldErrorMessage message={error} />}
       </View>
     </View>
   );
