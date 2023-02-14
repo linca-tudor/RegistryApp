@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import {Formik, ErrorMessage} from 'formik';
+import {Formik} from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
+import * as RNLocalize from 'react-native-localize';
 import moment from 'moment';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
@@ -27,25 +28,33 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
     setSuggestedHobbies(hobbiesAsString);
   }, []);
 
+  const dateValidation = /([0-9]{4}-[0-9]{2}-[0-9]{2})/g;
+
   const ValidationSchema = Yup.object().shape(
     {
       firstName: Yup.string()
-        .min(3, 'Too Short!')
-        .max(30, 'Too Long!')
+        .min(3, 'The name is too short!')
+        .max(30, 'The name is too long!')
         .required('Required'),
       lastName: Yup.string()
-        .min(3, 'Too Short!')
-        .max(30, 'Too Long!')
+        .min(3, 'The name is too short!')
+        .max(30, 'The name is too long!')
         .nullable(),
       gender: Yup.string().nullable(),
       phoneNumber: Yup.string()
         .when('phoneNumber', {
           is: value => value?.length > 0,
-          then: Yup.string().phone(null, null, 'Invalid Phone Number'),
+          then: Yup.string().phone(
+            RNLocalize.getCountry(),
+            null,
+            'Invalid Phone Number',
+          ),
           otherwise: Yup.string(),
         })
         .nullable(),
-      birthDate: Yup.string().nullable(),
+      birthDate: Yup.string()
+        .matches(dateValidation, 'Invalid date format')
+        .nullable(),
       address: Yup.string().nullable(),
       email: Yup.string().email('Invalid email').nullable(),
       job: Yup.string().nullable(),
@@ -62,7 +71,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         lastName: profile?.lastName ?? '',
         gender: profile?.gender ?? '',
         phoneNumber: profile?.phoneNumber ?? '',
-        birthDate: profile?.birthDate ? moment(profile.birthDate).toDate() : '',
+        birthDate: profile?.birthDate ?? '',
         address: profile?.address ?? '',
         email: profile?.email ?? '',
         job: profile?.job ?? '',
@@ -83,15 +92,16 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             2,
           ),
         );
-        onSubmitPress({
-          ...values,
-          avatar:
-            'https://cms.qz.com/wp-content/uploads/2018/06/h_01204239-e1528902368212.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
-          phoneNumber: values.phoneNumber.replace(/[()]/g, ''),
-          birthDate: moment(values.birthDate).format('YYYY-MM-DD'),
-        });
+        // onSubmitPress({
+        //   ...values,
+        //   avatar:
+        //     'https://cms.qz.com/wp-content/uploads/2018/06/h_01204239-e1528902368212.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
+        //   phoneNumber: values.phoneNumber.replace(/[()]/g, ''),
+        //   birthDate: moment(values.birthDate).format('YYYY-MM-DD'),
+        // });
       }}
-      validationSchema={ValidationSchema}>
+      validationSchema={ValidationSchema}
+      validateOnChange={false}>
       {({
         handleChange,
         handleBlur,
@@ -180,7 +190,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
               />
             }
           />
-          <ErrorMessage name={'phoneNumber'} />
+          {errors.phoneNumber && <Text>{errors.phoneNumber}</Text>}
           <TextInputFieldWithIcon
             onChangeText={handleChange('address')}
             onBlur={handleBlur('address')}
