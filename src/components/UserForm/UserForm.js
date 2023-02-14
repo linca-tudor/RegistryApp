@@ -190,7 +190,6 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
               />
             }
           />
-          {errors.phoneNumber && <Text>{errors.phoneNumber}</Text>}
           <TextInputFieldWithIcon
             onChangeText={handleChange('address')}
             onBlur={handleBlur('address')}
