@@ -13,7 +13,8 @@ import getGlobalStyles from '~/helpers/GlobalStyles';
 
 const TextInputWithIcon = ({
   placeholder,
-  onEndEditing,
+  onChangeText,
+  onBlur,
   style,
   icon,
   title,
@@ -21,7 +22,6 @@ const TextInputWithIcon = ({
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
-  const [inputText, setInputText] = useState('');
 
   const formatPhoneNumber = txt => {
     if (!txt) {
@@ -45,15 +45,11 @@ const TextInputWithIcon = ({
     )}-${phoneNumber.slice(6, 10)}`;
   };
 
-  useEffect(() => {
-    setInputText(formatPhoneNumber(value));
-  }, [value]);
-
   const renderCrossIcon = () => {
     return (
       <TouchableOpacity
         onPress={() => {
-          setInputText('');
+          onChangeText('');
         }}
         style={globalStyles.formItem.crossIcon}>
         <Entypo
@@ -85,16 +81,13 @@ const TextInputWithIcon = ({
             keyboardType={'decimal-pad'}
             placeholder={placeholder}
             placeholderTextColor={Colors.starDust}
-            value={inputText}
+            value={formatPhoneNumber(value)}
             onChangeText={txt => {
-              setInputText(formatPhoneNumber(txt));
-            }}
-            onEndEditing={() => {
-              onEndEditing(inputText.replace(/[()]/g, ''));
+              onChangeText(formatPhoneNumber(txt));
             }}
             style={globalStyles.formItem.input}
           />
-          {inputText && renderCrossIcon()}
+          {value && renderCrossIcon()}
         </View>
       </View>
     </View>

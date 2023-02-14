@@ -1,10 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  TouchableOpacity,
-  View,
-  TextInput as RNTextInput,
-  Text,
-} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import SimpleLineDivider from '~/components/SimpleLineDivider';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './DateInputWithIcon.styles';
@@ -15,12 +10,12 @@ import moment from 'moment';
 
 const DateInputWithIcon = ({
   placeholder,
-  onEndEditing,
-  onCrossPress,
+  onChangeText,
+  onBlur,
   style,
   icon,
   title,
-  date,
+  value,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -28,13 +23,13 @@ const DateInputWithIcon = ({
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    setPickedDate(date || moment().toDate());
-  }, [date]);
+    setPickedDate(value ? moment(value).toDate() : moment().toDate());
+  }, [value]);
 
   const renderCrossIcon = () => {
     return (
       <TouchableOpacity
-        onPress={onCrossPress}
+        onPress={() => onChangeText('')}
         style={globalStyles.formItem.crossIcon}>
         <Entypo
           name="circle-with-cross"
@@ -62,12 +57,12 @@ const DateInputWithIcon = ({
         style={globalStyles.formItem.textContainer}>
         <Text style={globalStyles.formItem.title}>{title}</Text>
         <View style={globalStyles.formItem.inputContainer}>
-          {date && (
+          {value && (
             <Text style={[globalStyles.formItem.input, styles.date]}>
               {moment(pickedDate).format('MMM Do, YYYY')}
             </Text>
           )}
-          {!date && (
+          {!value && (
             <Text style={styles.placeholder}>
               {moment(placeholder).format('MMM Do, YYYY')}
             </Text>
@@ -83,13 +78,13 @@ const DateInputWithIcon = ({
             minimumDate={moment().subtract(100, 'years').toDate()}
             onConfirm={timestamp => {
               setModalOpen(false);
-              onEndEditing(moment(timestamp).toDate());
+              onChangeText(moment(timestamp).format('YYYY-MM-DD'));
             }}
             onCancel={() => {
               setModalOpen(false);
             }}
           />
-          {date && renderCrossIcon()}
+          {value && renderCrossIcon()}
         </View>
       </TouchableOpacity>
     </View>

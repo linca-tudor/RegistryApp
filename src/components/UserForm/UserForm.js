@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import 'yup-phone';
+import * as RNLocalize from 'react-native-localize';
 import moment from 'moment';
 import DateInputWithIcon from '~/components/DateInputWithIcon';
 import PhoneInputWithIcon from '~/components/PhoneInputWithIcon';
@@ -16,17 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {hobbiesAsString} from '~/assets/data/MOCK_DATA_HOBBIES';
 
 const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [gender, setGender] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [address, setAddress] = useState('');
-  const [email, setEmail] = useState('');
-  const [job, setJob] = useState('');
-  const [quote, setQuote] = useState('');
   const [suggestedHobbies, setSuggestedHobbies] = useState([]);
-  const [hobbies, setHobbies] = useState([]);
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
@@ -34,213 +28,256 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
     setSuggestedHobbies(hobbiesAsString);
   }, []);
 
-  useEffect(() => {
-    if (profile) {
-      setFirstName(profile.firstName ? profile.firstName : '');
-      setLastName(profile.lastName ? profile.lastName : '');
-      setGender(profile.gender ? profile.gender : '');
-      setPhoneNumber(profile.phoneNumber ? profile.phoneNumber : '');
-      setBirthDate(profile.birthDate ? moment(profile.birthDate).toDate() : '');
-      setAddress(profile.address ? profile.address : '');
-      setEmail(profile.email ? profile.email : '');
-      setJob(profile.job ? profile.job : '');
-      setQuote(profile.quote ? profile.quote : '');
-      setHobbies(profile.hobbies ? profile.hobbies : []);
-    }
-  }, [profile]);
+  const dateValidation = /([0-9]{4}-[0-9]{2}-[0-9]{2})/g;
 
-  const addHobby = hobby => {
-    if (!hobbies.includes(hobby)) {
-      setHobbies([...hobbies, hobby]);
-    }
-  };
-
-  const removeHobby = hobby => {
-    if (hobbies.includes(hobby)) {
-      setHobbies(hobbies.filter(element => element !== hobby));
-    }
-  };
+  const ValidationSchema = Yup.object().shape(
+    {
+      firstName: Yup.string()
+        .min(3, 'The name is too short!')
+        .max(30, 'The name is too long!')
+        .required('Required'),
+      lastName: Yup.string()
+        .min(3, 'The name is too short!')
+        .max(30, 'The name is too long!')
+        .nullable(),
+      gender: Yup.string().nullable(),
+      phoneNumber: Yup.string()
+        .when('phoneNumber', {
+          is: value => value?.length > 0,
+          then: Yup.string().phone(
+            RNLocalize.getCountry(),
+            null,
+            'Invalid Phone Number',
+          ),
+          otherwise: Yup.string(),
+        })
+        .nullable(),
+      birthDate: Yup.string()
+        .matches(dateValidation, 'Invalid date format')
+        .nullable(),
+      address: Yup.string().nullable(),
+      email: Yup.string().email('Invalid email').nullable(),
+      job: Yup.string().nullable(),
+      quote: Yup.string().nullable(),
+      hobbies: Yup.array().nullable(),
+    },
+    ['phoneNumber', 'phoneNumber'],
+  );
 
   return (
-    <View style={[globalStyles.flex, styles.container]}>
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setFirstName(text);
-        }}
-        value={firstName}
-        title="First Name"
-        placeholder="John / Jane"
-        icon={
-          <MaterialIcons
-            name="drive-file-rename-outline"
-            size={35}
-            color={Colors.lavander}
+    <Formik
+      initialValues={{
+        firstName: profile?.firstName ?? '',
+        lastName: profile?.lastName ?? '',
+        gender: profile?.gender ?? '',
+        phoneNumber: profile?.phoneNumber ?? '',
+        birthDate: profile?.birthDate ?? '',
+        address: profile?.address ?? '',
+        email: profile?.email ?? '',
+        job: profile?.job ?? '',
+        quote: profile?.quote ?? '',
+        hobbies: profile?.hobbies ?? [],
+      }}
+      onSubmit={values => {
+        console.log(
+          JSON.stringify(
+            {
+              ...values,
+              avatar:
+                'https://cms.qz.com/wp-content/uploads/2018/06/h_01204239-e1528902368212.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
+              phoneNumber: values.phoneNumber.replace(/[()]/g, ''),
+              birthDate: moment(values.birthDate).format('YYYY-MM-DD'),
+            },
+            0,
+            2,
+          ),
+        );
+        // onSubmitPress({
+        //   ...values,
+        //   avatar:
+        //     'https://cms.qz.com/wp-content/uploads/2018/06/h_01204239-e1528902368212.jpg?quality=75&strip=all&w=1200&h=630&crop=1',
+        //   phoneNumber: values.phoneNumber.replace(/[()]/g, ''),
+        //   birthDate: moment(values.birthDate).format('YYYY-MM-DD'),
+        // });
+      }}
+      validationSchema={ValidationSchema}
+      validateOnChange={false}>
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        setFieldValue,
+      }) => (
+        <View
+          style={[
+            globalStyles.flex,
+            styles.container,
+            {backgroundColor: 'magenta '},
+          ]}>
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('firstName')}
+            onBlur={handleBlur('firstName')}
+            value={values.firstName}
+            title="First Name"
+            placeholder="John / Jane"
+            icon={
+              <MaterialIcons
+                name="drive-file-rename-outline"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setLastName(text);
-        }}
-        style={styles.textInput}
-        value={lastName}
-        title="Last Name"
-        placeholder="Doe"
-        icon={
-          <MaterialIcons
-            name="drive-file-rename-outline"
-            size={35}
-            color={Colors.lavander}
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('lastName')}
+            onBlur={handleBlur('lastName')}
+            style={styles.textInput}
+            value={values.lastName}
+            title="Last Name"
+            placeholder="Doe"
+            icon={
+              <MaterialIcons
+                name="drive-file-rename-outline"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setGender(text);
-        }}
-        style={styles.textInput}
-        value={gender}
-        title="Gender"
-        placeholder="Any <3"
-        icon={
-          <MaterialCommunityIcons
-            name="gender-non-binary"
-            size={45}
-            color={Colors.lavander}
-            style={{marginLeft: -5}}
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('gender')}
+            onBlur={handleBlur('gender')}
+            style={styles.textInput}
+            value={values.gender}
+            title="Gender"
+            placeholder="Any <3"
+            icon={
+              <MaterialCommunityIcons
+                name="gender-non-binary"
+                size={45}
+                color={Colors.lavander}
+                style={{marginLeft: -5}}
+              />
+            }
           />
-        }
-      />
-      <DateInputWithIcon
-        onEndEditing={date => {
-          setBirthDate(date);
-        }}
-        style={styles.textInput}
-        date={birthDate}
-        title="Birthdate"
-        placeholder={new Date()}
-        icon={
-          <MaterialCommunityIcons
-            name="calendar-multiselect"
-            size={35}
-            color={Colors.lavander}
+          <DateInputWithIcon
+            onChangeText={date => setFieldValue('birthDate', date)}
+            onBlur={handleBlur('birthDate')}
+            style={styles.textInput}
+            value={values.birthDate}
+            title="Birthdate"
+            placeholder={new Date()}
+            icon={
+              <MaterialCommunityIcons
+                name="calendar-multiselect"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <PhoneInputWithIcon
-        onEndEditing={text => {
-          setPhoneNumber(text);
-        }}
-        value={phoneNumber}
-        title="Phone Number"
-        placeholder="(021) 234-5678"
-        icon={
-          <MaterialCommunityIcons
-            name="phone-dial"
-            size={35}
-            color={Colors.lavander}
+          <PhoneInputWithIcon
+            onChangeText={handleChange('phoneNumber')}
+            onBlur={handleBlur('phoneNumber')}
+            value={values.phoneNumber}
+            title="Phone Number"
+            placeholder="(021) 234-5678"
+            icon={
+              <MaterialCommunityIcons
+                name="phone-dial"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setAddress(text);
-        }}
-        style={styles.textInput}
-        value={address}
-        title="Address"
-        placeholder="First Street"
-        icon={
-          <MaterialCommunityIcons
-            name="home-map-marker"
-            size={40}
-            color={Colors.lavander}
-            style={{marginLeft: -2}}
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('address')}
+            onBlur={handleBlur('address')}
+            style={styles.textInput}
+            value={values.address}
+            title="Address"
+            placeholder="First Street"
+            icon={
+              <MaterialCommunityIcons
+                name="home-map-marker"
+                size={40}
+                color={Colors.lavander}
+                style={{marginLeft: -2}}
+              />
+            }
           />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setEmail(text);
-        }}
-        style={styles.textInput}
-        value={email}
-        title="E-mail Address"
-        placeholder="myemail@domain.com"
-        icon={
-          <MaterialCommunityIcons
-            name="email-outline"
-            size={35}
-            color={Colors.lavander}
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            style={styles.textInput}
+            value={values.email}
+            title="E-mail Address"
+            placeholder="myemail@domain.com"
+            icon={
+              <MaterialCommunityIcons
+                name="email-outline"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <HobbiesInputWithIcon
-        suggestions={suggestedHobbies}
-        hobbies={hobbies}
-        addHobby={addHobby}
-        removeHobby={removeHobby}
-        style={styles.textInput}
-        title="Hobbies"
-        placeholder="Playing guitar"
-        icon={
-          <Ionicons name="game-controller" size={35} color={Colors.lavander} />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setJob(text);
-        }}
-        style={styles.textInput}
-        value={job}
-        title="Job Title"
-        placeholder="Developer"
-        icon={
-          <MaterialCommunityIcons
-            name="tools"
-            size={35}
-            color={Colors.lavander}
+          <HobbiesInputWithIcon
+            suggestions={suggestedHobbies}
+            hobbies={values.hobbies}
+            onChangeHobbies={hobbies => {
+              setFieldValue('hobbies', hobbies);
+            }}
+            onBlur={handleBlur('hobbies')}
+            style={styles.textInput}
+            title="Hobbies"
+            placeholder="Playing guitar"
+            icon={
+              <Ionicons
+                name="game-controller"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <TextInputFieldWithIcon
-        onEndEditing={text => {
-          setQuote(text);
-        }}
-        style={styles.textInput}
-        value={quote}
-        title="Favourite Quote"
-        placeholder="Roses are red, violets are blue"
-        icon={
-          <Foundation
-            name="quote"
-            size={37.5}
-            color={Colors.lavander}
-            style={{marginLeft: 1}}
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('job')}
+            onBlur={handleBlur('job')}
+            style={styles.textInput}
+            value={values.job}
+            title="Job Title"
+            placeholder="Developer"
+            icon={
+              <MaterialCommunityIcons
+                name="tools"
+                size={35}
+                color={Colors.lavander}
+              />
+            }
           />
-        }
-      />
-      <Button
-        onPress={() => {
-          onSubmitPress({
-            avatar:
-              'http://www.geek-officiel.com/wp-content/uploads/2015/06/gecko.jpg',
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            gender: gender,
-            quote: quote,
-            address: address,
-            phoneNumber: phoneNumber,
-            birthDate: moment(birthDate).format('YYYY-MM-DD'),
-            job: job,
-            hobbies: hobbies,
-          });
-        }}
-        title={buttonTitle}
-        containerStyle={{marginTop: 20, marginBottom: 30}}
-      />
-    </View>
+          <TextInputFieldWithIcon
+            onChangeText={handleChange('quote')}
+            onBlur={handleBlur('quote')}
+            style={styles.textInput}
+            value={values.quote}
+            title="Favourite Quote"
+            placeholder="Roses are red, violets are blue"
+            icon={
+              <Foundation
+                name="quote"
+                size={37.5}
+                color={Colors.lavander}
+                style={{marginLeft: 1}}
+              />
+            }
+          />
+          <Button
+            onPress={handleSubmit}
+            title={buttonTitle}
+            containerStyle={{marginTop: 20, marginBottom: 30}}
+          />
+        </View>
+      )}
+    </Formik>
   );
 };
 

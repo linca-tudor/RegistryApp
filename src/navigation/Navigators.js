@@ -31,6 +31,7 @@ const ListStackNavigator = () => {
 };
 
 const SearchScreen = () => {
+  console.log('This is the search screen');
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text style={{width: 100, color: 'black'}}>Search Screen</Text>

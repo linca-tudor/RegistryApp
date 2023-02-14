@@ -11,8 +11,7 @@ const HobbiesInputWithIcon = ({
   placeholder,
   suggestions,
   hobbies,
-  addHobby,
-  removeHobby,
+  onChangeHobbies,
   style,
   icon,
   title,
@@ -20,7 +19,17 @@ const HobbiesInputWithIcon = ({
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
 
-  const [inputText, setInputText] = useState('');
+  const addHobby = hobby => {
+    if (!hobbies.includes(hobby)) {
+      onChangeHobbies([...hobbies, hobby]);
+    }
+  };
+
+  const removeHobby = hobby => {
+    if (hobbies.includes(hobby)) {
+      onChangeHobbies(hobbies.filter(element => element !== hobby));
+    }
+  };
 
   const renderBubbleList = () => {
     return (
@@ -45,7 +54,6 @@ const HobbiesInputWithIcon = ({
         {hobbies?.length > 0 && renderBubbleList()}
         <InputFieldWithDropdown
           placeholder={placeholder}
-          value={inputText}
           data={suggestions}
           selected={hobbies}
           addItem={hobby => addHobby(hobby)}
