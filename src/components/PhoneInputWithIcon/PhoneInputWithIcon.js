@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   TouchableOpacity,
   View,
@@ -91,7 +91,7 @@ const TextInputWithIcon = ({
           />
           {value && renderCrossIcon()}
         </View>
-        {error && <FieldErrorMessage message={error} />}
+        <FieldErrorMessage message={error} />
       </View>
     </View>
   );

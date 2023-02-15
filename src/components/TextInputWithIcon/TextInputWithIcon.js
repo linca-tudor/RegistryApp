@@ -72,7 +72,7 @@ const TextInputWithIcon = ({
           />
           {value && renderCrossIcon()}
         </View>
-        {error && <FieldErrorMessage message={error} />}
+        <FieldErrorMessage message={error} />
       </View>
     </View>
   );

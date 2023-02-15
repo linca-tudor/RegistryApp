@@ -88,7 +88,7 @@ const DateInputWithIcon = ({
           />
           {value && renderCrossIcon()}
         </View>
-        {error && <FieldErrorMessage message={error} />}
+        <FieldErrorMessage message={error} />
       </TouchableOpacity>
     </View>
   );

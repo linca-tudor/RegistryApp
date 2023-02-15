@@ -91,7 +91,7 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
   const renderDropDown = () => {
     return (
       <View style={styles.dropdownContainer}>
-        <View style={styles.dropdownTopCover} />
+        {/* <View style={styles.dropdownTopCover} /> */}
         <View style={styles.dropdownContentContainer}>
           {filteredData.map((item, index) => {
             return (
@@ -155,7 +155,7 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
         />
         {inputText && renderCrossIcon()}
       </View>
-      {error && <FieldErrorMessage message={error} />}
+      <FieldErrorMessage message={error} />
       <TouchableOpacity onPress={closeDropdown}>
         {isVisible && renderDropDown()}
       </TouchableOpacity>
