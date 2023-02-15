@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import SimpleLineDivider from '~/components/SimpleLineDivider';
+import FieldErrorMessage from '~/components/FieldErrorMessage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './DateInputWithIcon.styles';
 import getGlobalStyles from '~/helpers/GlobalStyles';
@@ -16,6 +17,7 @@ const DateInputWithIcon = ({
   icon,
   title,
   value,
+  error,
 }) => {
   const styles = getStyles();
   const globalStyles = getGlobalStyles();
@@ -86,6 +88,7 @@ const DateInputWithIcon = ({
           />
           {value && renderCrossIcon()}
         </View>
+        <FieldErrorMessage message={error} />
       </TouchableOpacity>
     </View>
   );

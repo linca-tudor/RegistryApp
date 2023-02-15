@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 const ListStackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName={Routes.list}
+      initialRouteName={Routes.newProfile}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name={Routes.list} component={FeedScreen} />
       <Stack.Screen

@@ -6,6 +6,7 @@ import {
   Text,
   Platform,
 } from 'react-native';
+import FieldErrorMessage from '~/components/FieldErrorMessage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './InputFieldWithDropdown.styles';
 import Colors from '~/helpers/Colors';
@@ -14,6 +15,7 @@ import difference from 'lodash.difference';
 const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
+  const [error, setError] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [crossIconPosition, setCrossIconPosition] = useState('center');
@@ -66,6 +68,21 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
     setIsVisible(false);
   };
 
+  const validateInput = input => {
+    if (input.length < 3 && input.length > 0) {
+      setError('The name is too short!');
+      closeDropdown();
+      return false;
+    } else if (input.length > 30) {
+      setError('The name is too long!');
+      closeDropdown();
+      return false;
+    } else {
+      setError('');
+      return true;
+    }
+  };
+
   const createHobby = () => {
     addItem(inputText);
     setInputText('');
@@ -74,7 +91,7 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
   const renderDropDown = () => {
     return (
       <View style={styles.dropdownContainer}>
-        <View style={styles.dropdownTopCover} />
+        {/* <View style={styles.dropdownTopCover} /> */}
         <View style={styles.dropdownContentContainer}>
           {filteredData.map((item, index) => {
             return (
@@ -82,6 +99,7 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
                 style={styles.dropdownItem}
                 onPress={() => {
                   addItem(item);
+                  setError('');
                 }}
                 key={index}>
                 <Text style={[styles.itemText]}>{item}</Text>
@@ -98,6 +116,7 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
       <TouchableOpacity
         onPress={() => {
           setInputText('');
+          setError('');
         }}
         style={styles.crossIcon}>
         <Entypo
@@ -128,10 +147,15 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
           onChangeText={txt => {
             setInputText(txt);
           }}
-          onSubmitEditing={createHobby}
+          onSubmitEditing={() => {
+            if (validateInput(inputText) && inputText !== '') {
+              createHobby();
+            }
+          }}
         />
         {inputText && renderCrossIcon()}
       </View>
+      <FieldErrorMessage message={error} />
       <TouchableOpacity onPress={closeDropdown}>
         {isVisible && renderDropDown()}
       </TouchableOpacity>

@@ -11,7 +11,6 @@ const getGlobalStyles = () => {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        height: 67.5,
         marginVertical: 7.5,
       },
       iconContainer: {

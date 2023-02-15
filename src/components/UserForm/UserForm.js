@@ -110,16 +110,12 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         errors,
         setFieldValue,
       }) => (
-        <View
-          style={[
-            globalStyles.flex,
-            styles.container,
-            {backgroundColor: 'magenta '},
-          ]}>
+        <View style={[globalStyles.flex, styles.container]}>
           <TextInputFieldWithIcon
             onChangeText={handleChange('firstName')}
             onBlur={handleBlur('firstName')}
             value={values.firstName}
+            error={errors.firstName}
             title="First Name"
             placeholder="John / Jane"
             icon={
@@ -135,6 +131,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('lastName')}
             style={styles.textInput}
             value={values.lastName}
+            error={errors.lastName}
             title="Last Name"
             placeholder="Doe"
             icon={
@@ -150,6 +147,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('gender')}
             style={styles.textInput}
             value={values.gender}
+            error={errors.gender}
             title="Gender"
             placeholder="Any <3"
             icon={
@@ -166,6 +164,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('birthDate')}
             style={styles.textInput}
             value={values.birthDate}
+            error={errors.birthDate}
             title="Birthdate"
             placeholder={new Date()}
             icon={
@@ -180,6 +179,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onChangeText={handleChange('phoneNumber')}
             onBlur={handleBlur('phoneNumber')}
             value={values.phoneNumber}
+            error={errors.phoneNumber}
             title="Phone Number"
             placeholder="(021) 234-5678"
             icon={
@@ -195,6 +195,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('address')}
             style={styles.textInput}
             value={values.address}
+            error={errors.address}
             title="Address"
             placeholder="First Street"
             icon={
@@ -211,6 +212,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('email')}
             style={styles.textInput}
             value={values.email}
+            error={errors.email}
             title="E-mail Address"
             placeholder="myemail@domain.com"
             icon={
@@ -244,6 +246,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('job')}
             style={styles.textInput}
             value={values.job}
+            error={errors.job}
             title="Job Title"
             placeholder="Developer"
             icon={
@@ -259,6 +262,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
             onBlur={handleBlur('quote')}
             style={styles.textInput}
             value={values.quote}
+            error={errors.quote}
             title="Favourite Quote"
             placeholder="Roses are red, violets are blue"
             icon={
