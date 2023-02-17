@@ -1,11 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import getStyles from './FieldErrorMessage.styles';
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-  Easing,
-} from 'react-native-reanimated';
+import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 
 const FieldErrorMessage = ({message}) => {
   const styles = getStyles();

@@ -38,6 +38,7 @@ const getStyles = crossIconPosition => {
       marginRight: 35,
     },
     dropdownContainer: {
+      overflow: 'hidden',
       position: 'absolute',
       marginTop: -10,
       backgroundColor: Colors.paleLavender,

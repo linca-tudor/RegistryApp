@@ -101,7 +101,7 @@ const UserForm = ({onSubmitPress, profile, buttonTitle}) => {
         // });
       }}
       validationSchema={ValidationSchema}
-      validateOnChange={false}>
+      validateOnChange={true}>
       {({
         handleChange,
         handleBlur,
