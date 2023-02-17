@@ -10,6 +10,7 @@ import FieldErrorMessage from '~/components/FieldErrorMessage';
 import Entypo from 'react-native-vector-icons/Entypo';
 import getStyles from './InputFieldWithDropdown.styles';
 import Colors from '~/helpers/Colors';
+import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 import difference from 'lodash.difference';
 
 const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
@@ -88,28 +89,13 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
     setInputText('');
   };
 
-  const renderDropDown = () => {
-    return (
-      <View style={styles.dropdownContainer}>
-        {/* <View style={styles.dropdownTopCover} /> */}
-        <View style={styles.dropdownContentContainer}>
-          {filteredData.map((item, index) => {
-            return (
-              <TouchableOpacity
-                style={styles.dropdownItem}
-                onPress={() => {
-                  addItem(item);
-                  setError('');
-                }}
-                key={index}>
-                <Text style={[styles.itemText]}>{item}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      </View>
-    );
-  };
+  const animatedHeight = useAnimatedStyle(() => {
+    return {
+      height: withTiming(isVisible ? 173 : 0, {
+        duration: 300,
+      }),
+    };
+  });
 
   const renderCrossIcon = () => {
     return (
@@ -157,7 +143,24 @@ const HobbiesInputWithIcon = ({placeholder, data, selected, addItem}) => {
       </View>
       <FieldErrorMessage message={error} />
       <TouchableOpacity onPress={closeDropdown}>
-        {isVisible && renderDropDown()}
+        <Animated.View style={[styles.dropdownContainer, animatedHeight]}>
+          <View style={styles.dropdownTopCover} />
+          <View style={[styles.dropdownContentContainer]}>
+            {filteredData.map((item, index) => {
+              return (
+                <TouchableOpacity
+                  style={styles.dropdownItem}
+                  onPress={() => {
+                    addItem(item);
+                    setError('');
+                  }}
+                  key={index}>
+                  <Text style={[styles.itemText]}>{item}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        </Animated.View>
       </TouchableOpacity>
     </View>
   );
